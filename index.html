@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#122a32">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Dealapp | Product Process 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -210,6 +213,9 @@ button{cursor:pointer}
   .app.flow{grid-template-columns:minmax(0,1fr) minmax(300px,380px)}
 }
 @media (max-width:760px){
+  .top-actions{width:100%}
+  .view-switch{order:-1;width:100%;display:flex}
+  .view-switch button{flex:1}
   .app.flow{grid-template-columns:minmax(0,1fr)}
   .app.flow .side{grid-template-columns:1fr}
   .app{grid-template-columns:minmax(0,1fr)}
@@ -268,6 +274,23 @@ button{cursor:pointer}
 <div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" type="button"></button></div>
 
 <script>
+/* ---------- Version check (beats the 10-min Pages cache) ---------- */
+const APP_V='2026.11.09-4';
+(function(){
+  async function check(){
+    try{
+      const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)return;
+      const v=(await r.json()).v;if(!v||v===APP_V)return;
+      let tried='';try{tried=sessionStorage.getItem('dl-v-tried')||''}catch(e){}
+      if(tried===v)return;
+      try{sessionStorage.setItem('dl-v-tried',v)}catch(e){}
+      const u=new URL(location.href);u.searchParams.set('v',v);location.replace(u.toString());
+    }catch(e){}
+  }
+  check();
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check()});
+})();
+
 /* ---------- Content ---------- */
 const UI = {
   ar:{brand:'ديل · عملية المنتج 2027',brandSub:'دليل عمل الفريق',title:'من الطلب إلى نتيجة قابلة للقياس',
