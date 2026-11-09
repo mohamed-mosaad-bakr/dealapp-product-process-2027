@@ -170,6 +170,32 @@ button{cursor:pointer}
 .fc-branches .choice{font-size:13px;padding:5px 12px}
 .fc-loop{font-size:13px;color:var(--warn-ink);background:var(--warn-bg);border:0;border-radius:8px;padding:4px 10px}
 
+/* Double diamond view */
+.ddpanel{display:none;padding:16px}
+.app.dd{grid-template-columns:minmax(0,1fr) minmax(340px,430px)}
+.app.dd .stepper{display:none}
+.app.dd .ddpanel{display:block}
+.app.dd .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+.dd-svg{width:100%;height:auto;display:block}
+.dd-svg .ph{cursor:pointer;stroke:var(--card);stroke-width:3}
+.dd-svg .ph:hover{opacity:.85}
+.dd-svg .ph:focus-visible{outline:none;stroke:#7bd7c4}
+.dd-svg .cur{stroke:var(--teal);stroke-width:3}
+.dd-svg text{fill:var(--ink);font-family:inherit;pointer-events:none}
+.dd-svg .muted{fill:var(--muted)}
+.dd-svg text.on{fill:#fff}
+.dd-svg .axis{stroke:var(--rule);stroke-width:1.5}
+.dd-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.dd-col{border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0}
+.dd-col.current{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.dd-col h3{font-size:15px;margin:0}
+.dd-col p{font-size:13px;color:var(--muted);margin:2px 0 8px}
+.dd-col .steps .step-btn{font-size:13px;padding:6px}
+.dd-col .empty{font-size:13px;color:var(--muted)}
+.dd-note{font-size:13px;color:var(--muted);margin:10px 0 0}
+@media (max-width:1150px){.app.dd{grid-template-columns:minmax(0,1fr) minmax(300px,380px)}.dd-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.app.dd{grid-template-columns:minmax(0,1fr)}.app.dd .side{grid-template-columns:1fr}.dd-cols{grid-template-columns:1fr}.dd-col .steps{display:block}.dd-col .step-btn .lbl{display:inline}.dd-col .step-btn{white-space:normal;border:0}}
+
 /* Toast */
 .toast{position:fixed;bottom:20px;inset-inline-start:50%;transform:translateX(50%);background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;display:none;align-items:center;gap:12px;z-index:50;font-size:14px;box-shadow:0 8px 30px #0003}
 [dir=ltr] .toast{transform:translateX(-50%)}
@@ -210,7 +236,7 @@ button{cursor:pointer}
 <header class="top">
   <div class="brand"><div class="mark" aria-hidden="true">D</div><div><b id="tBrand"></b><small id="tBrandSub"></small></div></div>
   <div class="top-actions">
-    <div class="view-switch" role="group" id="viewSwitch"><button type="button" data-view="playbook"></button><button type="button" data-view="flow"></button></div>
+    <div class="view-switch" role="group" id="viewSwitch"><button type="button" data-view="playbook"></button><button type="button" data-view="flow"></button><button type="button" data-view="dd"></button></div>
     <button class="btn ghost icon" id="undoBtn" type="button">↶</button><button class="btn ghost icon" id="redoBtn" type="button">↷</button><button class="btn ghost icon" id="themeBtn" type="button"></button>
     <button class="btn ghost" id="langBtn" type="button"></button>
     <button class="btn ghost" id="newBtn" type="button"></button>
@@ -225,6 +251,7 @@ button{cursor:pointer}
 <main class="app" id="app">
   <nav class="panel stepper" id="stepper" aria-label=""></nav>
   <section class="panel flowpanel" id="flow" aria-label=""></section>
+  <section class="panel ddpanel" id="dd" aria-label=""></section>
   <section class="panel" id="card" aria-live="polite"></section>
   <aside class="side">
     <section class="panel"><h3 id="tSummary"></h3><dl class="sum" id="summary"></dl></section>
@@ -263,7 +290,7 @@ const UI = {
       newCycle:'ابدأ دورة تحسين',met:'تحقق الهدف',metText:'سجّل ما تعلمه الفريق، والطلب جاهز للإغلاق.',
       escalate:'المشكلة في تصميم التجربة نفسها؟',escalateBtn:'حوّله إلى تحسين كبير',
       missing:'ناقص:',allDone:'كل الخطوات مكتملة.',
-      exportTitle:'ملخص طلب منتج — ديل',viewPlaybook:'الدليل',viewFlow:'المخطط',viewGroup:'طريقة العرض',flowLbl:'مخطط العملية',start:'طلب جديد',zoomOut:'تصغير',zoomIn:'تكبير',fit:'ملاءمة',center:'توسيط على الخطوة الحالية',showAll:'عرض كل الخطوات',showNext:'إخفاء الخطوات القادمة',more:n=>`+${n} خطوات قادمة — عرض الكل`,undoL:'تراجع (Ctrl+Z)',redoL:'إعادة (Ctrl+Y)',dark:'الوضع الداكن',light:'الوضع الفاتح',end:'إغلاق الطلب',typeQ:'ما نوع الطلب؟',backShort:n=>`↩ يرجع للخطوة ${n}`,cycleShort:'↩ دورة تحسين من الخطوة 4'},
+      exportTitle:'ملخص طلب منتج — ديل',viewPlaybook:'الدليل',viewFlow:'المخطط',viewDD:'الماسة المزدوجة',ddLbl:'الماسة المزدوجة',ph:{discover:['اكتشاف','نفهم الاحتياج والأرقام'],define:['تعريف','نحدد المشكلة والمتطلبات'],develop:['تطوير','نستكشف الحلول ونصممها'],deliver:['تسليم','ننفذ ونطلق ونقيس']},probSpace:'مساحة المشكلة',solSpace:'مساحة الحل',challenge:'الطلب',outcome:'النتيجة',briefGate:'Brief معتمد',noSteps:'لا خطوات في هذا المسار',ddShort:'المسار المختصر يمر بأجزاء من الماستين فقط.',ddLoop:'لم يتحقق الهدف ← نعود لمرحلة التطوير',viewGroup:'طريقة العرض',flowLbl:'مخطط العملية',start:'طلب جديد',zoomOut:'تصغير',zoomIn:'تكبير',fit:'ملاءمة',center:'توسيط على الخطوة الحالية',showAll:'عرض كل الخطوات',showNext:'إخفاء الخطوات القادمة',more:n=>`+${n} خطوات قادمة — عرض الكل`,undoL:'تراجع (Ctrl+Z)',redoL:'إعادة (Ctrl+Y)',dark:'الوضع الداكن',light:'الوضع الفاتح',end:'إغلاق الطلب',typeQ:'ما نوع الطلب؟',backShort:n=>`↩ يرجع للخطوة ${n}`,cycleShort:'↩ دورة تحسين من الخطوة 4'},
   en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
       intro:'Log the request and the right path for its type appears. Complete each step in order; every step shows its owner, output and when it is done.',
       lang:'العربية',newReq:'New request',stepsNav:'Process steps',summary:'Request summary',share:'Share',
@@ -284,7 +311,7 @@ const UI = {
       newCycle:'Start improvement cycle',met:'Target met',metText:'Record what the team learned; the request is ready to close.',
       escalate:'Is the problem in the experience design itself?',escalateBtn:'Convert to a major improvement',
       missing:'Missing:',allDone:'All steps are complete.',
-      exportTitle:'Dealapp product request summary',viewPlaybook:'Playbook',viewFlow:'Flowchart',viewGroup:'View',flowLbl:'Process flowchart',start:'New request',zoomOut:'Zoom out',zoomIn:'Zoom in',fit:'Fit',center:'Center on current step',showAll:'Show all steps',showNext:'Hide upcoming steps',more:n=>`+${n} upcoming steps — show all`,undoL:'Undo (Ctrl+Z)',redoL:'Redo (Ctrl+Y)',dark:'Dark mode',light:'Light mode',end:'Close request',typeQ:'What type of request?',backShort:n=>`↩ back to step ${n}`,cycleShort:'↩ improvement cycle from step 4'}
+      exportTitle:'Dealapp product request summary',viewPlaybook:'Playbook',viewFlow:'Flowchart',viewDD:'Double Diamond',ddLbl:'Double Diamond',ph:{discover:['Discover','Understand the need and the numbers'],define:['Define','Pin down the problem and requirements'],develop:['Develop','Explore and design solutions'],deliver:['Deliver','Build, launch and measure']},probSpace:'Problem space',solSpace:'Solution space',challenge:'Request',outcome:'Outcome',briefGate:'Brief approved',noSteps:'No steps in this path',ddShort:'Short paths only touch parts of the two diamonds.',ddLoop:'Target not met → back to Develop',viewGroup:'View',flowLbl:'Process flowchart',start:'New request',zoomOut:'Zoom out',zoomIn:'Zoom in',fit:'Fit',center:'Center on current step',showAll:'Show all steps',showNext:'Hide upcoming steps',more:n=>`+${n} upcoming steps — show all`,undoL:'Undo (Ctrl+Z)',redoL:'Redo (Ctrl+Y)',dark:'Dark mode',light:'Light mode',end:'Close request',typeQ:'What type of request?',backShort:n=>`↩ back to step ${n}`,cycleShort:'↩ improvement cycle from step 4'}
 };
 
 const TYPES = [
@@ -307,59 +334,59 @@ const INTAKE = {id:'intake',phase:ch('الاستلام','Intake'),
   ],checks:[]};
 
 const FULL = [
- {id:'s1',phase:ch('الاكتشاف','Discover'),title:ch('جلسة مع البزنس','Business session'),desc:ch('نتفق على المشكلة والهدف قبل أي تصميم.','Agree on the problem and goal before any design.'),
+ {id:'s1',phase:ch('اكتشاف','Discover'),title:ch('جلسة مع البزنس','Business session'),desc:ch('نتفق على المشكلة والهدف قبل أي تصميم.','Agree on the problem and goal before any design.'),
   owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),output:ch('Brief من صفحة واحدة','One-page brief'),done:ch('صاحب الطلب يوافق على الـ Brief','Requester approves the brief'),
   fields:[{id:'problem',label:ch('المشكلة في جملة واحدة','The problem in one sentence'),req:true,full:true,area:true},
           {id:'goal',label:ch('الهدف','Goal'),req:true,ph:ch('مثال: رفع الاشتراكات من الصفحة','e.g. More subscriptions from the page')},
           {id:'kpi',label:ch('مؤشر النجاح (KPI)','Success metric (KPI)'),req:true,ph:ch('مثال: معدل التحويل','e.g. Conversion rate')},
           {id:'constraints',label:ch('القيود','Constraints'),full:true,area:true}],
   checks:[ch('المشكلة والهدف والمؤشر مكتوبة في الـ Brief','Problem, goal and KPI are in the brief'),ch('صاحب الطلب وافق على الـ Brief','The requester approved the brief')]},
- {id:'s2',phase:ch('الاكتشاف','Discover'),title:ch('خط الأساس والتحقق','Baseline and validation'),desc:ch('نعرف الرقم الحالي والمستهدف، ونقرر هل نكمل.','Know the current and target numbers, and decide whether to go on.'),
+ {id:'s2',phase:ch('اكتشاف','Discover'),title:ch('خط الأساس والتحقق','Baseline and validation'),desc:ch('نعرف الرقم الحالي والمستهدف، ونقرر هل نكمل.','Know the current and target numbers, and decide whether to go on.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('الرقم الحالي والمستهدف + القرار','Baseline, target and decision'),done:ch('الرقم موثق أو مهمة تتبع مفتوحة، والقرار مسجل','Number recorded or tracking task opened, decision logged'),
   fields:[{id:'baseline',label:ch('الرقم الحالي','Current number'),req:true,ph:ch('مثال: 10% أو «غير مقاس»','e.g. 10% or "not measured"'),hint:ch('من GA4 أو الباك إند. غير متاح؟ افتح مهمة تتبع.','From GA4 or the backend. Not available? Open a tracking task.')},
           {id:'target',label:ch('الرقم المستهدف','Target'),req:true,ph:ch('مثال: 15%','e.g. 15%')},
           {id:'window',label:ch('فترة القياس بعد الإطلاق','Measurement window after launch'),ph:ch('مثال: 30 يومًا','e.g. 30 days')},
           {id:'decision',kind:'choice',dia:true,q:ch('نكمل؟','Proceed?'),loops:{reframe:'s1'},label:ch('القرار','Decision'),req:true,full:true,options:[ch('نكمل','Proceed'),ch('نعيد الصياغة','Reframe'),ch('نتوقف','Stop')],values:['go','reframe','stop']}],
   checks:[ch('الرقم الحالي موثق، أو مهمة تتبع مفتوحة','Baseline recorded, or a tracking task opened'),ch('صاحب الطلب حدد الرقم المستهدف','The requester set the target')]},
- {id:'s3',phase:ch('التعريف','Define'),title:ch('كتابة الـ User Stories','Write the user stories'),desc:ch('نحوّل الـ Brief إلى قصص مستخدم.','Turn the brief into user stories.'),
+ {id:'s3',phase:ch('تعريف','Define'),title:ch('كتابة الـ User Stories','Write the user stories'),desc:ch('نحوّل الـ Brief إلى قصص مستخدم.','Turn the brief into user stories.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('Stories على Notion','Stories in Notion'),done:ch('الـ Stories تغطي كل ما في الـ Brief','Stories cover everything in the brief'),
   fields:[{id:'storiesLink',label:ch('رابط الـ Stories','Stories link'),req:true,full:true,ph:'https://notion.so/…',hint:ch('الصيغة: كـ[مستخدم] أريد [هدف] لكي [فائدة]','Format: As a [user] I want [goal] so that [benefit]')}],
   checks:[ch('كل Story مكتوبة بالصيغة','Every story follows the format'),ch('الـ Stories تغطي كل ما في الـ Brief','Stories cover everything in the brief')]},
- {id:'s4',phase:ch('التعريف','Define'),title:ch('استكشاف الحل والتصميم','Explore and design'),desc:ch('UX وUI يشاركان هنا، قبل التطوير.','UX and UI join here, before development.'),
+ {id:'s4',phase:ch('تطوير','Develop'),title:ch('استكشاف الحل والتصميم','Explore and design'),desc:ch('UX وUI يشاركان هنا، قبل التطوير.','UX and UI join here, before development.'),
   owner:ch('UX/UI + مدير المنتج','UX/UI + PM'),output:ch('تصميم على Figma بكل الحالات','Figma design with all states'),done:ch('اتجاه واحد متفق عليه، أو قرار A/B','One agreed direction, or an A/B decision'),
   fields:[{id:'solution',kind:'choice',label:ch('نوع الحل','Solution type'),req:true,full:true,options:[ch('إعادة تصميم','Redesign'),ch('إضافة على الموجود','Add to existing'),ch('تعديل باك إند','Backend change'),ch('إصلاح أخطاء','Fix bugs')]},
           {id:'figma',label:ch('رابط Figma','Figma link'),req:true,full:true,ph:'https://figma.com/…'},
           {id:'ab',kind:'choice',label:ch('اختبار A/B؟','A/B test?'),options:[ch('لا، اتجاه واحد','No, one direction'),ch('نعم، بين حلين','Yes, between two')]}],
   checks:[ch('الفريق متفق على اتجاه واحد أو على اختبار A/B','The team agreed on one direction or an A/B test'),ch('التصميم يغطي حالات الفراغ والتحميل والخطأ','Design covers empty, loading and error states')]},
- {id:'s5',phase:ch('التعريف','Define'),title:ch('مراجعة التصميم','Design review'),desc:ch('البزنس يراجع، والتقني يؤكد الجدوى.','Business reviews; engineering confirms feasibility.'),
+ {id:'s5',phase:ch('تطوير','Develop'),title:ch('مراجعة التصميم','Design review'),desc:ch('البزنس يراجع، والتقني يؤكد الجدوى.','Business reviews; engineering confirms feasibility.'),
   owner:ch('مدير المنتج + البزنس + التقني','PM + business + engineering'),output:ch('تصميم معتمد','Approved design'),done:ch('التصميم معتمد','The design is approved'),
   fields:[{id:'review',kind:'choice',dia:true,q:ch('التصميم معتمد؟','Design approved?'),loops:{changes:'s4'},label:ch('نتيجة المراجعة','Review result'),req:true,full:true,options:[ch('معتمد','Approved'),ch('يحتاج تعديلًا','Needs changes')],values:['ok','changes']},
           {id:'usability',kind:'choice',label:ch('اختبار استخدام','Usability test'),full:true,options:[ch('تم','Done'),ch('غير مطلوب، الخطر منخفض','Not needed, low risk')]}],
   checks:[ch('البزنس راجع التصميم','Business reviewed the design'),ch('الفريق التقني أكد الجدوى','Engineering confirmed feasibility')]},
- {id:'s6',phase:ch('التعريف','Define'),title:ch('التجهيز للتطوير','Ready for development'),desc:ch('معايير قبول وأحداث تتبع قبل الـ Sprint.','Acceptance criteria and tracking before the sprint.'),
+ {id:'s6',phase:ch('تسليم','Deliver'),title:ch('التجهيز للتطوير','Ready for development'),desc:ch('معايير قبول وأحداث تتبع قبل الـ Sprint.','Acceptance criteria and tracking before the sprint.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('معايير القبول + أحداث GA4 على Figma','Acceptance criteria + GA4 events in Figma'),done:ch('لكل Story معايير قبول، وللمؤشر أحداث تقيسه','Every story has criteria; the KPI has events'),
   fields:[],
   checks:[ch('لكل Story معايير قبول','Every story has acceptance criteria'),ch('أحداث GA4 ومعاملاتها موثقة على Figma','GA4 events and parameters annotated in Figma')]},
- {id:'s7',phase:ch('التنفيذ','Deliver'),title:ch('Grooming وتخطيط الـ Sprint','Grooming and sprint planning'),desc:ch('تقدير الجهد وإدخال الـ Stories في Sprint.','Estimate and pull the stories into a sprint.'),
+ {id:'s7',phase:ch('تسليم','Deliver'),title:ch('Grooming وتخطيط الـ Sprint','Grooming and sprint planning'),desc:ch('تقدير الجهد وإدخال الـ Stories في Sprint.','Estimate and pull the stories into a sprint.'),
   owner:ch('مدير المنتج + الفريق التقني','PM + engineering'),output:ch('Sprint محدد','A planned sprint'),done:ch('الـ Stories داخل Sprint','Stories are in a sprint'),
   fields:[{id:'sprint',label:ch('اسم الـ Sprint أو تاريخه','Sprint name or date'),req:true},
           {id:'sprintLen',kind:'choice',label:ch('المدة','Length'),options:[ch('أسبوع','One week'),ch('أكثر من أسبوع','More than a week')]}],
   checks:[ch('الجهد مقدّر','Effort is estimated'),ch('الـ Stories داخل Sprint محدد','Stories are in a planned sprint')]},
- {id:'s8',phase:ch('التنفيذ','Deliver'),title:ch('التطوير وQA','Build and QA'),desc:ch('بناء واختبار على بيئة الاختبار.','Build and test on staging.'),
+ {id:'s8',phase:ch('تسليم','Deliver'),title:ch('البناء وQA','Build and QA'),desc:ch('بناء واختبار على بيئة الاختبار.','Build and test on staging.'),
   owner:ch('المطورون + QA','Developers + QA'),output:ch('نسخة معتمدة من QA','A QA-approved build'),done:ch('QA يعتمد النسخة','QA approves the build'),
   fields:[],
   checks:[ch('النسخة على بيئة الاختبار','The build is on staging'),ch('QA اختبر معايير القبول والانحدار','QA tested acceptance criteria and regression'),ch('الأحداث ظاهرة في GA4 DebugView','Events show in GA4 DebugView'),ch('الأخطاء مسجلة في Bugs Board','Bugs are logged in the Bugs Board')]},
- {id:'s9',phase:ch('التنفيذ','Deliver'),title:ch('مراجعة القبول (UAT)','Acceptance review (UAT)'),desc:ch('صاحب الطلب يجرّب قبل الإطلاق.','The requester tries it before launch.'),
+ {id:'s9',phase:ch('تسليم','Deliver'),title:ch('مراجعة القبول (UAT)','Acceptance review (UAT)'),desc:ch('صاحب الطلب يجرّب قبل الإطلاق.','The requester tries it before launch.'),
   owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),output:ch('موافقة على الإطلاق','Go-ahead to launch'),done:ch('صاحب الطلب يوافق','The requester approves'),
   fields:[{id:'uat',kind:'choice',dia:true,q:ch('صاحب الطلب موافق؟','Requester approves?'),loops:{changes:'s8'},label:ch('النتيجة','Result'),req:true,full:true,options:[ch('موافق','Approved'),ch('يحتاج تعديلات','Needs changes')],values:['ok','changes']}],
   checks:[ch('صاحب الطلب جرّب النسخة على بيئة الاختبار','The requester tried the build on staging')]},
- {id:'s10',phase:ch('التنفيذ','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('نشر مع خطة تراجع وموعد قياس.','Release with a rollback plan and a measurement date.'),
+ {id:'s10',phase:ch('تسليم','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('نشر مع خطة تراجع وموعد قياس.','Release with a rollback plan and a measurement date.'),
   owner:ch('مدير المنتج + الفريق التقني','PM + engineering'),output:ch('إطلاق مستقر','A stable release'),done:ch('الإطلاق مستقر والأحداث تصل GA4','Stable, and events reach GA4'),
   fields:[{id:'launchDate',kind:'date',label:ch('تاريخ الإطلاق','Launch date'),req:true},
           {id:'measureDate',kind:'date',label:ch('موعد القياس','Measurement date'),req:true},
           {id:'rollback',label:ch('خطة التراجع','Rollback plan'),full:true,area:true}],
   checks:[ch('تم النشر','Released'),ch('الأحداث تصل إلى GA4','Events reach GA4')]},
- {id:'s11',phase:ch('القياس','Measure'),title:ch('القياس والقرار','Measure and decide'),desc:ch('نقارن النتيجة بالهدف ونقرر.','Compare the result with the target and decide.'),
+ {id:'s11',phase:ch('تسليم','Deliver'),title:ch('القياس والقرار','Measure and decide'),desc:ch('نقارن النتيجة بالهدف ونقرر.','Compare the result with the target and decide.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('النتيجة والقرار','Result and decision'),done:ch('الطلب مغلق، أو بدأت دورة تحسين','Closed, or an improvement cycle started'),
   fields:[{id:'actual',label:ch('الرقم بعد الإطلاق','Number after launch'),req:true},
           {id:'result',kind:'choice',dia:true,q:ch('تحقق الهدف؟','Target met?'),loops:{notmet:'cycle'},label:ch('هل تحقق الهدف؟','Was the target met?'),req:true,options:[ch('نعم','Yes'),ch('لا','No')],values:['met','notmet']},
@@ -368,46 +395,49 @@ const FULL = [
 ];
 
 const CR = [
- {id:'c1',phase:ch('التنفيذ','Deliver'),title:ch('كتابة الـ CR','Write the CR'),desc:ch('الوضع الحالي والمطلوب ومعايير القبول.','Current state, the change and acceptance criteria.'),
+ {id:'c1',phase:ch('تعريف','Define'),title:ch('كتابة الـ CR','Write the CR'),desc:ch('الوضع الحالي والمطلوب ومعايير القبول.','Current state, the change and acceptance criteria.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('CR على Notion','CR in Notion'),done:ch('الـ CR مكتمل','The CR is complete'),
   fields:[{id:'crLink',label:ch('رابط الـ CR','CR link'),req:true,full:true,ph:'https://notion.so/…'}],
   checks:[ch('الوضع الحالي والمطلوب مكتوبان','Current state and change are written'),ch('معايير القبول مكتوبة','Acceptance criteria are written')]},
- {id:'c2',phase:ch('التنفيذ','Deliver'),title:ch('تعديل التصميم','Update the design'),desc:ch('على Figma، إذا لزم.','In Figma, if needed.'),
+ {id:'c2',phase:ch('تطوير','Develop'),title:ch('تعديل التصميم','Update the design'),desc:ch('على Figma، إذا لزم.','In Figma, if needed.'),
   owner:ch('UI','UI'),output:ch('تصميم معدّل','Updated design'),done:ch('التصميم معدّل، أو لا يلزم','Design updated, or not needed'),
   fields:[],checks:[ch('التصميم معدّل على Figma، أو لا يحتاج تعديلًا','Design updated in Figma, or no change needed')]},
- {id:'c3',phase:ch('التنفيذ','Deliver'),title:ch('إدخال الـ Sprint','Add to a sprint'),desc:ch('أقرب Sprint متاح.','The next available sprint.'),
+ {id:'c3',phase:ch('تسليم','Deliver'),title:ch('إدخال الـ Sprint','Add to a sprint'),desc:ch('أقرب Sprint متاح.','The next available sprint.'),
   owner:ch('مدير المنتج','Product manager'),output:ch('Sprint محدد','A planned sprint'),done:ch('الـ CR داخل Sprint','The CR is in a sprint'),
   fields:[{id:'crSprint',label:ch('اسم الـ Sprint أو تاريخه','Sprint name or date'),req:true}],checks:[]},
- {id:'c4',phase:ch('التنفيذ','Deliver'),title:ch('التطوير وQA','Build and QA'),desc:ch('اختبار الجزء المتغير.','Test the changed area.'),
+ {id:'c4',phase:ch('تسليم','Deliver'),title:ch('البناء وQA','Build and QA'),desc:ch('اختبار الجزء المتغير.','Test the changed area.'),
   owner:ch('المطورون + QA','Developers + QA'),output:ch('نسخة معتمدة','Approved build'),done:ch('QA يعتمد','QA approves'),
   fields:[],checks:[ch('QA اختبر الجزء المتغير','QA tested the changed area')]},
- {id:'c5',phase:ch('التنفيذ','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('النشر.','Release.'),
+ {id:'c5',phase:ch('تسليم','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('النشر.','Release.'),
   owner:ch('الفريق التقني','Engineering'),output:ch('التعديل منشور','Change released'),done:ch('التعديل على الإنتاج','The change is live'),
   fields:[],checks:[ch('تم النشر','Released')]}
 ];
 
 const BUG = [
- {id:'b1',phase:ch('الإصلاح','Fix'),title:ch('التسجيل في Bugs Board','Log in the Bugs Board'),desc:ch('أين ظهر، والمتوقع مقابل الفعلي.','Where it happened; expected vs actual.'),
+ {id:'b1',phase:ch('اكتشاف','Discover'),title:ch('التسجيل في Bugs Board','Log in the Bugs Board'),desc:ch('أين ظهر، والمتوقع مقابل الفعلي.','Where it happened; expected vs actual.'),
   owner:ch('من اكتشفه + QA','Reporter + QA'),output:ch('بطاقة Bug','Bug card'),done:ch('البطاقة مكتملة','The card is complete'),
   fields:[{id:'where',label:ch('أين ظهر','Where'),req:true,full:true,ph:ch('الصفحة أو قسم Figma + رقم الحدث','Page or Figma section + event number')},
           {id:'expected',label:ch('المتوقع','Expected'),req:true,area:true},
           {id:'actual',label:ch('الفعلي','Actual'),req:true,area:true,ph:ch('مثال: الحدث لا يُرسل','e.g. Event not fired')}],
   checks:[ch('خطوات إعادة المشكلة مكتوبة','Steps to reproduce are written')]},
- {id:'b2',phase:ch('الإصلاح','Fix'),title:ch('إعادة الإنتاج وتحديد الخطورة','Reproduce and rate severity'),desc:ch('QA يتأكد ويحدد الأولوية.','QA confirms and sets priority.'),
+ {id:'b2',phase:ch('تعريف','Define'),title:ch('إعادة الإنتاج وتحديد الخطورة','Reproduce and rate severity'),desc:ch('QA يتأكد ويحدد الأولوية.','QA confirms and sets priority.'),
   owner:ch('QA','QA'),output:ch('خطورة محددة','Severity set'),done:ch('الـ Bug مؤكد وخطورته محددة','Confirmed and rated'),
   fields:[{id:'severity',kind:'choice',dia:true,q:ch('ما الخطورة؟','Severity?'),label:ch('الخطورة','Severity'),req:true,full:true,options:[ch('حرج: يُصلح فورًا','Critical: fix now'),ch('عادي: أقرب Sprint','Normal: next sprint')]}],
   checks:[ch('QA أعاد إنتاج المشكلة','QA reproduced the bug')]},
- {id:'b3',phase:ch('الإصلاح','Fix'),title:ch('الإصلاح','Fix'),desc:ch('الحرج خارج الـ Sprint، والباقي في أقرب Sprint.','Critical outside the sprint; others in the next one.'),
+ {id:'b3',phase:ch('تطوير','Develop'),title:ch('الإصلاح','Fix'),desc:ch('الحرج خارج الـ Sprint، والباقي في أقرب Sprint.','Critical outside the sprint; others in the next one.'),
   owner:ch('المطورون','Developers'),output:ch('إصلاح على بيئة الاختبار','Fix on staging'),done:ch('الإصلاح على بيئة الاختبار','Fix is on staging'),
   fields:[],checks:[ch('الإصلاح على بيئة الاختبار','The fix is on staging')]},
- {id:'b4',phase:ch('الإصلاح','Fix'),title:ch('QA والانحدار','QA and regression'),desc:ch('الإصلاح لا يكسر شيئًا آخر.','The fix breaks nothing else.'),
+ {id:'b4',phase:ch('تسليم','Deliver'),title:ch('QA والانحدار','QA and regression'),desc:ch('الإصلاح لا يكسر شيئًا آخر.','The fix breaks nothing else.'),
   owner:ch('QA','QA'),output:ch('إصلاح معتمد','Approved fix'),done:ch('QA يعتمد','QA approves'),
   fields:[],checks:[ch('الإصلاح يعمل','The fix works'),ch('لا انحدار في الأجزاء القريبة','No regression nearby')]},
- {id:'b5',phase:ch('الإصلاح','Fix'),title:ch('الإطلاق والمتابعة','Release and monitor'),desc:ch('نتأكد أنه لا يتكرر.','Make sure it does not recur.'),
+ {id:'b5',phase:ch('تسليم','Deliver'),title:ch('الإطلاق والمتابعة','Release and monitor'),desc:ch('نتأكد أنه لا يتكرر.','Make sure it does not recur.'),
   owner:ch('الفريق التقني','Engineering'),output:ch('الإصلاح منشور','Fix released'),done:ch('منشور ولا يتكرر','Released, not recurring'),
   fields:[],checks:[ch('تم النشر','Released'),ch('لم يتكرر بعد الإطلاق','No recurrence after release')]}
 ];
 const PATHS = {full:FULL,cr:CR,bug:BUG};
+const DD_PH=['discover','define','develop','deliver'];
+const DD={s1:'discover',s2:'discover',s3:'define',s4:'develop',s5:'develop',s6:'deliver',s7:'deliver',s8:'deliver',s9:'deliver',s10:'deliver',s11:'deliver',
+  c1:'define',c2:'develop',c3:'deliver',c4:'deliver',c5:'deliver',b1:'discover',b2:'define',b3:'develop',b4:'deliver',b5:'deliver'};
 
 /* ---------- State ---------- */
 const KEY='dealapp-process-2027-v3';
@@ -449,13 +479,13 @@ function render(){
   $('copyBtn').textContent=t.copy;$('dlBtn').textContent=t.dl;$('printBtn').textContent=t.print;$('toastUndo').textContent=t.undo;
   $('stepper').setAttribute('aria-label',t.stepsNav);$('flow').setAttribute('aria-label',t.flowLbl);
   $('viewSwitch').setAttribute('aria-label',t.viewGroup);
-  $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent=b.dataset.view==='flow'?t.viewFlow:t.viewPlaybook;b.setAttribute('aria-pressed',S.view===b.dataset.view)});
-  $('app').classList.toggle('flow',S.view==='flow');
+  $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent=b.dataset.view==='flow'?t.viewFlow:(b.dataset.view==='dd'?t.viewDD:t.viewPlaybook);b.setAttribute('aria-pressed',S.view===b.dataset.view)});
+  $('app').classList.toggle('flow',S.view==='flow');$('app').classList.toggle('dd',S.view==='dd');$('dd').setAttribute('aria-label',t.ddLbl);
   document.documentElement.dataset.theme=isDark()?'dark':'light';
   $('themeBtn').textContent=isDark()?'☀':'☾';$('themeBtn').setAttribute('aria-label',isDark()?t.light:t.dark);$('themeBtn').title=isDark()?t.light:t.dark;
   $('undoBtn').setAttribute('aria-label',t.undoL);$('undoBtn').title=t.undoL;$('redoBtn').setAttribute('aria-label',t.redoL);$('redoBtn').title=t.redoL;updUndo();
   const list=steps();if(S.cur>=list.length)S.cur=list.length-1;
-  renderStepper(list);if(S.view==='flow')renderFlow(list);renderCard(list);renderSummary(list);
+  renderStepper(list);if(S.view==='flow')renderFlow(list);if(S.view==='dd')renderDD(list);renderCard(list);renderSummary(list);
   $('saved').textContent=S.savedAt?t.savedAt(new Date(S.savedAt).toLocaleTimeString(S.lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'})):'';
 }
 
@@ -523,6 +553,45 @@ function renderFlow(list){
   el.querySelectorAll('[data-cycle]').forEach(b=>b.onclick=newCycle);
 }
 
+function renderDD(list){
+  const t=u(),rtl=S.lang==='ar',X=x=>rtl?1000-x:x;
+  const groups={};DD_PH.forEach(p=>groups[p]=[]);
+  list.forEach((st,i)=>{if(DD[st.id])groups[DD[st.id]].push(i)});
+  const curPh=DD[(list[S.cur]||{}).id];
+  const tri={discover:[[60,170],[270,30],[270,310]],define:[[270,30],[480,170],[270,310]],develop:[[520,170],[730,30],[730,310]],deliver:[[730,30],[940,170],[730,310]]};
+  const cx={discover:200,define:340,develop:660,deliver:800};
+  let svg=`<svg class="dd-svg" viewBox="0 0 1000 380" role="img" aria-label="${esc(t.ddLbl)}">`;
+  svg+=`<line class="axis" x1="${X(10)}" y1="170" x2="${X(60)}" y2="170"/><line class="axis" x1="${X(480)}" y1="170" x2="${X(520)}" y2="170"/><line class="axis" x1="${X(940)}" y1="170" x2="${X(990)}" y2="170"/>`;
+  DD_PH.forEach(p=>{
+    const ids=groups[p],n=ids.length,d=ids.filter(i=>status(i)==='done').length;
+    const op=n?(0.12+0.6*d/n):0.05;
+    const pts=tri[p].map(([x,y])=>`${X(x)},${y}`).join(' ');
+    svg+=`<polygon class="ph ${p===curPh?'cur':''}" data-ph="${p}" points="${pts}" fill="var(--teal)" fill-opacity="${op}" tabindex="0" role="button" aria-label="${esc(t.ph[p][0])} ${d}/${n}"/>`;
+    const on=n&&d/n>0.5?'on':'';
+    svg+=`<text class="${on}" x="${X(cx[p])}" y="164" text-anchor="middle" font-size="22" font-weight="600">${esc(t.ph[p][0])}</text>`;
+    svg+=`<text class="${on||'muted'}" x="${X(cx[p])}" y="192" text-anchor="middle" font-size="16">${n?d+' / '+n:'—'}</text>`;
+  });
+  svg+=`<text class="muted" x="${X(270)}" y="345" text-anchor="middle" font-size="17" font-weight="600">${esc(t.probSpace)}</text><text class="muted" x="${X(730)}" y="345" text-anchor="middle" font-size="17" font-weight="600">${esc(t.solSpace)}</text>`;
+  svg+=`<text class="muted" x="${X(500)}" y="150" text-anchor="middle" font-size="13">${esc(t.briefGate)}</text>`;
+  svg+=`<text class="muted" x="${X(30)}" y="150" text-anchor="middle" font-size="13">${esc(t.challenge)}</text><text class="muted" x="${X(970)}" y="150" text-anchor="middle" font-size="13">${esc(t.outcome)}</text>`;
+  svg+='</svg>';
+  let cols='<div class="dd-cols">';
+  DD_PH.forEach(p=>{
+    cols+=`<section class="dd-col ${p===curPh?'current':''}"><h3>${esc(t.ph[p][0])}</h3><p>${esc(t.ph[p][1])}</p>`;
+    if(!groups[p].length)cols+=`<div class="empty">${t.noSteps}</div>`;
+    else cols+='<ol class="steps">'+groups[p].map(i=>{const s=status(i);return `<li class="is-${s}"><button type="button" class="step-btn" data-i="${i}" ${i===S.cur?'aria-current="step"':''}><span class="dot" aria-hidden="true">${s==='done'?'✓':i}</span><span class="lbl">${esc(L(list[i].title))}</span></button></li>`}).join('')+'</ol>';
+    cols+='</section>';
+  });
+  cols+='</div>';
+  let note='';
+  if(!pathKey())note=`<p class="dd-note">${t.chooseType}</p>`;
+  else if(pathKey()!=='full')note=`<p class="dd-note">${t.ddShort}</p>`;
+  else if(S.data.result==='notmet')note=`<p class="dd-note">${t.ddLoop}</p>`;
+  const el=$('dd');el.innerHTML=svg+cols+note;
+  el.querySelectorAll('.step-btn').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  el.querySelectorAll('.ph').forEach(g=>{const act=()=>{const ids=groups[g.dataset.ph];if(!ids.length)return;const nx=ids.find(i=>status(i)!=='done');go(nx===undefined?ids[0]:nx)};g.onclick=act;g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}}});
+}
+
 function applyZoom(){const st=$('fcStage'),sz=$('fcSizer');if(!st)return;const z=S.zoom||1;st.style.transform=`scale(${z})`;sz.style.width=st.offsetWidth*z+'px';sz.style.height=st.offsetHeight*z+'px';$('zLbl').textContent=Math.round(z*100)+'%'}
 function setZoom(z){S.zoom=Math.min(1.6,Math.max(.35,Math.round(z*100)/100));save();applyZoom()}
 function fitFlow(){const vp=$('fcVp'),st=$('fcStage');if(!vp)return;setZoom(Math.min(1,(vp.clientWidth-24)/st.offsetWidth,(vp.clientHeight-24)/st.offsetHeight));vp.scrollTop=0}
@@ -577,7 +646,7 @@ function renderCard(list){
 
 function bindCard(){
   const card=$('card');
-  card.querySelectorAll('input[data-f],textarea[data-f]').forEach(el=>el.oninput=()=>{if(!el._snapped){snap();el._snapped=true}S.data[el.dataset.f]=el.value;save();renderStepper(steps());if(S.view==='flow')renderFlow(steps());renderSummary(steps());updateFoot()});
+  card.querySelectorAll('input[data-f],textarea[data-f]').forEach(el=>el.oninput=()=>{if(!el._snapped){snap();el._snapped=true}S.data[el.dataset.f]=el.value;save();renderStepper(steps());if(S.view==='flow')renderFlow(steps());if(S.view==='dd')renderDD(steps());renderSummary(steps());updateFoot()});
   card.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{snap();const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;save();render()});
   card.querySelectorAll('.type').forEach(b=>b.onclick=()=>{snap();S.data.type=b.dataset.type;save();render()});
   card.querySelectorAll('input[data-c]').forEach(el=>el.onchange=()=>{snap();const id=steps()[S.cur].id;const arr=S.checks[id]||[];arr[+el.dataset.c]=el.checked;S.checks[id]=arr;save();render()});
