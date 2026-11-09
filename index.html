@@ -13,8 +13,9 @@
   --navy:#122a32;--teal:#147d78;--teal-soft:#e3f3ef;--lime:#c9f27a;
   --paper:#f5f7f4;--card:#fff;--ink:#182c31;--muted:#5f7175;--line:#e0e7e4;--soft:#f3f6f4;
   --warn-bg:#fff4e0;--warn-ink:#7a520f;--stop-bg:#fdeceb;--stop-ink:#9b2c22;
-  --r:14px;--gap:16px
+  --r:14px;--gap:16px;--field:#fff;--bd:#cfdad6;--rule:#b9c7c4;--dotc:#dde3e0;--teal-ink:#0f5f5b
 }
+:root[data-theme=dark]{--navy:#0b181c;--paper:#0f1719;--card:#162226;--ink:#e3ecea;--muted:#9fb0b2;--line:#28383c;--soft:#1c2a2e;--teal-soft:#123a37;--warn-bg:#3a2d12;--warn-ink:#f2cf8a;--stop-bg:#3d1c19;--stop-ink:#f3a59c;--field:#111b1e;--bd:#33464a;--rule:#4a5e62;--dotc:#24363a;--teal-ink:#8fe0d6;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
@@ -31,7 +32,7 @@ button{cursor:pointer}
 .brand b{display:block;font-size:15px}
 .brand small{display:block;font-size:12px;color:#b7c9ca}
 .top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;font-weight:600;font-size:14px;line-height:1.3;white-space:nowrap}
+.btn{border:1px solid var(--line);background:var(--field);border-radius:10px;padding:8px 14px;font-weight:600;font-size:14px;line-height:1.3;white-space:nowrap}
 .btn:hover{background:var(--soft)}
 .btn.ghost{background:transparent;border-color:#47636a;color:#fff}
 .btn.ghost:hover{background:#1d3a42}
@@ -39,6 +40,7 @@ button{cursor:pointer}
 .btn.primary:hover{background:#106a66}
 .btn.link{border:0;background:none;padding:4px 0;color:var(--teal);text-decoration:underline;text-underline-offset:3px}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.icon{padding:8px 11px;font-size:15px;line-height:1.1}
 
 /* Intro strip */
 .intro{max-width:1280px;margin:0 auto;padding:20px clamp(16px,3vw,32px) 0}
@@ -53,15 +55,15 @@ button{cursor:pointer}
 .stepper{padding:14px;position:sticky;top:12px}
 .progress{margin:0 0 12px}
 .progress-row{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
-.bar{height:6px;background:#e7eeeb;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
 .bar span{display:block;height:100%;background:var(--teal);transition:width .2s}
-.path-tag{display:inline-block;font-size:12px;font-weight:600;background:var(--teal-soft);color:#0f5f5b;border-radius:99px;padding:2px 10px;margin-bottom:10px}
+.path-tag{display:inline-block;font-size:12px;font-weight:600;background:var(--teal-soft);color:var(--teal-ink);border-radius:99px;padding:2px 10px;margin-bottom:10px}
 .phase{font-size:12px;font-weight:600;color:var(--muted);margin:12px 4px 4px}
 .steps{list-style:none;margin:0;padding:0}
 .step-btn{width:100%;display:flex;align-items:center;gap:10px;text-align:start;background:none;border:0;border-radius:10px;padding:8px;font-size:14px}
 .step-btn:hover{background:var(--soft)}
 .step-btn[aria-current="step"]{background:var(--teal-soft);font-weight:600}
-.dot{width:24px;height:24px;border-radius:50%;border:1.5px solid #b9c7c4;display:grid;place-items:center;font-size:12px;font-weight:600;flex:none;color:var(--muted);background:#fff}
+.dot{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--rule);display:grid;place-items:center;font-size:12px;font-weight:600;flex:none;color:var(--muted);background:var(--field)}
 .is-done .dot{background:var(--teal);border-color:var(--teal);color:#fff}
 .is-progress .dot{border-color:var(--teal);color:var(--teal)}
 .is-locked{opacity:.45}
@@ -82,11 +84,11 @@ button{cursor:pointer}
 .field.full{grid-column:1/-1}
 .field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
 .field .opt-tag{font-weight:400;color:var(--muted);font-size:13px}
-.field input,.field textarea{width:100%;border:1px solid #cfdad6;border-radius:10px;padding:10px 12px;background:#fff;font-size:15px}
+.field input,.field textarea{width:100%;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;background:var(--field);font-size:15px}
 .field textarea{min-height:84px;resize:vertical}
 .field .hint{font-size:13px;color:var(--muted);margin-top:4px}
 .choices{display:flex;flex-wrap:wrap;gap:8px}
-.choice{border:1px solid #cfdad6;background:#fff;border-radius:99px;padding:7px 14px;font-size:14px}
+.choice{border:1px solid var(--bd);background:var(--field);border-radius:99px;padding:7px 14px;font-size:14px}
 .choice[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600}
 .checks{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .checks li+li{border-top:1px solid var(--line)}
@@ -96,9 +98,9 @@ button{cursor:pointer}
 .notice b{display:block;margin-bottom:2px}
 .notice.warn{background:var(--warn-bg);color:var(--warn-ink)}
 .notice.stop{background:var(--stop-bg);color:var(--stop-ink)}
-.notice.ok{background:var(--teal-soft);color:#0f5f5b}
+.notice.ok{background:var(--teal-soft);color:var(--teal-ink)}
 .notice .btn{margin-top:8px}
-.card-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid var(--line);background:#fbfcfb;border-radius:0 0 var(--r) var(--r)}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid var(--line);background:var(--soft);border-radius:0 0 var(--r) var(--r)}
 .status-text{font-size:13px;color:var(--muted)}
 .foot-btns{display:flex;gap:8px}
 
@@ -107,7 +109,7 @@ button{cursor:pointer}
 .side .panel{padding:16px}
 .side h3{font-size:15px;margin:0 0 10px}
 .sum{margin:0}
-.sum div{padding:8px 0;border-bottom:1px solid #edf1ef}
+.sum div{padding:8px 0;border-bottom:1px solid var(--line)}
 .sum div:last-child{border:0}
 .sum dt{font-size:12px;color:var(--muted);font-weight:600}
 .sum dd{margin:0;font-size:14px;overflow-wrap:anywhere}
@@ -117,7 +119,7 @@ button{cursor:pointer}
 
 /* Intake type cards */
 .types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.type{display:block;text-align:start;border:1px solid #cfdad6;background:#fff;border-radius:12px;padding:12px 14px}
+.type{display:block;text-align:start;border:1px solid var(--bd);background:var(--field);border-radius:12px;padding:12px 14px}
 .type b{display:block;font-size:15px}
 .type span{display:block;font-size:13px;color:var(--muted)}
 .type[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft);box-shadow:inset 0 0 0 1px var(--teal)}
@@ -128,18 +130,27 @@ button{cursor:pointer}
 .view-switch button[aria-pressed="true"]{background:var(--lime);color:var(--navy)}
 
 /* Flowchart view */
-.flowpanel{display:none;padding:24px 16px;overflow-x:auto}
+.flowpanel{display:none;padding:0;overflow:hidden}
+.fc-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
+.fc-tools .btn{padding:5px 10px;font-size:13px}
+.fc-zoom{min-width:48px;text-align:center;font-size:13px;font-weight:600;color:var(--muted)}
+.fc-vp{height:calc(100vh - 230px);min-height:520px;overflow:auto;cursor:grab;background-color:var(--card);background-image:radial-gradient(var(--dotc) 1px,transparent 1px);background-size:18px 18px;border-radius:0 0 var(--r) var(--r)}
+.fc-vp.drag{cursor:grabbing;user-select:none}
+.fc-sizer{position:relative;overflow:hidden;margin:0 auto;direction:ltr}
+.fc-sizer .fc{width:560px;padding:24px 0;transform-origin:0 0}
+[dir=rtl] .fc-sizer .fc{direction:rtl}
+.fc-more{border:1.5px dashed var(--bd);background:var(--card);border-radius:12px;padding:8px 14px;font-size:14px;color:var(--muted)}
 .app.flow{grid-template-columns:minmax(0,1fr) minmax(340px,430px)}
 .app.flow .stepper{display:none}
 .app.flow .flowpanel{display:block}
 .app.flow .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
 .fc{display:flex;flex-direction:column;align-items:center;min-width:280px}
-.fc-arrow{width:2px;height:24px;background:#b9c7c4;position:relative;flex:none}
-.fc-arrow:after{content:"";position:absolute;bottom:-2px;left:-4px;border:5px solid transparent;border-top:6px solid #b9c7c4;border-bottom:0}
-.fc-node{width:min(100%,340px);border:1.5px solid #cfdad6;background:#fff;border-radius:12px;padding:10px 14px;text-align:center;display:block}
+.fc-arrow{width:2px;height:24px;background:var(--rule);position:relative;flex:none}
+.fc-arrow:after{content:"";position:absolute;bottom:-2px;left:-4px;border:5px solid transparent;border-top:6px solid var(--rule);border-bottom:0}
+.fc-node{width:min(100%,340px);border:1.5px solid var(--bd);background:var(--field);border-radius:12px;padding:10px 14px;text-align:center;display:block}
 .fc-node b{display:block;font-size:15px}
 .fc-node small{display:block;font-size:12px;color:var(--muted)}
-.fc-node .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid #b9c7c4;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.fc-node .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--rule);font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px}
 .fc-node.is-done{border-color:var(--teal);background:var(--teal-soft)}
 .fc-node.is-done .n{background:var(--teal);border-color:var(--teal);color:#fff}
 .fc-node.is-progress{border-color:var(--teal)}
@@ -152,7 +163,7 @@ button{cursor:pointer}
 .fc-dec{display:flex;flex-direction:column;align-items:center;gap:8px}
 .fc-diamond{position:relative;width:200px;height:96px;display:grid;place-items:center;text-align:center;font-weight:600;font-size:14px;padding:0 38px;line-height:1.3}
 .fc-diamond svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.fc-diamond polygon{fill:#fff;stroke:#7d93c7;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.fc-diamond polygon{fill:var(--card);stroke:#7d93c7;stroke-width:1.5;vector-effect:non-scaling-stroke}
 .fc-diamond.set polygon{fill:var(--teal-soft);stroke:var(--teal)}
 .fc-diamond span{position:relative}
 .fc-branches{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:460px}
@@ -200,6 +211,7 @@ button{cursor:pointer}
   <div class="brand"><div class="mark" aria-hidden="true">D</div><div><b id="tBrand"></b><small id="tBrandSub"></small></div></div>
   <div class="top-actions">
     <div class="view-switch" role="group" id="viewSwitch"><button type="button" data-view="playbook"></button><button type="button" data-view="flow"></button></div>
+    <button class="btn ghost icon" id="undoBtn" type="button">↶</button><button class="btn ghost icon" id="redoBtn" type="button">↷</button><button class="btn ghost icon" id="themeBtn" type="button"></button>
     <button class="btn ghost" id="langBtn" type="button"></button>
     <button class="btn ghost" id="newBtn" type="button"></button>
   </div>
@@ -251,7 +263,7 @@ const UI = {
       newCycle:'ابدأ دورة تحسين',met:'تحقق الهدف',metText:'سجّل ما تعلمه الفريق، والطلب جاهز للإغلاق.',
       escalate:'المشكلة في تصميم التجربة نفسها؟',escalateBtn:'حوّله إلى تحسين كبير',
       missing:'ناقص:',allDone:'كل الخطوات مكتملة.',
-      exportTitle:'ملخص طلب منتج — ديل',viewPlaybook:'الدليل',viewFlow:'المخطط',viewGroup:'طريقة العرض',flowLbl:'مخطط العملية',start:'طلب جديد',end:'إغلاق الطلب',typeQ:'ما نوع الطلب؟',backShort:n=>`↩ يرجع للخطوة ${n}`,cycleShort:'↩ دورة تحسين من الخطوة 4'},
+      exportTitle:'ملخص طلب منتج — ديل',viewPlaybook:'الدليل',viewFlow:'المخطط',viewGroup:'طريقة العرض',flowLbl:'مخطط العملية',start:'طلب جديد',zoomOut:'تصغير',zoomIn:'تكبير',fit:'ملاءمة',center:'توسيط على الخطوة الحالية',showAll:'عرض كل الخطوات',showNext:'إخفاء الخطوات القادمة',more:n=>`+${n} خطوات قادمة — عرض الكل`,undoL:'تراجع (Ctrl+Z)',redoL:'إعادة (Ctrl+Y)',dark:'الوضع الداكن',light:'الوضع الفاتح',end:'إغلاق الطلب',typeQ:'ما نوع الطلب؟',backShort:n=>`↩ يرجع للخطوة ${n}`,cycleShort:'↩ دورة تحسين من الخطوة 4'},
   en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
       intro:'Log the request and the right path for its type appears. Complete each step in order; every step shows its owner, output and when it is done.',
       lang:'العربية',newReq:'New request',stepsNav:'Process steps',summary:'Request summary',share:'Share',
@@ -272,7 +284,7 @@ const UI = {
       newCycle:'Start improvement cycle',met:'Target met',metText:'Record what the team learned; the request is ready to close.',
       escalate:'Is the problem in the experience design itself?',escalateBtn:'Convert to a major improvement',
       missing:'Missing:',allDone:'All steps are complete.',
-      exportTitle:'Dealapp product request summary',viewPlaybook:'Playbook',viewFlow:'Flowchart',viewGroup:'View',flowLbl:'Process flowchart',start:'New request',end:'Close request',typeQ:'What type of request?',backShort:n=>`↩ back to step ${n}`,cycleShort:'↩ improvement cycle from step 4'}
+      exportTitle:'Dealapp product request summary',viewPlaybook:'Playbook',viewFlow:'Flowchart',viewGroup:'View',flowLbl:'Process flowchart',start:'New request',zoomOut:'Zoom out',zoomIn:'Zoom in',fit:'Fit',center:'Center on current step',showAll:'Show all steps',showNext:'Hide upcoming steps',more:n=>`+${n} upcoming steps — show all`,undoL:'Undo (Ctrl+Z)',redoL:'Redo (Ctrl+Y)',dark:'Dark mode',light:'Light mode',end:'Close request',typeQ:'What type of request?',backShort:n=>`↩ back to step ${n}`,cycleShort:'↩ improvement cycle from step 4'}
 };
 
 const TYPES = [
@@ -401,7 +413,7 @@ const PATHS = {full:FULL,cr:CR,bug:BUG};
 const KEY='dealapp-process-2027-v3';
 const fresh=()=>({lang:'ar',view:'playbook',cur:0,data:{},checks:{},savedAt:null});
 let S=load();
-let undoSnap=null;
+let UNDO=[],REDO=[];
 
 function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.data)return Object.assign(fresh(),s)}catch(e){}return fresh()}
 function save(){S.savedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -439,6 +451,9 @@ function render(){
   $('viewSwitch').setAttribute('aria-label',t.viewGroup);
   $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent=b.dataset.view==='flow'?t.viewFlow:t.viewPlaybook;b.setAttribute('aria-pressed',S.view===b.dataset.view)});
   $('app').classList.toggle('flow',S.view==='flow');
+  document.documentElement.dataset.theme=isDark()?'dark':'light';
+  $('themeBtn').textContent=isDark()?'☀':'☾';$('themeBtn').setAttribute('aria-label',isDark()?t.light:t.dark);$('themeBtn').title=isDark()?t.light:t.dark;
+  $('undoBtn').setAttribute('aria-label',t.undoL);$('undoBtn').title=t.undoL;$('redoBtn').setAttribute('aria-label',t.redoL);$('redoBtn').title=t.redoL;updUndo();
   const list=steps();if(S.cur>=list.length)S.cur=list.length-1;
   renderStepper(list);if(S.view==='flow')renderFlow(list);renderCard(list);renderSummary(list);
   $('saved').textContent=S.savedAt?t.savedAt(new Date(S.savedAt).toLocaleTimeString(S.lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'})):'';
@@ -464,8 +479,11 @@ function renderFlow(list){
   const t=u();const arrow='<div class="fc-arrow" aria-hidden="true"></div>';
   const idx=id=>list.findIndex(s=>s.id===id);
   const diamond=(q,set,chips)=>`<div class="fc-dec"><div class="fc-diamond ${set?'set':''}"><svg viewBox="0 0 200 96" preserveAspectRatio="none" aria-hidden="true"><polygon points="100,1 199,48 100,95 1,48"/></svg><span>${esc(q)}</span></div><div class="fc-branches" role="group" aria-label="${esc(q)}">${chips}</div></div>`;
-  let h=`<div class="fc"><div class="fc-term">${t.start}</div>${arrow}`;
+  let limit=list.length-1;
+  if(!S.showAll){const f=list.findIndex((_,i)=>status(i)!=='done');limit=f===-1?list.length-1:Math.max(f,S.cur);if(status(limit)==='locked'){const i2=list.findIndex(x=>x.id==='s2');limit=Math.max(i2,S.cur)}}
+  let h=`<div class="fc-term">${t.start}</div>${arrow}`;
   list.forEach((st,i)=>{
+    if(i>limit)return;
     const s=status(i);
     h+=`<button type="button" class="fc-node is-${s}" data-i="${i}" ${i===S.cur?'aria-current="step"':''}><span class="n">${s==='done'?'✓':(i===0?'•':i)}</span><b>${esc(L(st.title))}</b><small>${esc(L(st.owner))}</small></button>`;
     if(i===0){
@@ -481,18 +499,35 @@ function renderFlow(list){
       h+=arrow+diamond(L(f.q),!!v,chips+loop);
       if(f.id==='decision'&&v==='stop')h+=arrow+`<div class="fc-term stop">${t.stopTitle}</div>`;
     });
-    if(i<list.length-1)h+=arrow;
+    if(i<list.length-1&&i<limit)h+=arrow;
   });
+  const hidden=list.length-1-limit;
   if(!pathKey())h+=arrow+`<div class="fc-node ghost">${t.chooseType}</div>`;
+  else if(hidden>0)h+=arrow+`<button type="button" class="fc-more" id="fcMore">${t.more(hidden)}</button>`;
   else h+=arrow+`<div class="fc-term ${list.every((_,i)=>status(i)==='done')?'end':''}">${t.end}</div>`;
-  h+='</div>';
-  const el=$('flow');el.innerHTML=h;
+  const panel=$('flow');
+  if(!$('fcStage')){
+    panel.innerHTML=`<div class="fc-tools"><button type="button" class="btn icon" id="zOut">−</button><span class="fc-zoom" id="zLbl"></span><button type="button" class="btn icon" id="zIn">+</button><button type="button" class="btn" id="zFit"></button><button type="button" class="btn" id="zCenter"></button><button type="button" class="btn" id="zAll"></button></div><div class="fc-vp" id="fcVp"><div class="fc-sizer" id="fcSizer"><div class="fc" id="fcStage"></div></div></div>`;
+    $('zOut').onclick=()=>setZoom((S.zoom||1)-.1);$('zIn').onclick=()=>setZoom((S.zoom||1)+.1);
+    $('zFit').onclick=fitFlow;$('zCenter').onclick=()=>centerFlow(true);
+    $('zAll').onclick=()=>{S.showAll=!S.showAll;save();render()};
+    enablePan($('fcVp'));
+  }
+  $('zOut').setAttribute('aria-label',t.zoomOut);$('zIn').setAttribute('aria-label',t.zoomIn);$('zFit').textContent=t.fit;$('zCenter').textContent='◎';$('zCenter').setAttribute('aria-label',t.center);$('zCenter').title=t.center;$('zAll').textContent=S.showAll?t.showNext:t.showAll;
+  const el=$('fcStage');el.innerHTML=h;applyZoom();
+  const more=$('fcMore');if(more)more.onclick=()=>{S.showAll=true;save();render()};
   el.querySelectorAll('.fc-node[data-i]').forEach(b=>b.onclick=()=>go(+b.dataset.i));
-  el.querySelectorAll('[data-fct]').forEach(b=>b.onclick=()=>{S.data.type=S.data.type===b.dataset.fct?'':b.dataset.fct;save();render()});
-  el.querySelectorAll('.choice[data-f]').forEach(b=>b.onclick=()=>{const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;S.cur=list.findIndex(st=>st.fields.some(x=>x.id===f));save();render()});
+  el.querySelectorAll('[data-fct]').forEach(b=>b.onclick=()=>{snap();S.data.type=S.data.type===b.dataset.fct?'':b.dataset.fct;save();render()});
+  el.querySelectorAll('.choice[data-f]').forEach(b=>b.onclick=()=>{snap();const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;S.cur=list.findIndex(st=>st.fields.some(x=>x.id===f));save();render()});
   el.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
   el.querySelectorAll('[data-cycle]').forEach(b=>b.onclick=newCycle);
 }
+
+function applyZoom(){const st=$('fcStage'),sz=$('fcSizer');if(!st)return;const z=S.zoom||1;st.style.transform=`scale(${z})`;sz.style.width=st.offsetWidth*z+'px';sz.style.height=st.offsetHeight*z+'px';$('zLbl').textContent=Math.round(z*100)+'%'}
+function setZoom(z){S.zoom=Math.min(1.6,Math.max(.35,Math.round(z*100)/100));save();applyZoom()}
+function fitFlow(){const vp=$('fcVp'),st=$('fcStage');if(!vp)return;setZoom(Math.min(1,(vp.clientWidth-24)/st.offsetWidth,(vp.clientHeight-24)/st.offsetHeight));vp.scrollTop=0}
+function centerFlow(smooth){const vp=$('fcVp'),n=$('fcStage')&&$('fcStage').querySelector('[aria-current]');if(!vp||!n)return;const z=S.zoom||1;const top=(n.offsetTop+n.offsetHeight/2)*z-vp.clientHeight/2;vp.scrollTo({top,behavior:smooth?'smooth':'auto'})}
+function enablePan(vp){let d=null;vp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.target.closest('button,input,textarea,a'))return;d={x:e.clientX,y:e.clientY,l:vp.scrollLeft,t:vp.scrollTop};vp.setPointerCapture(e.pointerId);vp.classList.add('drag')});vp.addEventListener('pointermove',e=>{if(!d)return;vp.scrollLeft=d.l-(e.clientX-d.x);vp.scrollTop=d.t-(e.clientY-d.y)});const end=()=>{d=null;vp.classList.remove('drag')};vp.addEventListener('pointerup',end);vp.addEventListener('pointercancel',end);vp.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();setZoom((S.zoom||1)-Math.sign(e.deltaY)*.1)}},{passive:false})}
 
 function fieldHTML(f){
   const lab=`<label ${f.kind==='choice'||f.kind==='type'?'':`for="f_${f.id}"`}>${esc(L(f.label))}${f.req?'':` <span class="opt-tag">${u().optional}</span>`}</label>`;
@@ -542,10 +577,10 @@ function renderCard(list){
 
 function bindCard(){
   const card=$('card');
-  card.querySelectorAll('input[data-f],textarea[data-f]').forEach(el=>el.oninput=()=>{S.data[el.dataset.f]=el.value;save();renderStepper(steps());if(S.view==='flow')renderFlow(steps());renderSummary(steps());updateFoot()});
-  card.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;save();render()});
-  card.querySelectorAll('.type').forEach(b=>b.onclick=()=>{S.data.type=b.dataset.type;save();render()});
-  card.querySelectorAll('input[data-c]').forEach(el=>el.onchange=()=>{const id=steps()[S.cur].id;const arr=S.checks[id]||[];arr[+el.dataset.c]=el.checked;S.checks[id]=arr;save();render()});
+  card.querySelectorAll('input[data-f],textarea[data-f]').forEach(el=>el.oninput=()=>{if(!el._snapped){snap();el._snapped=true}S.data[el.dataset.f]=el.value;save();renderStepper(steps());if(S.view==='flow')renderFlow(steps());renderSummary(steps());updateFoot()});
+  card.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{snap();const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;save();render()});
+  card.querySelectorAll('.type').forEach(b=>b.onclick=()=>{snap();S.data.type=b.dataset.type;save();render()});
+  card.querySelectorAll('input[data-c]').forEach(el=>el.onchange=()=>{snap();const id=steps()[S.cur].id;const arr=S.checks[id]||[];arr[+el.dataset.c]=el.checked;S.checks[id]=arr;save();render()});
   card.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
   const p=$('prevBtn'),n=$('nextBtn');if(p)p.onclick=()=>go(S.cur-1);if(n)n.onclick=()=>go(S.cur+1);
   const c=$('cycleBtn');if(c)c.onclick=newCycle;
@@ -574,16 +609,24 @@ function renderSummary(list){
 }
 
 /* ---------- Actions ---------- */
-function go(i){const list=steps();if(i<0||i>=list.length)return;S.cur=i;save();render();if(window.innerWidth<760)$('card').scrollIntoView({behavior:'smooth',block:'start'});const h=$('card').querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
-function snap(){undoSnap=JSON.stringify(S)}
+function go(i){const list=steps();if(i<0||i>=list.length)return;S.cur=i;save();render();if(S.view==='flow')centerFlow(true);if(window.innerWidth<760)$('card').scrollIntoView({behavior:'smooth',block:'start'});const h=$('card').querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+function snapState(){return JSON.stringify({data:S.data,checks:S.checks,cur:S.cur})}
+function snap(){UNDO.push(snapState());if(UNDO.length>60)UNDO.shift();REDO=[];updUndo()}
+function restore(j){const o=JSON.parse(j);S.data=o.data;S.checks=o.checks;S.cur=o.cur;save();render()}
+function undo(){if(!UNDO.length)return;REDO.push(snapState());restore(UNDO.pop());updUndo()}
+function redo(){if(!REDO.length)return;UNDO.push(snapState());restore(REDO.pop());updUndo()}
+function updUndo(){$('undoBtn').disabled=!UNDO.length;$('redoBtn').disabled=!REDO.length}
+$('undoBtn').onclick=undo;$('redoBtn').onclick=redo;
 function toast(msg,canUndo){$('toastMsg').textContent=msg;$('toastUndo').style.display=canUndo?'':'none';$('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>$('toast').classList.remove('show'),canUndo?7000:2500)}
-$('toastUndo').onclick=()=>{if(undoSnap){S=JSON.parse(undoSnap);undoSnap=null;save();render()}$('toast').classList.remove('show')};
+$('toastUndo').onclick=()=>{undo();$('toast').classList.remove('show')};
 function newCycle(){
   snap();const ids=['s4','s5','s6','s7','s8','s9','s10','s11'];ids.forEach(id=>delete S.checks[id]);
   ['solution','figma','ab','review','usability','sprint','sprintLen','uat','launchDate','measureDate','rollback','actual','result'].forEach(k=>delete S.data[k]);
   S.cur=steps().findIndex(s=>s.id==='s4');save();render();toast(u().cycleStarted,true);
 }
-$('newBtn').onclick=()=>{snap();const lang=S.lang;S=fresh();S.lang=lang;save();render();toast(u().cleared,true)};
+$('newBtn').onclick=()=>{snap();S.data={};S.checks={};S.cur=0;save();render();toast(u().cleared,true)};
+function isDark(){return S.theme?S.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+$('themeBtn').onclick=()=>{S.theme=isDark()?'light':'dark';save();render()};
 $('viewSwitch').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.view=b.dataset.view;save();render()});
 $('langBtn').onclick=()=>{S.lang=S.lang==='ar'?'en':'ar';save();render()};
 
@@ -603,7 +646,7 @@ function summaryText(){
 $('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(summaryText());toast(u().copied)}catch(e){toast(e.message)}};
 $('dlBtn').onclick=()=>{const b=new Blob([summaryText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(S.data.title||'dealapp-request').replace(/[\\/:*?"<>|]/g,'-')+'.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast(u().downloaded)};
 $('printBtn').onclick=()=>window.print();
-document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;const fwd=S.lang==='ar'?'ArrowLeft':'ArrowRight',back=S.lang==='ar'?'ArrowRight':'ArrowLeft';if(e.key===fwd&&!$('nextBtn')?.disabled)go(S.cur+1);if(e.key===back&&S.cur>0)go(S.cur-1)});
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;const k=e.key.toLowerCase();if((e.ctrlKey||e.metaKey)&&k==='z'&&!e.shiftKey){e.preventDefault();undo();return}if((e.ctrlKey||e.metaKey)&&(k==='y'||(k==='z'&&e.shiftKey))){e.preventDefault();redo();return}const fwd=S.lang==='ar'?'ArrowLeft':'ArrowRight',back=S.lang==='ar'?'ArrowRight':'ArrowLeft';if(e.key===fwd&&!$('nextBtn')?.disabled)go(S.cur+1);if(e.key===back&&S.cur>0)go(S.cur-1)});
 
 render();
 </script>
