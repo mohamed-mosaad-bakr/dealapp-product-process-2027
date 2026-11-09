@@ -1,44 +1,611 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#122a32"><title>Dealapp | Product Delivery Playbook 2027</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#122a32">
+<title>Dealapp | Product Process 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#122a32;--navy2:#1b3b43;--teal:#147d78;--teal2:#e0f4ef;--lime:#c9f27a;--paper:#f5f7f4;--card:#fff;--ink:#182c31;--muted:#687a7e;--line:#e0e7e4;--soft:#f0f5f2;--amber:#fff1d7;--amberink:#875b14;--shadow:0 10px 32px #122a320b;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #7bd7c4;outline-offset:2px}.topbar{background:var(--navy);color:#fff;padding:17px clamp(16px,4vw,52px);display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:39px;height:39px;display:grid;place-items:center;background:var(--lime);color:var(--navy);border-radius:12px;font-weight:950;font-size:18px}.brand small{display:block;color:#b5c9ca;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.brand strong{font-size:15px;letter-spacing:.01em}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:11px;padding:9px 13px;background:#fff;color:var(--ink);font-weight:700;transition:.15s}.btn:hover{transform:translateY(-1px);box-shadow:0 5px 12px #122a3210}.btn.dark{background:#29474d;border-color:#426167;color:white}.btn.lime{background:var(--lime);border-color:var(--lime);color:var(--navy)}.btn.ghost{background:transparent;border-color:#456068;color:#fff}.hero{background:var(--navy);color:white;padding:clamp(28px,5vw,60px) clamp(16px,5vw,64px) 38px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff12;border-radius:50%;right:-100px;top:-230px;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05;pointer-events:none}.hero-inner{max-width:1240px;margin:auto;position:relative;z-index:1}.eyebrow{color:var(--lime);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:11px;display:flex;align-items:center;gap:9px}.eyebrow:before{content:"";width:23px;height:2px;background:var(--lime)}h1{font-size:clamp(32px,5vw,56px);line-height:1.06;letter-spacing:-.045em;max-width:800px;margin:16px 0}.hero p{color:#c8d6d5;max-width:690px;font-size:16px;margin:0}.hero-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}.pill{border:1px solid #476168;background:#203d44;border-radius:99px;padding:6px 11px;color:#e0eae8;font-size:12px}.pill b{color:var(--lime);margin-right:5px}.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(14px,3vw,36px) 56px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:-1px}.principle{background:var(--card);padding:19px 20px;border:1px solid var(--line);border-radius:0 0 15px 15px;display:flex;gap:13px;align-items:flex-start}.principle-icon{width:34px;height:34px;border-radius:11px;background:var(--teal2);color:var(--teal);display:grid;place-items:center;font-weight:900;flex:none}.principle strong{display:block;font-size:13px}.principle span{font-size:12px;color:var(--muted);display:block;margin-top:3px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:34px 0 16px}.section-head h2{margin:0;font-size:22px;letter-spacing:-.03em}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(285px,.8fr);gap:18px;align-items:start}.maincol{min-width:0}.stage-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-bottom:12px}.stage-tab{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;text-align:left;min-height:76px;color:var(--muted);position:relative}.stage-tab .num{display:block;font-size:10px;font-weight:900;letter-spacing:.08em;margin-bottom:6px;color:#92a19f}.stage-tab strong{display:block;font-size:12px;line-height:1.2;color:var(--ink)}.stage-tab.active{border-color:var(--teal);background:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}.stage-tab.active .num{color:var(--teal)}.stage-tab.complete:after{content:"✓";position:absolute;right:8px;top:7px;color:var(--teal);font-weight:900}.stage-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.stage-top{padding:23px 24px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:18px}.stage-kicker{font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:.13em;font-weight:900}.stage-top h3{font-size:25px;letter-spacing:-.035em;margin:5px 0}.stage-top p{margin:0;color:var(--muted);font-size:13px;max-width:560px}.stage-badge{background:var(--soft);color:var(--teal);padding:7px 10px;border-radius:10px;height:max-content;font-size:11px;font-weight:800;white-space:nowrap}.stage-body{padding:22px 24px}.block{margin-bottom:24px}.block:last-child{margin-bottom:0}.block-label{display:flex;gap:9px;align-items:center;font-size:14px;font-weight:850;margin-bottom:5px}.req{color:#c05d39;font-size:11px;font-weight:800}.help{font-size:12px;color:var(--muted);margin:0 0 12px}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.opt{position:relative;display:flex;align-items:flex-start;gap:10px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 13px;color:var(--ink);min-height:58px;transition:.15s}.opt:hover{border-color:#9fcfc3;background:#fbfefd}.opt.selected{border-color:var(--teal);background:var(--teal2);box-shadow:inset 0 0 0 1px var(--teal)}.opt-dot{width:17px;height:17px;border:1.5px solid #b9c7c4;border-radius:50%;margin-top:2px;flex:none;display:grid;place-items:center}.opt.selected .opt-dot{border-color:var(--teal);background:var(--teal)}.opt.selected .opt-dot:after{content:"";width:5px;height:5px;border-radius:50%;background:#fff}.opt strong{display:block;font-size:12px;line-height:1.35}.opt small{display:block;color:var(--muted);font-size:11px;margin-top:3px;line-height:1.35}.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field.full{grid-column:1/-1}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid #d8e1dd;border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink)}.field textarea{min-height:82px;resize:vertical}.callout{display:flex;gap:11px;padding:13px 14px;background:#f0f6f3;border:1px solid #dcece5;border-radius:12px;color:#3c5b55;font-size:12px;margin-top:16px}.callout .bulb{font-size:17px}.stage-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;background:#fbfcfb;border-top:1px solid var(--line)}.footer-hint{font-size:11px;color:var(--muted)}.footer-buttons{display:flex;gap:8px}.aside{display:flex;flex-direction:column;gap:12px}.side-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow)}.side-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.side-title h3{font-size:14px;margin:0}.side-title span{font-size:11px;color:var(--muted)}.progress-row{display:flex;justify-content:space-between;gap:12px;font-size:12px;font-weight:800}.progress-bar{height:7px;border-radius:99px;background:#e8eeeb;overflow:hidden;margin:9px 0 6px}.progress-bar span{display:block;height:100%;background:var(--teal);width:0%;transition:width .2s}.muted{color:var(--muted);font-size:12px}.summary-list{display:flex;flex-direction:column;gap:0}.summary-item{padding:10px 0;border-bottom:1px solid #edf1ef}.summary-item:last-child{border-bottom:0}.summary-item small{display:block;font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.07em}.summary-item strong{display:block;font-size:12px;margin-top:3px;overflow-wrap:anywhere}.summary-item .empty{color:#a2afab;font-weight:500}.gate{border-radius:12px;padding:13px;background:var(--amber);color:var(--amberink);font-size:12px}.gate strong{display:block;margin-bottom:4px}.gate.good{background:var(--teal2);color:#14615c}.checklist{list-style:none;margin:0;padding:0}.checklist li{display:flex;gap:8px;align-items:flex-start;font-size:12px;padding:8px 0;border-bottom:1px solid #edf1ef}.checklist li:last-child{border:0}.check{color:var(--teal);font-weight:900}.bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:32px;padding-top:19px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;border-radius:12px;padding:11px 16px;box-shadow:0 8px 30px #0002;display:none;z-index:50;font-size:13px}.rtl{direction:rtl}.rtl .topbar,.rtl .hero,.rtl .stage-card,.rtl .side-card{text-align:right}.rtl .stage-tab{text-align:right}.rtl .opt{text-align:right}.rtl .stage-footer{flex-direction:row-reverse}.rtl .summary-item{text-align:right}.rtl .stage-badge{margin-left:0}.rtl .principle{text-align:right}.rtl .eyebrow:before{order:2}.rtl .stage-tab.complete:after{right:auto;left:8px}.rtl .hero:after{right:auto;left:-100px}.rtl .field label{text-align:right}
-@media(max-width:980px){.layout{grid-template-columns:1fr}.aside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.stage-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.principles{grid-template-columns:1fr}.principle{border-radius:12px}.hero{padding-bottom:32px}}
-@media(max-width:600px){.topbar{align-items:flex-start}.brand strong{font-size:12px}.top-actions{justify-content:flex-end}.hero p{font-size:14px}.stage-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-tab{min-height:61px}.stage-top{padding:18px;display:block}.stage-badge{display:inline-block;margin-top:10px}.stage-top h3{font-size:22px}.stage-body{padding:18px}.options,.field-grid{grid-template-columns:1fr}.stage-footer{padding:14px 18px;align-items:flex-start;flex-direction:column}.footer-buttons{width:100%}.footer-buttons button{flex:1}.aside{grid-template-columns:1fr}.hero-meta{gap:6px}.pill{font-size:11px}.section-head{align-items:flex-start;flex-direction:column}}
-@media print{.topbar,.top-actions,.stage-nav,.stage-footer,.btn{display:none!important}body{background:#fff}.hero{padding:20px;background:#122a32!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.wrap{max-width:none}.layout{display:block}.aside{display:grid;grid-template-columns:repeat(2,1fr);margin-top:20px}.stage-card,.side-card{box-shadow:none;break-inside:avoid}.stage-body{display:block}}
-</style></head>
+:root{
+  --navy:#122a32;--teal:#147d78;--teal-soft:#e3f3ef;--lime:#c9f27a;
+  --paper:#f5f7f4;--card:#fff;--ink:#182c31;--muted:#5f7175;--line:#e0e7e4;--soft:#f3f6f4;
+  --warn-bg:#fff4e0;--warn-ink:#7a520f;--stop-bg:#fdeceb;--stop-ink:#9b2c22;
+  --r:14px;--gap:16px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #7bd7c4;outline-offset:2px}
+.step-btn{position:relative}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Top bar */
+.top{background:var(--navy);color:#fff;padding:12px clamp(16px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:34px;height:34px;border-radius:10px;background:var(--lime);color:var(--navy);display:grid;place-items:center;font-weight:700;flex:none}
+.brand b{display:block;font-size:15px}
+.brand small{display:block;font-size:12px;color:#b7c9ca}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;font-weight:600;font-size:14px;line-height:1.3;white-space:nowrap}
+.btn:hover{background:var(--soft)}
+.btn.ghost{background:transparent;border-color:#47636a;color:#fff}
+.btn.ghost:hover{background:#1d3a42}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.primary:hover{background:#106a66}
+.btn.link{border:0;background:none;padding:4px 0;color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* Intro strip */
+.intro{max-width:1280px;margin:0 auto;padding:20px clamp(16px,3vw,32px) 0}
+.intro h1{font-size:clamp(22px,3vw,28px);margin:0 0 4px;line-height:1.3}
+.intro p{margin:0;color:var(--muted);font-size:15px;max-width:760px}
+
+/* Layout */
+.app{max-width:1280px;margin:0 auto;padding:16px clamp(16px,3vw,32px) 48px;display:grid;grid-template-columns:270px minmax(0,1fr) 300px;gap:var(--gap);align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+
+/* Stepper */
+.stepper{padding:14px;position:sticky;top:12px}
+.progress{margin:0 0 12px}
+.progress-row{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+.bar{height:6px;background:#e7eeeb;border-radius:99px;overflow:hidden;margin-top:6px}
+.bar span{display:block;height:100%;background:var(--teal);transition:width .2s}
+.path-tag{display:inline-block;font-size:12px;font-weight:600;background:var(--teal-soft);color:#0f5f5b;border-radius:99px;padding:2px 10px;margin-bottom:10px}
+.phase{font-size:12px;font-weight:600;color:var(--muted);margin:12px 4px 4px}
+.steps{list-style:none;margin:0;padding:0}
+.step-btn{width:100%;display:flex;align-items:center;gap:10px;text-align:start;background:none;border:0;border-radius:10px;padding:8px;font-size:14px}
+.step-btn:hover{background:var(--soft)}
+.step-btn[aria-current="step"]{background:var(--teal-soft);font-weight:600}
+.dot{width:24px;height:24px;border-radius:50%;border:1.5px solid #b9c7c4;display:grid;place-items:center;font-size:12px;font-weight:600;flex:none;color:var(--muted);background:#fff}
+.is-done .dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.is-progress .dot{border-color:var(--teal);color:var(--teal)}
+.is-locked{opacity:.45}
+.is-locked .dot{border-style:dashed}
+
+/* Main step card */
+.card-head{padding:20px 22px 16px;border-bottom:1px solid var(--line)}
+.kicker{font-size:13px;color:var(--teal);font-weight:600}
+.card-head h2{margin:2px 0 6px;font-size:22px;line-height:1.35}
+.card-head p{margin:0;color:var(--muted);font-size:15px}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.meta div{background:var(--soft);padding:12px 16px}
+.meta small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.meta span{font-size:14px}
+.card-body{padding:20px 22px}
+.section-label{font-size:15px;font-weight:600;margin:0 0 10px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.field .opt-tag{font-weight:400;color:var(--muted);font-size:13px}
+.field input,.field textarea{width:100%;border:1px solid #cfdad6;border-radius:10px;padding:10px 12px;background:#fff;font-size:15px}
+.field textarea{min-height:84px;resize:vertical}
+.field .hint{font-size:13px;color:var(--muted);margin-top:4px}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choice{border:1px solid #cfdad6;background:#fff;border-radius:99px;padding:7px 14px;font-size:14px}
+.choice[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600}
+.checks{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.checks li+li{border-top:1px solid var(--line)}
+.checks label{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;font-size:15px;cursor:pointer}
+.checks input{width:18px;height:18px;margin-top:4px;accent-color:var(--teal);flex:none}
+.notice{border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:18px}
+.notice b{display:block;margin-bottom:2px}
+.notice.warn{background:var(--warn-bg);color:var(--warn-ink)}
+.notice.stop{background:var(--stop-bg);color:var(--stop-ink)}
+.notice.ok{background:var(--teal-soft);color:#0f5f5b}
+.notice .btn{margin-top:8px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid var(--line);background:#fbfcfb;border-radius:0 0 var(--r) var(--r)}
+.status-text{font-size:13px;color:var(--muted)}
+.foot-btns{display:flex;gap:8px}
+
+/* Side */
+.side{display:flex;flex-direction:column;gap:var(--gap)}
+.side .panel{padding:16px}
+.side h3{font-size:15px;margin:0 0 10px}
+.sum{margin:0}
+.sum div{padding:8px 0;border-bottom:1px solid #edf1ef}
+.sum div:last-child{border:0}
+.sum dt{font-size:12px;color:var(--muted);font-weight:600}
+.sum dd{margin:0;font-size:14px;overflow-wrap:anywhere}
+.sum .empty{color:#9aa8a5}
+.side .actions{display:flex;flex-direction:column;gap:8px}
+.saved{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* Intake type cards */
+.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.type{display:block;text-align:start;border:1px solid #cfdad6;background:#fff;border-radius:12px;padding:12px 14px}
+.type b{display:block;font-size:15px}
+.type span{display:block;font-size:13px;color:var(--muted)}
+.type[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft);box-shadow:inset 0 0 0 1px var(--teal)}
+
+/* View switch */
+.view-switch{display:inline-flex;background:#1d3a42;border-radius:10px;padding:3px;gap:2px}
+.view-switch button{border:0;background:none;color:#cfe0df;border-radius:8px;padding:6px 12px;font-weight:600;font-size:14px;white-space:nowrap}
+.view-switch button[aria-pressed="true"]{background:var(--lime);color:var(--navy)}
+
+/* Flowchart view */
+.flowpanel{display:none;padding:24px 16px;overflow-x:auto}
+.app.flow{grid-template-columns:minmax(0,1fr) minmax(340px,430px)}
+.app.flow .stepper{display:none}
+.app.flow .flowpanel{display:block}
+.app.flow .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+.fc{display:flex;flex-direction:column;align-items:center;min-width:280px}
+.fc-arrow{width:2px;height:24px;background:#b9c7c4;position:relative;flex:none}
+.fc-arrow:after{content:"";position:absolute;bottom:-2px;left:-4px;border:5px solid transparent;border-top:6px solid #b9c7c4;border-bottom:0}
+.fc-node{width:min(100%,340px);border:1.5px solid #cfdad6;background:#fff;border-radius:12px;padding:10px 14px;text-align:center;display:block}
+.fc-node b{display:block;font-size:15px}
+.fc-node small{display:block;font-size:12px;color:var(--muted)}
+.fc-node .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid #b9c7c4;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.fc-node.is-done{border-color:var(--teal);background:var(--teal-soft)}
+.fc-node.is-done .n{background:var(--teal);border-color:var(--teal);color:#fff}
+.fc-node.is-progress{border-color:var(--teal)}
+.fc-node.is-locked{opacity:.45;border-style:dashed}
+.fc-node[aria-current="step"]{box-shadow:0 0 0 3px #7bd7c4}
+.fc-node.ghost{border-style:dashed;color:var(--muted);font-size:14px}
+.fc-term{border-radius:99px;padding:7px 18px;background:var(--navy);color:#fff;font-weight:600;font-size:14px}
+.fc-term.stop{background:var(--stop-bg);color:var(--stop-ink)}
+.fc-term.end{background:var(--teal)}
+.fc-dec{display:flex;flex-direction:column;align-items:center;gap:8px}
+.fc-diamond{position:relative;width:200px;height:96px;display:grid;place-items:center;text-align:center;font-weight:600;font-size:14px;padding:0 38px;line-height:1.3}
+.fc-diamond svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fc-diamond polygon{fill:#fff;stroke:#7d93c7;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.fc-diamond.set polygon{fill:var(--teal-soft);stroke:var(--teal)}
+.fc-diamond span{position:relative}
+.fc-branches{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:460px}
+.fc-branches .choice{font-size:13px;padding:5px 12px}
+.fc-loop{font-size:13px;color:var(--warn-ink);background:var(--warn-bg);border:0;border-radius:8px;padding:4px 10px}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;inset-inline-start:50%;transform:translateX(50%);background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;display:none;align-items:center;gap:12px;z-index:50;font-size:14px;box-shadow:0 8px 30px #0003}
+[dir=ltr] .toast{transform:translateX(-50%)}
+.toast.show{display:flex}
+.toast button{background:none;border:0;color:var(--lime);font-weight:600;text-decoration:underline}
+
+@media (max-width:1150px){
+  .app{grid-template-columns:240px minmax(0,1fr)}
+  .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+}
+@media (max-width:1150px){
+  .app.flow{grid-template-columns:minmax(0,1fr) minmax(300px,380px)}
+}
+@media (max-width:760px){
+  .app.flow{grid-template-columns:minmax(0,1fr)}
+  .app.flow .side{grid-template-columns:1fr}
+  .app{grid-template-columns:minmax(0,1fr)}
+  .stepper{position:static;min-width:0}
+  #card,.side{min-width:0}
+  .steps{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;position:relative}
+  .phase{display:none}
+  .step-btn{white-space:nowrap;border:1px solid var(--line)}
+  .step-btn .lbl{display:none}
+  .step-btn[aria-current="step"] .lbl{display:inline}
+  .meta,.fields,.types{grid-template-columns:1fr}
+  .side{grid-template-columns:1fr}
+  .card-foot{flex-direction:column;align-items:stretch}
+  .foot-btns .btn{flex:1}
+}
+@media print{
+  .top-actions,.stepper,.card-foot,.side .actions,.toast{display:none!important}
+  .app{display:block}
+  .panel{break-inside:avoid;margin-bottom:12px}
+}
+</style>
+</head>
 <body>
-<header class="topbar"><div class="brand"><div class="brand-mark">D</div><div><small>Dealapp · Product Operations</small><strong>Product Delivery Playbook <span style="color:#c9f27a">/ 2027</span></strong></div></div><div class="top-actions"><button class="btn ghost" id="langBtn">العربية</button><button class="btn ghost" id="resetBtn">Reset answers</button><button class="btn lime" id="exportBtn">Export summary ↗</button></div></header>
-<section class="hero"><div class="hero-inner"><div class="eyebrow" data-i="eyebrow">A shared way of working</div><h1 data-i="title">From product request<br>to measurable outcome.</h1><p data-i="intro">A flexible team guide—not a rigid flowchart. Move through the stages that fit the request, record the evidence behind decisions, and make ownership clear from intake to learning.</p><div class="hero-meta"><span class="pill"><b>01</b><span data-i="pill1">Capture the real need</span></span><span class="pill"><b>02</b><span data-i="pill2">Validate before committing</span></span><span class="pill"><b>03</b><span data-i="pill3">Measure after release</span></span></div></div></section>
-<main class="wrap"><section class="principles"><div class="principle"><div class="principle-icon">◎</div><div><strong data-i="p1t">One request, one source of truth</strong><span data-i="p1d">Keep the registrar, affected user, signal and evidence distinct—but capture them together.</span></div></div><div class="principle"><div class="principle-icon">↗</div><div><strong data-i="p2t">Scale the process to the risk</strong><span data-i="p2d">A bug can move quickly. A new product needs stronger discovery and validation.</span></div></div><div class="principle"><div class="principle-icon">✓</div><div><strong data-i="p3t">Every decision has an owner</strong><span data-i="p3d">Agree on the next step, success measure and completion criteria before moving on.</span></div></div></section>
-<div class="section-head"><div><h2 data-i="workspaceTitle">Build the request plan</h2><p data-i="workspaceSub">Choose a stage to edit it. Your selections shape the checklist and live summary.</p></div><div class="muted" id="autosave">Use this as a working plan; export a copy when you are ready to share.</div></div>
-<div class="layout"><section class="maincol"><nav class="stage-nav" id="stageNav" aria-label="Process stages"></nav><section class="stage-card" id="stageCard" aria-live="polite"></section></section><aside class="aside"><section class="side-card"><div class="side-title"><h3 data-i="progressTitle">Plan readiness</h3><span id="progressNum">0%</span></div><div class="progress-bar"><span id="progressFill"></span></div><div class="progress-row"><span data-i="progressLabel">Required decisions captured</span><span id="answeredCount">0 / 6</span></div><p class="muted" data-i="progressHint">Readiness is a prompt for discussion, not an approval score.</p></section><section class="side-card"><div class="side-title"><h3 data-i="summaryTitle">Live request summary</h3><span data-i="updates">Updates as you go</span></div><div class="summary-list" id="summaryList"></div></section><section class="side-card"><div class="side-title"><h3 data-i="checkTitle">Before you move forward</h3></div><ul class="checklist" id="checklist"></ul><div class="gate" id="gate"><strong data-i="gateTitle">Decision checkpoint</strong><span data-i="gateText">Make sure the problem and evidence are clear before committing to build.</span></div></section><section class="side-card"><div class="side-title"><h3 data-i="ownersTitle">Who typically leads?</h3></div><ul class="checklist" id="ownersList"></ul></section></aside></div>
-<footer class="bottom"><span data-i="footer">Dealapp Product Delivery Playbook · Working guideline · Adapt the depth to the request, not the other way around.</span><span>v2.0 · 2027</span></footer></main><div class="toast" id="toast"></div>
+<header class="top">
+  <div class="brand"><div class="mark" aria-hidden="true">D</div><div><b id="tBrand"></b><small id="tBrandSub"></small></div></div>
+  <div class="top-actions">
+    <div class="view-switch" role="group" id="viewSwitch"><button type="button" data-view="playbook"></button><button type="button" data-view="flow"></button></div>
+    <button class="btn ghost" id="langBtn" type="button"></button>
+    <button class="btn ghost" id="newBtn" type="button"></button>
+  </div>
+</header>
+
+<section class="intro">
+  <h1 id="tTitle"></h1>
+  <p id="tIntro"></p>
+</section>
+
+<main class="app" id="app">
+  <nav class="panel stepper" id="stepper" aria-label=""></nav>
+  <section class="panel flowpanel" id="flow" aria-label=""></section>
+  <section class="panel" id="card" aria-live="polite"></section>
+  <aside class="side">
+    <section class="panel"><h3 id="tSummary"></h3><dl class="sum" id="summary"></dl></section>
+    <section class="panel"><h3 id="tShare"></h3>
+      <div class="actions">
+        <button class="btn primary" id="copyBtn" type="button"></button>
+        <button class="btn" id="dlBtn" type="button"></button>
+        <button class="btn" id="printBtn" type="button"></button>
+      </div>
+      <div class="saved" id="saved"></div>
+    </section>
+  </aside>
+</main>
+<div class="toast" id="toast" role="status"><span id="toastMsg"></span><button id="toastUndo" type="button"></button></div>
+
 <script>
-const I18N={en:{eyebrow:'A shared way of working',title:'From product request<br>to measurable outcome.',intro:'A flexible team guide—not a rigid flowchart. Move through the stages that fit the request, record the evidence behind decisions, and make ownership clear from intake to learning.',pill1:'Capture the real need',pill2:'Validate before committing',pill3:'Measure after release',p1t:'One request, one source of truth',p1d:'Keep the registrar, affected user, signal and evidence distinct—but capture them together.',p2t:'Scale the process to the risk',p2d:'A bug can move quickly. A new product needs stronger discovery and validation.',p3t:'Every decision has an owner',p3d:'Agree on the next step, success measure and completion criteria before moving on.',workspaceTitle:'Build the request plan',workspaceSub:'Choose a stage to edit it. Your selections shape the checklist and live summary.',progressTitle:'Plan readiness',progressLabel:'Required decisions captured',progressHint:'Readiness is a prompt for discussion, not an approval score.',summaryTitle:'Live request summary',updates:'Updates as you go',checkTitle:'Before you move forward',gateTitle:'Decision checkpoint',gateText:'Make sure the problem and evidence are clear before committing to build.',ownersTitle:'Who typically leads?',footer:'Dealapp Product Delivery Playbook · Working guideline · Adapt the depth to the request, not the other way around.',stages:['Intake','Triage','Validate','Define','Build & QA','Release & Learn'],stageKicker:['01 / Capture','02 / Decide','03 / Learn','04 / Design','05 / Deliver','06 / Measure'],stageTitle:['Capture the request','Choose the right path','Validate the need','Define the solution','Build with confidence','Release, measure, learn'],stageDesc:['Record who raised the request, who experiences the need, and where the signal came from.','Classify the request and match the level of process to its risk and scope.','Use evidence to decide whether to proceed, research, reframe or stop.','Agree on scope, ownership, acceptance criteria and whether usability testing is needed.','Build, verify the experience and confirm that analytics and QA requirements are met.','Monitor the release, compare outcomes with the target, and record what the team learned.'],stageTag:['Always','Decision point','Evidence first','Shared definition','Quality gate','Close the loop'],type:'Request type',typeHelp:'This choice changes the recommended path—not the need to capture the request clearly.',types:[['bug','Bug','Something is broken or behaves incorrectly.'],['change','Small change request','A bounded adjustment to an existing experience.'],['enhancement','Product improvement','Improve an existing workflow or capability.'],['feature','New feature','Add a meaningful capability to the product.'],['product','New product / major initiative','A new product area or a high-uncertainty initiative.']],registrar:'Request registrar',registrarHelp:'Who entered the request into the process? This may differ from the person or group with the need.',registrars:[['product','Product team'],['business','Business / Management team'],['support','Customer Support'],['engineering','Engineering'],['qa','QA'],['ux','UX Research / Design'],['marketing','Marketing'],['customer','Customer (submitted directly)'],['broker','Broker (submitted directly)'],['other','Other / named person']],need:'Who has the original need?',needHelp:'Identify the affected group—not just the person who reported it.',needs:[['customer','Customer / property seeker'],['broker','Real-estate broker'],['agency','Real-estate agency / company'],['business','Business / Management team'],['internal','Another internal team'],['partner','External partner'],['multiple','Multiple groups'],['other','Other']],signal:'What revealed the need?',signals:[['feedback','Customer feedback or complaint'],['broker','Broker / agency feedback'],['analytics','Product analytics signal'],['research','UX research finding'],['support','Repeated support tickets'],['business','Business opportunity / rationale'],['market','Market / competitor insight'],['internal','Internal observation'],['meeting','Meeting / workshop insight'],['partner','Partner feedback'],['assumption','Unvalidated assumption'],['other','Other']],channel:'How did the request arrive?',channels:[['feedback','Feedback Board / in-app feedback'],['whatsapp','WhatsApp'],['email','Email'],['ticket','Support ticket'],['meeting','Meeting / call'],['notion','Notion / task system'],['dashboard','Dashboard / analytics report'],['internal','Internal conversation'],['event','Event / conference'],['other','Other']],reference:'Original reference',referenceHelp:'Add a link, ID, title or date when available. Keep the original trail so the team can trace the request.',referencePH:'e.g. Feedback Board URL, ticket ID, meeting name/date',evidence:'What supports the request?',evidenceOptions:[['feedback','Direct user / broker feedback'],['analytics','Analytics or dashboard data'],['business','Business case / market evidence'],['research','Research findings'],['internal','Internal observation'],['assumption','Assumption only'],['other','Other evidence']],evidenceHelp:'Evidence can be early or incomplete—just be transparent about what is known versus assumed.',kpi:'Can success be measured?',yesno:[['yes','Yes, define a KPI'],['no','Not yet / qualitative outcome'],['unknown','Not sure yet']],kpiName:'Success metric / KPI',baseline:'Baseline',target:'Target outcome',window:'Measurement window',kpiPH:'e.g. request completion rate, conversion, task success',baselinePH:'Current value or “not measured”',targetPH:'e.g. improve from 10% to 13%',windowPH:'e.g. 30 days after release',risk:'Risk / impact',risks:[['low','Low','Limited impact, easy to reverse'],['medium','Medium','Some user or operational impact'],['high','High','Broad impact or significant uncertainty'],['critical','Critical','Severe customer, revenue, legal or reliability risk']],cross:'Do other teams need to be involved?',teams:'Teams to involve',teamOptions:[['business','Business / Management'],['operations','Operations'],['cs','Customer Support'],['marketing','Marketing'],['finance','Finance'],['ux','UX Research'],['design','UI/UX Design'],['engineering','Engineering'],['qa','QA'],['data','Data / Analytics'],['legal','Legal / Security']],research:'What validation is needed?',researchOptions:[['interviews','Customer / broker interviews'],['analytics','Analytics analysis'],['usability','Usability testing'],['survey','Survey'],['ab','A/B test'],['prototype','Prototype / fake-door test'],['none','No extra research needed']],decision:'Validation decision',decisions:[['proceed','Proceed to solution definition'],['research','Research / validate first'],['reframe','Reframe the problem'],['stop','Stop for now — evidence is insufficient']],solution:'Solution summary',scope:'Scope / acceptance criteria',owner:'Decision / delivery owner',test:'Does this need usability testing?',testOptions:[['yes','Yes—test before build/release'],['no','No—document why not'],['unknown','Decide with UX / Product']],analytics:'Analytics and event tracking',analyticsOptions:[['yes','Define / verify tracking'],['no','No tracking change needed'],['unknown','Confirm with Data / Product']],qa:'QA approach',qaOptions:[['regression','Functional + regression checks'],['targeted','Targeted checks for changed area'],['critical','Critical-path smoke test'],['unknown','QA to assess']],releaseOwner:'Release owner',monitor:'Monitoring window / rollback notes',result:'Did the outcome meet the target?',results:[['yes','Yes—target achieved'],['no','No—iterate / investigate'],['unknown','Not measured yet']],learnings:'Learning / follow-up',followup:'Follow-up owner',save:'Save answer',back:'Previous stage',next:'Next stage',nextDone:'Review summary',resetConfirm:'Reset all answers? This cannot be undone.',reset:'Reset',export:'Download summary (.txt)',toastSaved:'Answer saved',toastReset:'Answers reset',toastExport:'Summary downloaded',summaryEmpty:'Not set yet',required:'Recommended',optional:'Optional',always:'Core information',triageGate:'Triage recommendation',bugFast:'Fast-track suggestion',bugFastText:'For a clear, reproducible bug: reproduce → assess impact → fix → QA / regression check → monitor recurrence. Escalate if impact is high or risk is critical.',gateReady:'Ready for the next decision',gateMissing:'A few useful details are still missing',gateReadyText:'The key context is captured. Confirm the decision with the relevant owners.',gateMissingText:'Use the open items as prompts for the team—not as automatic blockers.',checkItems:['Request type and registrar are clear','Affected user / need is identified','Origin, channel and source reference are traceable','Evidence and assumptions are explicit','Owner, success measure and next step are agreed'],owners:[['Product / Business','Own intake, prioritization and decision clarity'],['UX Research / Design','Clarify user problem, explore solutions and validate usability'],['Engineering + QA','Estimate, implement, test and assess technical risk'],['Data / Analytics','Define measurement and verify tracking'],['Customer Support / Operations','Share recurring issues and support the rollout']],summaryLabels:['Request type','Registrar','Need owner','Origin signal','Submission channel','Reference','Evidence','KPI','Baseline → target','Measurement window','Risk','Teams','Validation','Decision','Solution / scope','Owner','Usability test','Analytics','QA approach','Release owner','Monitoring','Outcome','Learning','Follow-up owner'],noAnswer:'Not set yet',footerTip:'A lightweight guide, not a bureaucratic gate. Skip what is irrelevant; document why.',exportTitle:'DEALAPP PRODUCT REQUEST PLAN',requestTitle:'Request context',decisionTitle:'Decisions & delivery',outcomeTitle:'Release & learning',complete:'Complete',incomplete:'In progress',stageNumber:'Stage',of:'of',rtlSwitch:'العربية'},
-ar:{eyebrow:'طريقة عمل مشتركة',title:'من طلب منتج<br>إلى نتيجة قابلة للقياس.',intro:'دليل مرن للفريق، وليس مخططًا جامدًا. انتقل بين المراحل المناسبة للطلب، وسجّل الأدلة وراء القرارات، وحدد المسؤوليات من تسجيل الطلب حتى استخلاص الدروس.',pill1:'فهم الاحتياج الحقيقي',pill2:'التحقق قبل الالتزام',pill3:'القياس بعد الإطلاق',p1t:'طلب واحد ومصدر واضح',p1d:'افصل بين مسجّل الطلب وصاحب الاحتياج والإشارة والدليل، مع تسجيلها معًا.',p2t:'حجم العملية حسب المخاطر',p2d:'يمكن معالجة الخطأ بسرعة، بينما يحتاج المنتج الجديد إلى استكشاف وتحقق أقوى.',p3t:'كل قرار له مسؤول',p3d:'اتفقوا على الخطوة التالية ومقياس النجاح ومعيار الإكمال قبل الانتقال.',workspaceTitle:'تجهيز خطة الطلب',workspaceSub:'اختر مرحلة لتعديلها. إجاباتك تحدّث قائمة التحقق والملخص مباشرة.',progressTitle:'جاهزية الخطة',progressLabel:'القرارات الأساسية المسجلة',progressHint:'مؤشر الجاهزية يساعد على النقاش، وليس درجة موافقة.',summaryTitle:'ملخص الطلب المباشر',updates:'يتحدث تلقائيًا',checkTitle:'قبل الانتقال للخطوة التالية',gateTitle:'نقطة قرار',gateText:'تأكد من وضوح المشكلة والدليل قبل الالتزام بالتطوير.',ownersTitle:'من يقود عادةً؟',footer:'دليل تطوير المنتج في ديل · إرشادات عمل مرنة · كيّف عمق العملية حسب الطلب، وليس العكس.',stages:['تسجيل الطلب','الفرز','التحقق','تحديد الحل','التطوير وQA','الإطلاق والتعلم'],stageKicker:['01 / التسجيل','02 / القرار','03 / التعلم','04 / التصميم','05 / التنفيذ','06 / القياس'],stageTitle:['تسجيل الطلب','اختيار المسار المناسب','التحقق من الاحتياج','تحديد الحل','التطوير بثقة','الإطلاق والقياس والتعلم'],stageDesc:['سجّل من قدّم الطلب، ومن لديه الاحتياج، وما الإشارة التي كشفت عنه.','صنّف الطلب وحدد عمق العملية حسب المخاطر والنطاق.','استخدم الأدلة لتقرر: نكمل، نبحث، نعيد صياغة المشكلة أو نتوقف.','اتفق على النطاق والمسؤول ومعايير القبول والحاجة لاختبار الاستخدام.','نفّذ الحل وتحقق من التجربة ومتطلبات التحليلات وQA.','تابع الإطلاق وقارن النتيجة بالهدف وسجّل ما تعلمه الفريق.'],stageTag:['أساسي دائمًا','نقطة قرار','الدليل أولًا','تعريف مشترك','بوابة الجودة','إغلاق الحلقة'],type:'نوع الطلب',typeHelp:'الاختيار يحدد المسار المقترح، وليس الحاجة لتسجيل الطلب بوضوح.',types:[['bug','خطأ برمجي (Bug)','سلوك لا يعمل كما ينبغي.'],['change','تعديل صغير','تغيير محدود في تجربة قائمة.'],['enhancement','تحسين منتج قائم','تحسين مسار أو قدرة موجودة.'],['feature','ميزة جديدة','إضافة قدرة مهمة للمنتج.'],['product','منتج جديد / مبادرة كبيرة','مجال منتج جديد أو مبادرة عالية الغموض.']],registrar:'مسجّل الطلب',registrarHelp:'من أدخل الطلب إلى العملية؟ قد يختلف عن الشخص أو الفئة صاحبة الاحتياج.',registrars:[['product','فريق المنتج'],['business','فريق البيزنس / الإدارة'],['support','خدمة العملاء'],['engineering','التطوير'],['qa','QA'],['ux','UX Research / التصميم'],['marketing','التسويق'],['customer','عميل (قدّم الطلب مباشرة)'],['broker','وسيط (قدّم الطلب مباشرة)'],['other','أخرى / اسم شخص']],need:'من صاحب الاحتياج الأصلي؟',needHelp:'حدد الفئة المتأثرة، وليس فقط الشخص الذي أبلغ عن المشكلة.',needs:[['customer','عميل / باحث عن عقار'],['broker','وسيط عقاري'],['agency','وكالة / شركة عقارية'],['business','فريق البيزنس / الإدارة'],['internal','فريق داخلي آخر'],['partner','شريك خارجي'],['multiple','أكثر من فئة'],['other','أخرى']],signal:'ما الذي كشف عن الاحتياج؟',signals:[['feedback','ملاحظة أو شكوى عميل'],['broker','ملاحظة وسيط / وكالة'],['analytics','إشارة من تحليلات المنتج'],['research','نتيجة بحث مستخدمين'],['support','تذاكر دعم متكررة'],['business','فرصة أو مبرر تجاري'],['market','تحليل سوق / منافسين'],['internal','ملاحظة داخلية'],['meeting','اجتماع / ورشة'],['partner','ملاحظة شريك'],['assumption','افتراض غير متحقق'],['other','أخرى']],channel:'كيف وصل الطلب؟',channels:[['feedback','Feedback Board / ملاحظات داخل التطبيق'],['whatsapp','واتساب'],['email','البريد الإلكتروني'],['ticket','تذكرة دعم'],['meeting','اجتماع / مكالمة'],['notion','Notion / نظام المهام'],['dashboard','Dashboard / تقرير تحليلات'],['internal','محادثة داخلية'],['event','فعالية / مؤتمر'],['other','أخرى']],reference:'المرجع الأصلي',referenceHelp:'أضف رابطًا أو رقمًا أو عنوانًا أو تاريخًا عند توفره لتسهيل تتبع أصل الطلب.',referencePH:'مثال: رابط Feedback Board أو رقم التذكرة أو اسم الاجتماع وتاريخه',evidence:'ما الذي يدعم الطلب؟',evidenceOptions:[['feedback','ملاحظات مستخدم / وسيط'],['analytics','بيانات وتحليلات'],['business','مبرر تجاري / دليل سوق'],['research','نتائج بحث'],['internal','ملاحظة داخلية'],['assumption','افتراض فقط'],['other','دليل آخر']],evidenceHelp:'قد يكون الدليل أوليًا أو غير مكتمل؛ المهم توضيح ما نعرفه وما نفترضه.',kpi:'هل يمكن قياس النجاح؟',yesno:[['yes','نعم، حدد KPI'],['no','ليس الآن / نتيجة نوعية'],['unknown','غير متأكد بعد']],kpiName:'مؤشر النجاح / KPI',baseline:'خط الأساس',target:'الهدف المتوقع',window:'فترة القياس',kpiPH:'مثال: إكمال الطلب، التحويل، نجاح المهمة',baselinePH:'القيمة الحالية أو «غير مقاس»',targetPH:'مثال: من 10% إلى 13%',windowPH:'مثال: 30 يومًا بعد الإطلاق',risk:'المخاطر / الأثر',risks:[['low','منخفضة','أثر محدود ويمكن التراجع بسهولة'],['medium','متوسطة','أثر على بعض المستخدمين أو العمليات'],['high','مرتفعة','أثر واسع أو غموض كبير'],['critical','حرجة','أثر كبير على العملاء أو الإيرادات أو الأمان أو الاعتمادية']],cross:'هل نحتاج مشاركة فرق أخرى؟',teams:'الفرق المطلوبة',teamOptions:[['business','البيزنس / الإدارة'],['operations','العمليات'],['cs','خدمة العملاء'],['marketing','التسويق'],['finance','المالية'],['ux','UX Research'],['design','تصميم UI/UX'],['engineering','التطوير'],['qa','QA'],['data','البيانات والتحليلات'],['legal','القانوني / الأمن']],research:'ما نوع التحقق المطلوب؟',researchOptions:[['interviews','مقابلات عملاء / وسطاء'],['analytics','تحليل البيانات'],['usability','اختبار قابلية الاستخدام'],['survey','استبيان'],['ab','اختبار A/B'],['prototype','نموذج أولي / اختبار اهتمام'],['none','لا يحتاج بحثًا إضافيًا']],decision:'قرار التحقق',decisions:[['proceed','الانتقال لتحديد الحل'],['research','بحث / تحقق أولًا'],['reframe','إعادة صياغة المشكلة'],['stop','التوقف مؤقتًا لعدم كفاية الدليل']],solution:'ملخص الحل',scope:'النطاق / معايير القبول',owner:'مسؤول القرار / التنفيذ',test:'هل يحتاج الحل اختبار استخدام؟',testOptions:[['yes','نعم — قبل التطوير / الإطلاق'],['no','لا — مع توثيق السبب'],['unknown','يُحدد مع UX / المنتج']],analytics:'التحليلات وتتبع الأحداث',analyticsOptions:[['yes','تحديد / التحقق من التتبع'],['no','لا تغيير في التتبع'],['unknown','التأكيد مع البيانات / المنتج']],qa:'نهج QA',qaOptions:[['regression','اختبارات وظيفية وانحدار'],['targeted','اختبارات مركزة على الجزء المتغير'],['critical','فحص المسار الأساسي'],['unknown','يحدد فريق QA']],releaseOwner:'مسؤول الإطلاق',monitor:'فترة المتابعة / خطة التراجع',result:'هل حققت النتيجة الهدف؟',results:[['yes','نعم — تحقق الهدف'],['no','لا — تحسين / تحقيق إضافي'],['unknown','لم يتم القياس بعد']],learnings:'التعلم / المتابعة',followup:'مسؤول المتابعة',save:'حفظ الإجابة',back:'المرحلة السابقة',next:'المرحلة التالية',nextDone:'مراجعة الملخص',resetConfirm:'إعادة ضبط كل الإجابات؟ لا يمكن التراجع عن ذلك.',reset:'إعادة ضبط',export:'تنزيل الملخص (.txt)',toastSaved:'تم حفظ الإجابة',toastReset:'تمت إعادة ضبط الإجابات',toastExport:'تم تنزيل الملخص',summaryEmpty:'لم يتم تحديده بعد',required:'مُوصى به',optional:'اختياري',always:'معلومات أساسية',triageGate:'توصية الفرز',bugFast:'مسار سريع مقترح',bugFastText:'للخطأ الواضح والقابل لإعادة الإنتاج: إعادة الإنتاج ← تقييم الأثر ← الإصلاح ← QA / اختبار الانحدار ← متابعة التكرار. صعّد المسار إذا كان الأثر مرتفعًا أو الخطر حرجًا.',gateReady:'جاهز للقرار التالي',gateMissing:'بعض التفاصيل المفيدة ما زالت ناقصة',gateReadyText:'تم تسجيل السياق الأساسي. أكّد القرار مع المسؤولين المعنيين.',gateMissingText:'استخدم العناصر المفتوحة كأسئلة للفريق، وليس كعوائق تلقائية.',checkItems:['نوع الطلب ومسجّله واضحان','تم تحديد المستخدم / صاحب الاحتياج','يمكن تتبع المصدر والقناة والمرجع','الدليل والافتراضات واضحان','تم الاتفاق على المسؤول ومقياس النجاح والخطوة التالية'],owners:[['المنتج / البيزنس','مسؤولية استقبال الطلب والأولوية ووضوح القرار'],['UX Research / التصميم','فهم المشكلة واستكشاف الحلول والتحقق من الاستخدام'],['التطوير + QA','التقدير والتنفيذ والاختبار وتقييم المخاطر التقنية'],['البيانات والتحليلات','تحديد القياس والتحقق من التتبع'],['خدمة العملاء / العمليات','نقل المشكلات المتكررة ودعم الإطلاق']],summaryLabels:['نوع الطلب','مسجّل الطلب','صاحب الاحتياج','مصدر الإشارة','قناة الوصول','المرجع','الدليل','KPI','خط الأساس ← الهدف','فترة القياس','المخاطر','الفرق','التحقق','القرار','الحل / النطاق','المسؤول','اختبار الاستخدام','التحليلات','نهج QA','مسؤول الإطلاق','المتابعة','النتيجة','التعلم','مسؤول المتابعة'],noAnswer:'لم يتم تحديده بعد',footerTip:'دليل خفيف وليس بوابة بيروقراطية. تجاوز ما لا ينطبق مع توثيق السبب.',exportTitle:'خطة طلب منتج - ديل',requestTitle:'سياق الطلب',decisionTitle:'القرارات والتنفيذ',outcomeTitle:'الإطلاق والتعلم',complete:'مكتملة',incomplete:'قيد التجهيز',stageNumber:'المرحلة',of:'من',rtlSwitch:'English'}};
-const STAGES=[['type','registrar','need','signal','channel','reference'],['evidence','kpi','risk','cross','teams'],['decision','research'],['solution','scope','owner','test'],['analytics','qa'],['releaseOwner','monitor','result','learnings','followup']];
-let lang='en',stage=0,answers={type:'',registrar:'',need:'',signal:'',channel:'',reference:'',evidence:'',kpi:'',kpiName:'',baseline:'',target:'',window:'',risk:'',cross:'',teams:[],decision:'',research:[],solution:'',scope:'',owner:'',test:'',analytics:'',qa:'',releaseOwner:'',monitor:'',result:'',learnings:'',followup:''};
-const $=id=>document.getElementById(id), t=k=>I18N[lang][k]??I18N.en[k]??k;function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function labelFor(field,val){const list=I18N[lang][field==='type'?'types':field==='registrar'?'registrars':field==='need'?'needs':field==='signal'?'signals':field==='channel'?'channels':field==='evidence'?'evidenceOptions':field==='kpi'?'yesno':field==='risk'?'risks':field==='cross'?'yesno':field==='decision'?'decisions':field==='research'?'researchOptions':field==='teams'?'teamOptions':field==='test'?'testOptions':field==='analytics'?'analyticsOptions':field==='qa'?'qaOptions':field==='result'?'results':field==='teams'?'teamOptions':'']||[];const item=list.find(x=>x[0]===val);return item?item[1]:val||t('summaryEmpty')}
-function render(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('rtl',lang==='ar');document.querySelectorAll('[data-i]').forEach(el=>el.innerHTML=t(el.dataset.i));$('langBtn').textContent=t('rtlSwitch');$('resetBtn').textContent=lang==='ar'?'إعادة ضبط':'Reset answers';$('exportBtn').textContent=lang==='ar'?'تنزيل الملخص ↗':'Export summary ↗';renderNav();renderStage();renderSide()}
-function renderNav(){const nav=$('stageNav');nav.innerHTML=I18N[lang].stages.map((name,i)=>`<button class="stage-tab ${stage===i?'active':''} ${isStageComplete(i)?'complete':''}" data-stage="${i}"><span class="num">${String(i+1).padStart(2,'0')} / 06</span><strong>${esc(name)}</strong></button>`).join('');nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{stage=+b.dataset.stage;render()})}
-function fieldText(key,label,ph='',full=false,textarea=false){return `<div class="field ${full?'full':''}"><label for="${key}">${esc(label)}</label>${textarea?`<textarea id="${key}" placeholder="${esc(ph)}">${esc(answers[key])}</textarea>`:`<input id="${key}" value="${esc(answers[key])}" placeholder="${esc(ph)}">`}</div>`}
-function choiceBlock(key,title,options,help='',multi=false,required=false){const current=answers[key];return `<div class="block"><div class="block-label">${esc(title)} ${required?`<span class="req">${esc(t('required'))}</span>`:''}</div>${help?`<p class="help">${esc(help)}</p>`:''}<div class="options">${options.map(o=>{const selected=multi?current.includes(o[0]):current===o[0];return `<button class="opt ${selected?'selected':''}" data-field="${key}" data-val="${esc(o[0])}" data-multi="${multi}"><span class="opt-dot"></span><span><strong>${esc(o[1])}</strong>${o[2]?`<small>${esc(o[2])}</small>`:''}</span></button>`}).join('')}</div></div>`}
-function renderStage(){const i=stage;let body='';const add=(...args)=>body+=choiceBlock(...args);if(i===0){add('type',t('type'),t('types'),t('typeHelp'),false,true);add('registrar',t('registrar'),t('registrars'),t('registrarHelp'),false,true);add('need',t('need'),t('needs'),t('needHelp'),false,true);add('signal',t('signal'),t('signals'),'',false,true);add('channel',t('channel'),t('channels'),'',false,true);body+=`<div class="field-grid">${fieldText('reference',t('reference'),t('referencePH'),true)}</div><p class="help">${esc(t('referenceHelp'))}</p>`}
-if(i===1){add('evidence',t('evidence'),t('evidenceOptions'),t('evidenceHelp'),false,true);add('kpi',t('kpi'),t('yesno'),'',false,true);if(answers.kpi==='yes')body+=`<div class="field-grid">${fieldText('kpiName',t('kpiName'),t('kpiPH'))}${fieldText('baseline',t('baseline'),t('baselinePH'))}${fieldText('target',t('target'),t('targetPH'))}${fieldText('window',t('window'),t('windowPH'))}</div>`;add('risk',t('risk'),t('risks'),'',false,true);add('cross',t('cross'),t('yesno'));if(answers.cross==='yes')add('teams',t('teams'),t('teamOptions'),'',true);if(answers.type==='bug')body+=`<div class="callout"><span class="bulb">⚡</span><div><strong>${esc(t('bugFast'))}</strong><br>${esc(t('bugFastText'))}</div></div>`}
-if(i===2){add('decision',t('decision'),t('decisions'),'',false,true);if(answers.decision==='research')add('research',t('research'),t('researchOptions'),'',true);else if(answers.decision==='reframe')add('research',t('research'),t('researchOptions'),'',true);else if(answers.decision==='stop')body+=`<div class="callout"><span class="bulb">!</span><div>${esc(t('gateMissingText'))}</div></div>`;}
-if(i===3){body+=`<div class="field-grid">${fieldText('solution',t('solution'),'Describe the proposed approach',true,true)}${fieldText('scope',t('scope'),'In scope, out of scope, acceptance criteria',true,true)}${fieldText('owner',t('owner'),'Name a directly responsible owner',false)}${fieldText('') .replace('id=""','id="_none"').replace('for=""','for="_none"').replace('undefined','') .slice(0,0)}</div>`;add('test',t('test'),t('testOptions'),'',false,true)}
-if(i===4){add('analytics',t('analytics'),t('analyticsOptions'),'',false,true);add('qa',t('qa'),t('qaOptions'),'',false,true);body+=`<div class="callout"><span class="bulb">✓</span><div>${esc(lang==='ar'?'قبل الإكمال: تأكد من معايير القبول، واختبارات QA، وأحداث التحليلات المطلوبة.':'Before calling it done: confirm acceptance criteria, QA checks and required analytics events.')}</div></div>`}
-if(i===5){body+=`<div class="field-grid">${fieldText('releaseOwner',t('releaseOwner'),'Name the release owner')}${fieldText('monitor',t('monitor'),'e.g. 7 days; rollback trigger',true)} </div>`;add('result',t('result'),t('results'),'',false,true);body+=`<div class="field-grid">${fieldText('learnings',t('learnings'),'What did we learn? What should change?',true,true)}${fieldText('followup',t('followup'),'Name / team',false)}</div>`}
-const title=I18N[lang].stageTitle[i],desc=I18N[lang].stageDesc[i];$('stageCard').innerHTML=`<div class="stage-top"><div><div class="stage-kicker">${esc(I18N[lang].stageKicker[i])}</div><h3>${esc(title)}</h3><p>${esc(desc)}</p></div><div class="stage-badge">${esc(I18N[lang].stageTag[i])}</div></div><div class="stage-body">${body}</div><div class="stage-footer"><div class="footer-hint">${esc(t('stageNumber'))} ${i+1} ${esc(t('of'))} 6 · ${isStageComplete(i)?esc(t('complete')):esc(t('incomplete'))}</div><div class="footer-buttons"><button class="btn" id="prevBtn" ${i===0?'disabled':''}>← ${esc(t('back'))}</button><button class="btn" id="nextBtn" class="btn" ${i===5?'disabled':''}>${esc(t('next'))} →</button></div></div>`;
-$('stageCard').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const k=b.dataset.field,v=b.dataset.val;if(b.dataset.multi==='true'){const arr=answers[k]||[];answers[k]=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v]}else{answers[k]=v;if(k==='kpi'&&v!=='yes'){answers.kpiName='';answers.baseline='';answers.target='';answers.window=''}if(k==='cross'&&v!=='yes')answers.teams=[];if(k==='decision'&&v!=='research'&&v!=='reframe')answers.research=[]}render();});$('stageCard').querySelectorAll('input,textarea').forEach(el=>el.oninput=()=>{answers[el.id]=el.value;renderSide()});$('prevBtn').onclick=()=>{stage=Math.max(0,stage-1);render()};$('nextBtn').onclick=()=>{stage=Math.min(5,stage+1);render();window.scrollTo({top:$('stageNav').getBoundingClientRect().top+window.scrollY-20,behavior:'smooth'})}}
-function isStageComplete(i){return STAGES[i].some(k=>{if(k==='teams'||k==='research')return answers[k]?.length>0;if(['reference','kpiName','baseline','target','window','solution','scope','owner','releaseOwner','monitor','learnings','followup'].includes(k))return !!String(answers[k]||'').trim();return !!answers[k]})}
-function value(k){if(k==='teams'||k==='research')return answers[k].map(v=>labelFor(k,v)).join(', ');if(k==='kpi')return answers.kpi==='yes'?[answers.kpiName,answers.baseline,answers.target].filter(Boolean).join(' · '):labelFor(k,answers[k]);return labelFor(k,answers[k])}
-function renderSide(){const allKeys=['type','registrar','need','signal','channel','reference','evidence','kpi','risk','teams','research','decision','solution','scope','owner','test','analytics','qa','releaseOwner','monitor','result','learnings','followup'];const filled=['type','registrar','need','signal','channel','evidence','risk'].filter(k=>!!answers[k]).length;const pct=Math.round(filled/7*100);$('progressNum').textContent=pct+'%';$('progressFill').style.width=pct+'%';$('answeredCount').textContent=filled+' / 7';const labels=t('summaryLabels');const keys=['type','registrar','need','signal','channel','reference','evidence','kpi','baseline','window','risk','teams','research','decision','solution','owner','test','analytics','qa','releaseOwner','monitor','result','learnings','followup'];$('summaryList').innerHTML=keys.map((k,i)=>{let v;if(k==='baseline')v=[answers.baseline,answers.target].filter(Boolean).join(' → ');else v=value(k);if(k==='kpi'&&answers.kpi==='yes'&&!answers.kpiName)v='KPI selected; details missing';return `<div class="summary-item"><small>${esc(labels[i]||k)}</small><strong class="${!v?'empty':''}">${esc(v||t('summaryEmpty'))}</strong></div>`}).join('');const checks=t('checkItems');const checkValues=[!!answers.type&&!!answers.registrar,!!answers.need,!!answers.signal&&!!answers.channel&&!!answers.reference,!!answers.evidence,!!answers.owner&&!!answers.kpi&&!!answers.decision];$('checklist').innerHTML=checks.map((x,i)=>`<li><span class="check">${checkValues[i]?'✓':'○'}</span><span>${esc(x)}</span></li>`).join('');const ready=checkValues.every(Boolean);$('gate').classList.toggle('good',ready);$('gate').innerHTML=`<strong>${esc(ready?t('gateReady'):t('gateMissing'))}</strong><span>${esc(ready?t('gateReadyText'):t('gateMissingText'))}</span>`;$('ownersList').innerHTML=t('owners').map(o=>`<li><span class="check">↗</span><span><strong>${esc(o[0])}</strong><br><span class="muted">${esc(o[1])}</span></span></li>`).join('')}
-function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';clearTimeout(window._toast);window._toast=setTimeout(()=>$('toast').style.display='none',2300)}
-function summaryText(){const data=I18N[lang];let out=[data.exportTitle,'='.repeat(38),'',data.requestTitle];const labels=data.summaryLabels,keys=['type','registrar','need','signal','channel','reference','evidence','kpi','baseline','window','risk','teams','research','decision','solution','scope','owner','test','analytics','qa','releaseOwner','monitor','result','learnings','followup'];keys.forEach((k,i)=>{let v;if(k==='baseline')v=[answers.baseline,answers.target].filter(Boolean).join(' → ');else v=value(k);out.push(`${labels[i]||k}: ${v||data.summaryEmpty}`)});out.push('',data.footerTip);return out.join('\n')}
-$('langBtn').onclick=()=>{lang=lang==='en'?'ar':'en';render()};$('resetBtn').onclick=()=>{if(confirm(t('resetConfirm'))){const empty={type:'',registrar:'',need:'',signal:'',channel:'',reference:'',evidence:'',kpi:'',kpiName:'',baseline:'',target:'',window:'',risk:'',cross:'',teams:[],decision:'',research:[],solution:'',scope:'',owner:'',test:'',analytics:'',qa:'',releaseOwner:'',monitor:'',result:'',learnings:'',followup:''};answers=empty;stage=0;render();toast(t('toastReset'))}};$('exportBtn').onclick=()=>{const blob=new Blob([summaryText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='dealapp-product-request-plan.txt';a.click();URL.revokeObjectURL(a.href);toast(t('toastExport'))};render();
-</script></body></html>
+/* ---------- Content ---------- */
+const UI = {
+  ar:{brand:'ديل · عملية المنتج 2027',brandSub:'دليل عمل الفريق',title:'من الطلب إلى نتيجة قابلة للقياس',
+      intro:'سجّل الطلب، وسيظهر لك المسار المناسب لنوعه. أكمل كل خطوة بالترتيب، وكل خطوة توضح المسؤول والمخرج ومتى تنتهي.',
+      lang:'English',newReq:'طلب جديد',stepsNav:'خطوات العملية',summary:'ملخص الطلب',share:'مشاركة',
+      copy:'نسخ الملخص',dl:'تنزيل ملف نصي',print:'طباعة',owner:'المسؤول',output:'المخرج',doneWhen:'تنتهي عندما',
+      fieldsLbl:'البيانات',checksLbl:'قبل الانتقال',prev:'السابق',next:'التالي',optional:'(اختياري)',
+      stepOf:(i,n)=>`الخطوة ${i} من ${n}`,done:'مكتملة',inProgress:'قيد العمل',notStarted:'لم تبدأ',locked:'مقفلة',
+      progress:'التقدم',empty:'لم يُحدد بعد',savedAt:t=>`حُفظ تلقائيًا على هذا الجهاز · ${t}`,
+      copied:'تم نسخ الملخص',downloaded:'تم تنزيل الملف',cleared:'بدأ طلب جديد',undo:'تراجع',
+      cycleStarted:'بدأت دورة تحسين جديدة من الخطوة 4',
+      chooseType:'اختر نوع الطلب أولًا لتظهر خطوات المسار.',
+      pathName:{full:'المسار الكامل',cr:'مسار التعديل الصغير',bug:'مسار الـ Bug'},
+      stopTitle:'الطلب متوقف',stopText:'اخترت التوقف في الخطوة 2. الخطوات التالية مقفلة حتى تغيّر القرار.',
+      reframeTitle:'أعد صياغة المشكلة',reframeText:'ارجع للخطوة 1 وعدّل المشكلة أو الهدف، ثم غيّر القرار.',
+      backTo:n=>`ارجع للخطوة ${n}`,
+      reviewChanges:'التصميم يحتاج تعديلًا. ارجع للخطوة 4، ثم عُد هنا عند الجاهزية.',
+      uatChanges:'صاحب الطلب طلب تعديلات. ارجع للخطوة 8 لإصلاحها وإعادة QA.',
+      notMet:'لم يتحقق الهدف',notMetText:'ابدأ دورة تحسين: تُفتح الخطوات من 4 إلى 11 من جديد، وتبقى بيانات الخطوات 1 إلى 3.',
+      newCycle:'ابدأ دورة تحسين',met:'تحقق الهدف',metText:'سجّل ما تعلمه الفريق، والطلب جاهز للإغلاق.',
+      escalate:'المشكلة في تصميم التجربة نفسها؟',escalateBtn:'حوّله إلى تحسين كبير',
+      missing:'ناقص:',allDone:'كل الخطوات مكتملة.',
+      exportTitle:'ملخص طلب منتج — ديل',viewPlaybook:'الدليل',viewFlow:'المخطط',viewGroup:'طريقة العرض',flowLbl:'مخطط العملية',start:'طلب جديد',end:'إغلاق الطلب',typeQ:'ما نوع الطلب؟',backShort:n=>`↩ يرجع للخطوة ${n}`,cycleShort:'↩ دورة تحسين من الخطوة 4'},
+  en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
+      intro:'Log the request and the right path for its type appears. Complete each step in order; every step shows its owner, output and when it is done.',
+      lang:'العربية',newReq:'New request',stepsNav:'Process steps',summary:'Request summary',share:'Share',
+      copy:'Copy summary',dl:'Download text file',print:'Print',owner:'Owner',output:'Output',doneWhen:'Done when',
+      fieldsLbl:'Details',checksLbl:'Before moving on',prev:'Previous',next:'Next',optional:'(optional)',
+      stepOf:(i,n)=>`Step ${i} of ${n}`,done:'Done',inProgress:'In progress',notStarted:'Not started',locked:'Locked',
+      progress:'Progress',empty:'Not set yet',savedAt:t=>`Saved on this device · ${t}`,
+      copied:'Summary copied',downloaded:'File downloaded',cleared:'Started a new request',undo:'Undo',
+      cycleStarted:'New improvement cycle started from step 4',
+      chooseType:'Choose the request type first to see the path.',
+      pathName:{full:'Full path',cr:'Small change path',bug:'Bug path'},
+      stopTitle:'Request stopped',stopText:'You chose to stop at step 2. Later steps stay locked until you change the decision.',
+      reframeTitle:'Reframe the problem',reframeText:'Go back to step 1, edit the problem or goal, then change the decision.',
+      backTo:n=>`Back to step ${n}`,
+      reviewChanges:'The design needs changes. Go back to step 4, then return here when ready.',
+      uatChanges:'The requester asked for changes. Go back to step 8 to fix and re-run QA.',
+      notMet:'Target not met',notMetText:'Start an improvement cycle: steps 4 to 11 reopen; steps 1 to 3 keep their data.',
+      newCycle:'Start improvement cycle',met:'Target met',metText:'Record what the team learned; the request is ready to close.',
+      escalate:'Is the problem in the experience design itself?',escalateBtn:'Convert to a major improvement',
+      missing:'Missing:',allDone:'All steps are complete.',
+      exportTitle:'Dealapp product request summary',viewPlaybook:'Playbook',viewFlow:'Flowchart',viewGroup:'View',flowLbl:'Process flowchart',start:'New request',end:'Close request',typeQ:'What type of request?',backShort:n=>`↩ back to step ${n}`,cycleShort:'↩ improvement cycle from step 4'}
+};
+
+const TYPES = [
+  {id:'product',path:'full',ar:['منتج جديد','خدمة أو قدرة جديدة'],en:['New product','A new service or capability']},
+  {id:'enh',path:'full',ar:['تحسين كبير','أكثر من شاشة، أو هدف يُقاس برقم'],en:['Major improvement','Several screens, or a measurable goal']},
+  {id:'cr',path:'cr',ar:['تعديل صغير (CR)','نص أو حقل أو قاعدة بسيطة'],en:['Small change (CR)','Copy, a field or a simple rule']},
+  {id:'bug',path:'bug',ar:['Bug','شيء لا يعمل كما يجب'],en:['Bug','Something is not working']}
+];
+
+const ch = (ar,en)=>({ar,en});
+const INTAKE = {id:'intake',phase:ch('الاستلام','Intake'),
+  title:ch('تسجيل الطلب','Log the request'),desc:ch('من طلب ماذا، ومن أين وصل الطلب.','Who asked for what, and where the request came from.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('سجل الطلب','Request record'),done:ch('العنوان والنوع ومقدم الطلب محددة','Title, type and requester are set'),
+  fields:[
+    {id:'title',label:ch('عنوان الطلب','Request title'),req:true,full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
+    {id:'type',kind:'type',label:ch('نوع الطلب','Request type'),req:true,full:true},
+    {id:'requester',label:ch('مقدم الطلب','Requester'),req:true,ph:ch('الاسم أو الفريق','Name or team')},
+    {id:'channel',kind:'choice',label:ch('وصل عن طريق','Arrived via'),options:[ch('واتساب','WhatsApp'),ch('اجتماع','Meeting'),ch('Feedback Board','Feedback Board'),ch('Notion','Notion'),ch('بيانات وتحليلات','Analytics'),ch('أخرى','Other')]},
+    {id:'ref',label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو المحضر أو البطاقة','Link to message, notes or card')}
+  ],checks:[]};
+
+const FULL = [
+ {id:'s1',phase:ch('الاكتشاف','Discover'),title:ch('جلسة مع البزنس','Business session'),desc:ch('نتفق على المشكلة والهدف قبل أي تصميم.','Agree on the problem and goal before any design.'),
+  owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),output:ch('Brief من صفحة واحدة','One-page brief'),done:ch('صاحب الطلب يوافق على الـ Brief','Requester approves the brief'),
+  fields:[{id:'problem',label:ch('المشكلة في جملة واحدة','The problem in one sentence'),req:true,full:true,area:true},
+          {id:'goal',label:ch('الهدف','Goal'),req:true,ph:ch('مثال: رفع الاشتراكات من الصفحة','e.g. More subscriptions from the page')},
+          {id:'kpi',label:ch('مؤشر النجاح (KPI)','Success metric (KPI)'),req:true,ph:ch('مثال: معدل التحويل','e.g. Conversion rate')},
+          {id:'constraints',label:ch('القيود','Constraints'),full:true,area:true}],
+  checks:[ch('المشكلة والهدف والمؤشر مكتوبة في الـ Brief','Problem, goal and KPI are in the brief'),ch('صاحب الطلب وافق على الـ Brief','The requester approved the brief')]},
+ {id:'s2',phase:ch('الاكتشاف','Discover'),title:ch('خط الأساس والتحقق','Baseline and validation'),desc:ch('نعرف الرقم الحالي والمستهدف، ونقرر هل نكمل.','Know the current and target numbers, and decide whether to go on.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('الرقم الحالي والمستهدف + القرار','Baseline, target and decision'),done:ch('الرقم موثق أو مهمة تتبع مفتوحة، والقرار مسجل','Number recorded or tracking task opened, decision logged'),
+  fields:[{id:'baseline',label:ch('الرقم الحالي','Current number'),req:true,ph:ch('مثال: 10% أو «غير مقاس»','e.g. 10% or "not measured"'),hint:ch('من GA4 أو الباك إند. غير متاح؟ افتح مهمة تتبع.','From GA4 or the backend. Not available? Open a tracking task.')},
+          {id:'target',label:ch('الرقم المستهدف','Target'),req:true,ph:ch('مثال: 15%','e.g. 15%')},
+          {id:'window',label:ch('فترة القياس بعد الإطلاق','Measurement window after launch'),ph:ch('مثال: 30 يومًا','e.g. 30 days')},
+          {id:'decision',kind:'choice',dia:true,q:ch('نكمل؟','Proceed?'),loops:{reframe:'s1'},label:ch('القرار','Decision'),req:true,full:true,options:[ch('نكمل','Proceed'),ch('نعيد الصياغة','Reframe'),ch('نتوقف','Stop')],values:['go','reframe','stop']}],
+  checks:[ch('الرقم الحالي موثق، أو مهمة تتبع مفتوحة','Baseline recorded, or a tracking task opened'),ch('صاحب الطلب حدد الرقم المستهدف','The requester set the target')]},
+ {id:'s3',phase:ch('التعريف','Define'),title:ch('كتابة الـ User Stories','Write the user stories'),desc:ch('نحوّل الـ Brief إلى قصص مستخدم.','Turn the brief into user stories.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('Stories على Notion','Stories in Notion'),done:ch('الـ Stories تغطي كل ما في الـ Brief','Stories cover everything in the brief'),
+  fields:[{id:'storiesLink',label:ch('رابط الـ Stories','Stories link'),req:true,full:true,ph:'https://notion.so/…',hint:ch('الصيغة: كـ[مستخدم] أريد [هدف] لكي [فائدة]','Format: As a [user] I want [goal] so that [benefit]')}],
+  checks:[ch('كل Story مكتوبة بالصيغة','Every story follows the format'),ch('الـ Stories تغطي كل ما في الـ Brief','Stories cover everything in the brief')]},
+ {id:'s4',phase:ch('التعريف','Define'),title:ch('استكشاف الحل والتصميم','Explore and design'),desc:ch('UX وUI يشاركان هنا، قبل التطوير.','UX and UI join here, before development.'),
+  owner:ch('UX/UI + مدير المنتج','UX/UI + PM'),output:ch('تصميم على Figma بكل الحالات','Figma design with all states'),done:ch('اتجاه واحد متفق عليه، أو قرار A/B','One agreed direction, or an A/B decision'),
+  fields:[{id:'solution',kind:'choice',label:ch('نوع الحل','Solution type'),req:true,full:true,options:[ch('إعادة تصميم','Redesign'),ch('إضافة على الموجود','Add to existing'),ch('تعديل باك إند','Backend change'),ch('إصلاح أخطاء','Fix bugs')]},
+          {id:'figma',label:ch('رابط Figma','Figma link'),req:true,full:true,ph:'https://figma.com/…'},
+          {id:'ab',kind:'choice',label:ch('اختبار A/B؟','A/B test?'),options:[ch('لا، اتجاه واحد','No, one direction'),ch('نعم، بين حلين','Yes, between two')]}],
+  checks:[ch('الفريق متفق على اتجاه واحد أو على اختبار A/B','The team agreed on one direction or an A/B test'),ch('التصميم يغطي حالات الفراغ والتحميل والخطأ','Design covers empty, loading and error states')]},
+ {id:'s5',phase:ch('التعريف','Define'),title:ch('مراجعة التصميم','Design review'),desc:ch('البزنس يراجع، والتقني يؤكد الجدوى.','Business reviews; engineering confirms feasibility.'),
+  owner:ch('مدير المنتج + البزنس + التقني','PM + business + engineering'),output:ch('تصميم معتمد','Approved design'),done:ch('التصميم معتمد','The design is approved'),
+  fields:[{id:'review',kind:'choice',dia:true,q:ch('التصميم معتمد؟','Design approved?'),loops:{changes:'s4'},label:ch('نتيجة المراجعة','Review result'),req:true,full:true,options:[ch('معتمد','Approved'),ch('يحتاج تعديلًا','Needs changes')],values:['ok','changes']},
+          {id:'usability',kind:'choice',label:ch('اختبار استخدام','Usability test'),full:true,options:[ch('تم','Done'),ch('غير مطلوب، الخطر منخفض','Not needed, low risk')]}],
+  checks:[ch('البزنس راجع التصميم','Business reviewed the design'),ch('الفريق التقني أكد الجدوى','Engineering confirmed feasibility')]},
+ {id:'s6',phase:ch('التعريف','Define'),title:ch('التجهيز للتطوير','Ready for development'),desc:ch('معايير قبول وأحداث تتبع قبل الـ Sprint.','Acceptance criteria and tracking before the sprint.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('معايير القبول + أحداث GA4 على Figma','Acceptance criteria + GA4 events in Figma'),done:ch('لكل Story معايير قبول، وللمؤشر أحداث تقيسه','Every story has criteria; the KPI has events'),
+  fields:[],
+  checks:[ch('لكل Story معايير قبول','Every story has acceptance criteria'),ch('أحداث GA4 ومعاملاتها موثقة على Figma','GA4 events and parameters annotated in Figma')]},
+ {id:'s7',phase:ch('التنفيذ','Deliver'),title:ch('Grooming وتخطيط الـ Sprint','Grooming and sprint planning'),desc:ch('تقدير الجهد وإدخال الـ Stories في Sprint.','Estimate and pull the stories into a sprint.'),
+  owner:ch('مدير المنتج + الفريق التقني','PM + engineering'),output:ch('Sprint محدد','A planned sprint'),done:ch('الـ Stories داخل Sprint','Stories are in a sprint'),
+  fields:[{id:'sprint',label:ch('اسم الـ Sprint أو تاريخه','Sprint name or date'),req:true},
+          {id:'sprintLen',kind:'choice',label:ch('المدة','Length'),options:[ch('أسبوع','One week'),ch('أكثر من أسبوع','More than a week')]}],
+  checks:[ch('الجهد مقدّر','Effort is estimated'),ch('الـ Stories داخل Sprint محدد','Stories are in a planned sprint')]},
+ {id:'s8',phase:ch('التنفيذ','Deliver'),title:ch('التطوير وQA','Build and QA'),desc:ch('بناء واختبار على بيئة الاختبار.','Build and test on staging.'),
+  owner:ch('المطورون + QA','Developers + QA'),output:ch('نسخة معتمدة من QA','A QA-approved build'),done:ch('QA يعتمد النسخة','QA approves the build'),
+  fields:[],
+  checks:[ch('النسخة على بيئة الاختبار','The build is on staging'),ch('QA اختبر معايير القبول والانحدار','QA tested acceptance criteria and regression'),ch('الأحداث ظاهرة في GA4 DebugView','Events show in GA4 DebugView'),ch('الأخطاء مسجلة في Bugs Board','Bugs are logged in the Bugs Board')]},
+ {id:'s9',phase:ch('التنفيذ','Deliver'),title:ch('مراجعة القبول (UAT)','Acceptance review (UAT)'),desc:ch('صاحب الطلب يجرّب قبل الإطلاق.','The requester tries it before launch.'),
+  owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),output:ch('موافقة على الإطلاق','Go-ahead to launch'),done:ch('صاحب الطلب يوافق','The requester approves'),
+  fields:[{id:'uat',kind:'choice',dia:true,q:ch('صاحب الطلب موافق؟','Requester approves?'),loops:{changes:'s8'},label:ch('النتيجة','Result'),req:true,full:true,options:[ch('موافق','Approved'),ch('يحتاج تعديلات','Needs changes')],values:['ok','changes']}],
+  checks:[ch('صاحب الطلب جرّب النسخة على بيئة الاختبار','The requester tried the build on staging')]},
+ {id:'s10',phase:ch('التنفيذ','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('نشر مع خطة تراجع وموعد قياس.','Release with a rollback plan and a measurement date.'),
+  owner:ch('مدير المنتج + الفريق التقني','PM + engineering'),output:ch('إطلاق مستقر','A stable release'),done:ch('الإطلاق مستقر والأحداث تصل GA4','Stable, and events reach GA4'),
+  fields:[{id:'launchDate',kind:'date',label:ch('تاريخ الإطلاق','Launch date'),req:true},
+          {id:'measureDate',kind:'date',label:ch('موعد القياس','Measurement date'),req:true},
+          {id:'rollback',label:ch('خطة التراجع','Rollback plan'),full:true,area:true}],
+  checks:[ch('تم النشر','Released'),ch('الأحداث تصل إلى GA4','Events reach GA4')]},
+ {id:'s11',phase:ch('القياس','Measure'),title:ch('القياس والقرار','Measure and decide'),desc:ch('نقارن النتيجة بالهدف ونقرر.','Compare the result with the target and decide.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('النتيجة والقرار','Result and decision'),done:ch('الطلب مغلق، أو بدأت دورة تحسين','Closed, or an improvement cycle started'),
+  fields:[{id:'actual',label:ch('الرقم بعد الإطلاق','Number after launch'),req:true},
+          {id:'result',kind:'choice',dia:true,q:ch('تحقق الهدف؟','Target met?'),loops:{notmet:'cycle'},label:ch('هل تحقق الهدف؟','Was the target met?'),req:true,options:[ch('نعم','Yes'),ch('لا','No')],values:['met','notmet']},
+          {id:'learnings',label:ch('ما تعلمه الفريق','What the team learned'),full:true,area:true}],
+  checks:[ch('النتيجة عُرضت على البزنس والفريق','Result presented to business and the team')]}
+];
+
+const CR = [
+ {id:'c1',phase:ch('التنفيذ','Deliver'),title:ch('كتابة الـ CR','Write the CR'),desc:ch('الوضع الحالي والمطلوب ومعايير القبول.','Current state, the change and acceptance criteria.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('CR على Notion','CR in Notion'),done:ch('الـ CR مكتمل','The CR is complete'),
+  fields:[{id:'crLink',label:ch('رابط الـ CR','CR link'),req:true,full:true,ph:'https://notion.so/…'}],
+  checks:[ch('الوضع الحالي والمطلوب مكتوبان','Current state and change are written'),ch('معايير القبول مكتوبة','Acceptance criteria are written')]},
+ {id:'c2',phase:ch('التنفيذ','Deliver'),title:ch('تعديل التصميم','Update the design'),desc:ch('على Figma، إذا لزم.','In Figma, if needed.'),
+  owner:ch('UI','UI'),output:ch('تصميم معدّل','Updated design'),done:ch('التصميم معدّل، أو لا يلزم','Design updated, or not needed'),
+  fields:[],checks:[ch('التصميم معدّل على Figma، أو لا يحتاج تعديلًا','Design updated in Figma, or no change needed')]},
+ {id:'c3',phase:ch('التنفيذ','Deliver'),title:ch('إدخال الـ Sprint','Add to a sprint'),desc:ch('أقرب Sprint متاح.','The next available sprint.'),
+  owner:ch('مدير المنتج','Product manager'),output:ch('Sprint محدد','A planned sprint'),done:ch('الـ CR داخل Sprint','The CR is in a sprint'),
+  fields:[{id:'crSprint',label:ch('اسم الـ Sprint أو تاريخه','Sprint name or date'),req:true}],checks:[]},
+ {id:'c4',phase:ch('التنفيذ','Deliver'),title:ch('التطوير وQA','Build and QA'),desc:ch('اختبار الجزء المتغير.','Test the changed area.'),
+  owner:ch('المطورون + QA','Developers + QA'),output:ch('نسخة معتمدة','Approved build'),done:ch('QA يعتمد','QA approves'),
+  fields:[],checks:[ch('QA اختبر الجزء المتغير','QA tested the changed area')]},
+ {id:'c5',phase:ch('التنفيذ','Deliver'),title:ch('الإطلاق','Launch'),desc:ch('النشر.','Release.'),
+  owner:ch('الفريق التقني','Engineering'),output:ch('التعديل منشور','Change released'),done:ch('التعديل على الإنتاج','The change is live'),
+  fields:[],checks:[ch('تم النشر','Released')]}
+];
+
+const BUG = [
+ {id:'b1',phase:ch('الإصلاح','Fix'),title:ch('التسجيل في Bugs Board','Log in the Bugs Board'),desc:ch('أين ظهر، والمتوقع مقابل الفعلي.','Where it happened; expected vs actual.'),
+  owner:ch('من اكتشفه + QA','Reporter + QA'),output:ch('بطاقة Bug','Bug card'),done:ch('البطاقة مكتملة','The card is complete'),
+  fields:[{id:'where',label:ch('أين ظهر','Where'),req:true,full:true,ph:ch('الصفحة أو قسم Figma + رقم الحدث','Page or Figma section + event number')},
+          {id:'expected',label:ch('المتوقع','Expected'),req:true,area:true},
+          {id:'actual',label:ch('الفعلي','Actual'),req:true,area:true,ph:ch('مثال: الحدث لا يُرسل','e.g. Event not fired')}],
+  checks:[ch('خطوات إعادة المشكلة مكتوبة','Steps to reproduce are written')]},
+ {id:'b2',phase:ch('الإصلاح','Fix'),title:ch('إعادة الإنتاج وتحديد الخطورة','Reproduce and rate severity'),desc:ch('QA يتأكد ويحدد الأولوية.','QA confirms and sets priority.'),
+  owner:ch('QA','QA'),output:ch('خطورة محددة','Severity set'),done:ch('الـ Bug مؤكد وخطورته محددة','Confirmed and rated'),
+  fields:[{id:'severity',kind:'choice',dia:true,q:ch('ما الخطورة؟','Severity?'),label:ch('الخطورة','Severity'),req:true,full:true,options:[ch('حرج: يُصلح فورًا','Critical: fix now'),ch('عادي: أقرب Sprint','Normal: next sprint')]}],
+  checks:[ch('QA أعاد إنتاج المشكلة','QA reproduced the bug')]},
+ {id:'b3',phase:ch('الإصلاح','Fix'),title:ch('الإصلاح','Fix'),desc:ch('الحرج خارج الـ Sprint، والباقي في أقرب Sprint.','Critical outside the sprint; others in the next one.'),
+  owner:ch('المطورون','Developers'),output:ch('إصلاح على بيئة الاختبار','Fix on staging'),done:ch('الإصلاح على بيئة الاختبار','Fix is on staging'),
+  fields:[],checks:[ch('الإصلاح على بيئة الاختبار','The fix is on staging')]},
+ {id:'b4',phase:ch('الإصلاح','Fix'),title:ch('QA والانحدار','QA and regression'),desc:ch('الإصلاح لا يكسر شيئًا آخر.','The fix breaks nothing else.'),
+  owner:ch('QA','QA'),output:ch('إصلاح معتمد','Approved fix'),done:ch('QA يعتمد','QA approves'),
+  fields:[],checks:[ch('الإصلاح يعمل','The fix works'),ch('لا انحدار في الأجزاء القريبة','No regression nearby')]},
+ {id:'b5',phase:ch('الإصلاح','Fix'),title:ch('الإطلاق والمتابعة','Release and monitor'),desc:ch('نتأكد أنه لا يتكرر.','Make sure it does not recur.'),
+  owner:ch('الفريق التقني','Engineering'),output:ch('الإصلاح منشور','Fix released'),done:ch('منشور ولا يتكرر','Released, not recurring'),
+  fields:[],checks:[ch('تم النشر','Released'),ch('لم يتكرر بعد الإطلاق','No recurrence after release')]}
+];
+const PATHS = {full:FULL,cr:CR,bug:BUG};
+
+/* ---------- State ---------- */
+const KEY='dealapp-process-2027-v3';
+const fresh=()=>({lang:'ar',view:'playbook',cur:0,data:{},checks:{},savedAt:null});
+let S=load();
+let undoSnap=null;
+
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.data)return Object.assign(fresh(),s)}catch(e){}return fresh()}
+function save(){S.savedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=id=>document.getElementById(id);
+const u=()=>UI[S.lang];
+const L=o=>typeof o==='string'?o:(o[S.lang]??o.ar);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function typeObj(){return TYPES.find(t=>t.id===S.data.type)}
+function pathKey(){const t=typeObj();return t?t.path:null}
+function steps(){const p=pathKey();return [INTAKE].concat(p?PATHS[p]:[])}
+function optVal(f,i){return f.values?f.values[i]:String(i)}
+
+function filled(f){const v=S.data[f.id];return v!==undefined&&String(v).trim()!==''}
+function missingOf(st){
+  const m=[];st.fields.forEach(f=>{if(f.req&&!filled(f))m.push(L(f.label))});
+  const c=S.checks[st.id]||[];st.checks.forEach((k,i)=>{if(!c[i])m.push(L(k))});
+  // gates that block completion
+  if(st.id==='s2'&&S.data.decision&&S.data.decision!=='go')m.push(L(st.fields[3].label)+': '+(S.data.decision==='stop'?L(ch('نتوقف','Stop')):L(ch('نعيد الصياغة','Reframe'))));
+  if(st.id==='s5'&&S.data.review==='changes')m.push(L(ch('التصميم غير معتمد','Design not approved')));
+  if(st.id==='s9'&&S.data.uat==='changes')m.push(L(ch('صاحب الطلب لم يوافق','Requester has not approved')));
+  return m;
+}
+function started(st){return st.fields.some(filled)||(S.checks[st.id]||[]).some(Boolean)}
+function locked(i){const list=steps();const idx2=list.findIndex(s=>s.id==='s2');return idx2>-1&&i>idx2&&S.data.decision==='stop'}
+function status(i){const st=steps()[i];if(locked(i))return 'locked';if(!missingOf(st).length)return 'done';return started(st)?'progress':'todo'}
+
+/* ---------- Render ---------- */
+function render(){
+  const t=u();document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==='ar'?'rtl':'ltr';
+  $('tBrand').textContent=t.brand;$('tBrandSub').textContent=t.brandSub;$('tTitle').textContent=t.title;$('tIntro').textContent=t.intro;
+  $('langBtn').textContent=t.lang;$('newBtn').textContent=t.newReq;$('tSummary').textContent=t.summary;$('tShare').textContent=t.share;
+  $('copyBtn').textContent=t.copy;$('dlBtn').textContent=t.dl;$('printBtn').textContent=t.print;$('toastUndo').textContent=t.undo;
+  $('stepper').setAttribute('aria-label',t.stepsNav);$('flow').setAttribute('aria-label',t.flowLbl);
+  $('viewSwitch').setAttribute('aria-label',t.viewGroup);
+  $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent=b.dataset.view==='flow'?t.viewFlow:t.viewPlaybook;b.setAttribute('aria-pressed',S.view===b.dataset.view)});
+  $('app').classList.toggle('flow',S.view==='flow');
+  const list=steps();if(S.cur>=list.length)S.cur=list.length-1;
+  renderStepper(list);if(S.view==='flow')renderFlow(list);renderCard(list);renderSummary(list);
+  $('saved').textContent=S.savedAt?t.savedAt(new Date(S.savedAt).toLocaleTimeString(S.lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'})):'';
+}
+
+function renderStepper(list){
+  const t=u();const total=list.length-1;const doneN=list.filter((_,i)=>i>0&&status(i)==='done').length;const pct=total?Math.round(doneN/total*100):0;
+  let h=!total?'':`<div class="progress"><div class="progress-row"><span>${t.progress}</span><span>${doneN} / ${total}</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
+  if(pathKey())h+=`<span class="path-tag">${t.pathName[pathKey()]}</span>`;
+  let lastPhase='';h+='<ol class="steps">';
+  list.forEach((st,i)=>{
+    const ph=L(st.phase);if(ph!==lastPhase){h+=`<li class="phase" aria-hidden="true">${esc(ph)}</li>`;lastPhase=ph}
+    const s=status(i);const icon=s==='done'?'✓':(i===0?'•':String(i));
+    const stLabel={done:t.done,progress:t.inProgress,todo:t.notStarted,locked:t.locked}[s];
+    h+=`<li class="is-${s}"><button type="button" class="step-btn" data-i="${i}" ${i===S.cur?'aria-current="step"':''}><span class="dot" aria-hidden="true">${icon}</span><span class="lbl">${esc(L(st.title))}</span><span class="sr">— ${stLabel}</span></button></li>`;
+  });
+  h+='</ol>';if(!pathKey())h+=`<p class="status-text">${t.chooseType}</p>`;
+  $('stepper').innerHTML=h;
+  $('stepper').querySelectorAll('.step-btn').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+}
+
+function renderFlow(list){
+  const t=u();const arrow='<div class="fc-arrow" aria-hidden="true"></div>';
+  const idx=id=>list.findIndex(s=>s.id===id);
+  const diamond=(q,set,chips)=>`<div class="fc-dec"><div class="fc-diamond ${set?'set':''}"><svg viewBox="0 0 200 96" preserveAspectRatio="none" aria-hidden="true"><polygon points="100,1 199,48 100,95 1,48"/></svg><span>${esc(q)}</span></div><div class="fc-branches" role="group" aria-label="${esc(q)}">${chips}</div></div>`;
+  let h=`<div class="fc"><div class="fc-term">${t.start}</div>${arrow}`;
+  list.forEach((st,i)=>{
+    const s=status(i);
+    h+=`<button type="button" class="fc-node is-${s}" data-i="${i}" ${i===S.cur?'aria-current="step"':''}><span class="n">${s==='done'?'✓':(i===0?'•':i)}</span><b>${esc(L(st.title))}</b><small>${esc(L(st.owner))}</small></button>`;
+    if(i===0){
+      const v=S.data.type;
+      h+=arrow+diamond(t.typeQ,!!v,TYPES.map(ty=>`<button type="button" class="choice" data-fct="${ty.id}" aria-pressed="${v===ty.id}">${esc(ty[S.lang][0])}</button>`).join(''));
+    }
+    st.fields.filter(f=>f.dia).forEach(f=>{
+      const v=S.data[f.id];
+      const chips=f.options.map((o,j)=>{const val=optVal(f,j);const lp=f.loops&&f.loops[val];return `<button type="button" class="choice" data-f="${f.id}" data-v="${esc(val)}" aria-pressed="${v===val}">${esc(L(o))}</button>`}).join('');
+      let loop='';const target=f.loops&&v&&f.loops[v];
+      if(target==='cycle')loop=`<button type="button" class="fc-loop" data-cycle="1">${t.cycleShort}</button>`;
+      else if(target)loop=`<button type="button" class="fc-loop" data-go="${idx(target)}">${t.backShort(idx(target))}</button>`;
+      h+=arrow+diamond(L(f.q),!!v,chips+loop);
+      if(f.id==='decision'&&v==='stop')h+=arrow+`<div class="fc-term stop">${t.stopTitle}</div>`;
+    });
+    if(i<list.length-1)h+=arrow;
+  });
+  if(!pathKey())h+=arrow+`<div class="fc-node ghost">${t.chooseType}</div>`;
+  else h+=arrow+`<div class="fc-term ${list.every((_,i)=>status(i)==='done')?'end':''}">${t.end}</div>`;
+  h+='</div>';
+  const el=$('flow');el.innerHTML=h;
+  el.querySelectorAll('.fc-node[data-i]').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  el.querySelectorAll('[data-fct]').forEach(b=>b.onclick=()=>{S.data.type=S.data.type===b.dataset.fct?'':b.dataset.fct;save();render()});
+  el.querySelectorAll('.choice[data-f]').forEach(b=>b.onclick=()=>{const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;S.cur=list.findIndex(st=>st.fields.some(x=>x.id===f));save();render()});
+  el.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  el.querySelectorAll('[data-cycle]').forEach(b=>b.onclick=newCycle);
+}
+
+function fieldHTML(f){
+  const lab=`<label ${f.kind==='choice'||f.kind==='type'?'':`for="f_${f.id}"`}>${esc(L(f.label))}${f.req?'':` <span class="opt-tag">${u().optional}</span>`}</label>`;
+  const v=S.data[f.id]??'';let inner='';
+  if(f.kind==='type'){
+    inner='<div class="types" role="group">'+TYPES.map(ty=>`<button type="button" class="type" data-type="${ty.id}" aria-pressed="${v===ty.id}"><b>${esc(ty[S.lang][0])}</b><span>${esc(ty[S.lang][1])}</span></button>`).join('')+'</div>';
+  }else if(f.kind==='choice'){
+    inner='<div class="choices" role="group">'+f.options.map((o,i)=>{const val=optVal(f,i);return `<button type="button" class="choice" data-f="${f.id}" data-v="${esc(val)}" aria-pressed="${v===val}">${esc(L(o))}</button>`}).join('')+'</div>';
+  }else if(f.area){
+    inner=`<textarea id="f_${f.id}" data-f="${f.id}" placeholder="${esc(f.ph?L(f.ph):'')}">${esc(v)}</textarea>`;
+  }else{
+    inner=`<input id="f_${f.id}" data-f="${f.id}" type="${f.kind==='date'?'date':'text'}" value="${esc(v)}" placeholder="${esc(f.ph?L(f.ph):'')}">`;
+  }
+  const hint=f.hint?`<div class="hint">${esc(L(f.hint))}</div>`:'';
+  return `<div class="field ${f.full?'full':''}">${lab}${inner}${hint}</div>`;
+}
+
+function noticeHTML(st,list){
+  const t=u();const idx=n=>list.findIndex(s=>s.id===n);
+  if(locked(S.cur))return `<div class="notice stop"><b>${t.stopTitle}</b>${t.stopText}<br><button class="btn" data-go="${idx('s2')}">${t.backTo(idx('s2'))}</button></div>`;
+  if(st.id==='s2'&&S.data.decision==='stop')return `<div class="notice stop"><b>${t.stopTitle}</b>${t.stopText}</div>`;
+  if(st.id==='s2'&&S.data.decision==='reframe')return `<div class="notice warn"><b>${t.reframeTitle}</b>${t.reframeText}<br><button class="btn" data-go="${idx('s1')}">${t.backTo(idx('s1'))}</button></div>`;
+  if(st.id==='s5'&&S.data.review==='changes')return `<div class="notice warn">${t.reviewChanges}<br><button class="btn" data-go="${idx('s4')}">${t.backTo(idx('s4'))}</button></div>`;
+  if(st.id==='s9'&&S.data.uat==='changes')return `<div class="notice warn">${t.uatChanges}<br><button class="btn" data-go="${idx('s8')}">${t.backTo(idx('s8'))}</button></div>`;
+  if(st.id==='s11'&&S.data.result==='notmet')return `<div class="notice warn"><b>${t.notMet}</b>${t.notMetText}<br><button class="btn primary" id="cycleBtn">${t.newCycle}</button></div>`;
+  if(st.id==='s11'&&S.data.result==='met')return `<div class="notice ok"><b>${t.met}</b>${t.metText}</div>`;
+  if(pathKey()==='bug'&&st.id==='b2')return `<div class="notice warn">${t.escalate}<br><button class="btn" id="escBtn">${t.escalateBtn}</button></div>`;
+  return '';
+}
+
+function renderCard(list){
+  const t=u();const st=list[S.cur];const s=status(S.cur);const miss=missingOf(st);
+  const stLabel={done:t.done,progress:t.inProgress,todo:t.notStarted,locked:t.locked}[s];
+  const checks=S.checks[st.id]||[];
+  let h=`<div class="card-head"><div class="kicker">${S.cur===0?esc(L(st.phase)):t.stepOf(S.cur,list.length-1)+' · '+esc(L(st.phase))}</div><h2>${esc(L(st.title))}</h2><p>${esc(L(st.desc))}</p></div>`;
+  h+=`<div class="meta"><div><small>${t.owner}</small><span>${esc(L(st.owner))}</span></div><div><small>${t.output}</small><span>${esc(L(st.output))}</span></div><div><small>${t.doneWhen}</small><span>${esc(L(st.done))}</span></div></div>`;
+  h+=`<div class="card-body">${noticeHTML(st,list)}`;
+  if(st.fields.length)h+=`<h3 class="section-label">${t.fieldsLbl}</h3><div class="fields">${st.fields.map(fieldHTML).join('')}</div>`;
+  if(st.checks.length)h+=`<h3 class="section-label">${t.checksLbl}</h3><ul class="checks">${st.checks.map((c,i)=>`<li><label><input type="checkbox" data-c="${i}" ${checks[i]?'checked':''} ${locked(S.cur)?'disabled':''}><span>${esc(L(c))}</span></label></li>`).join('')}</ul>`;
+  h+='</div>';
+  const nextDisabled=S.cur>=list.length-1||locked(S.cur+1);
+  const statusLine=s==='done'?`✓ ${t.done}`:(s==='locked'?t.locked:(miss.length?`${t.missing} ${esc(miss.slice(0,2).join('، '))}${miss.length>2?' …':''}`:stLabel));
+  h+=`<div class="card-foot"><span class="status-text">${statusLine}</span><div class="foot-btns"><button class="btn" id="prevBtn" ${S.cur===0?'disabled':''}>${S.lang==='ar'?'→':'←'} ${t.prev}</button><button class="btn primary" id="nextBtn" ${nextDisabled?'disabled':''}>${t.next} ${S.lang==='ar'?'←':'→'}</button></div></div>`;
+  $('card').innerHTML=h;
+  bindCard();
+}
+
+function bindCard(){
+  const card=$('card');
+  card.querySelectorAll('input[data-f],textarea[data-f]').forEach(el=>el.oninput=()=>{S.data[el.dataset.f]=el.value;save();renderStepper(steps());if(S.view==='flow')renderFlow(steps());renderSummary(steps());updateFoot()});
+  card.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{const f=b.dataset.f,v=b.dataset.v;S.data[f]=S.data[f]===v?'':v;save();render()});
+  card.querySelectorAll('.type').forEach(b=>b.onclick=()=>{S.data.type=b.dataset.type;save();render()});
+  card.querySelectorAll('input[data-c]').forEach(el=>el.onchange=()=>{const id=steps()[S.cur].id;const arr=S.checks[id]||[];arr[+el.dataset.c]=el.checked;S.checks[id]=arr;save();render()});
+  card.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  const p=$('prevBtn'),n=$('nextBtn');if(p)p.onclick=()=>go(S.cur-1);if(n)n.onclick=()=>go(S.cur+1);
+  const c=$('cycleBtn');if(c)c.onclick=newCycle;
+  const e=$('escBtn');if(e)e.onclick=()=>{snap();S.data.type='enh';S.cur=1;save();render();toast(UI[S.lang].pathName.full)};
+}
+function updateFoot(){ // refresh footer status without re-rendering inputs (keeps focus)
+  const list=steps(),st=list[S.cur],t=u(),s=status(S.cur),miss=missingOf(st);
+  const el=$('card').querySelector('.status-text');if(!el)return;
+  el.textContent=s==='done'?`✓ ${t.done}`:(miss.length?`${t.missing} ${miss.slice(0,2).join('، ')}${miss.length>2?' …':''}`:'');
+}
+
+function renderSummary(list){
+  const t=u();const rows=[];
+  const ty=typeObj();
+  rows.push([L(INTAKE.fields[0].label),S.data.title]);
+  rows.push([L(INTAKE.fields[1].label),ty?ty[S.lang][0]:'']);
+  rows.push([L(INTAKE.fields[2].label),S.data.requester]);
+  if(pathKey()==='full'){
+    rows.push([L(ch('مؤشر النجاح','KPI')),S.data.kpi]);
+    rows.push([L(ch('الحالي ← المستهدف','Baseline → target')),[S.data.baseline,S.data.target].filter(Boolean).join(' ← ')]);
+    rows.push([L(ch('موعد القياس','Measurement date')),S.data.measureDate]);
+  }
+  const nextIdx=list.findIndex((_,i)=>status(i)!=='done');
+  rows.push([L(ch('الخطوة التالية','Next step')),nextIdx===-1?t.allDone:`${nextIdx?nextIdx+'. ':''}${L(list[nextIdx].title)}`]);
+  $('summary').innerHTML=rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd class="${v?'':'empty'}">${esc(v||t.empty)}</dd></div>`).join('');
+}
+
+/* ---------- Actions ---------- */
+function go(i){const list=steps();if(i<0||i>=list.length)return;S.cur=i;save();render();if(window.innerWidth<760)$('card').scrollIntoView({behavior:'smooth',block:'start'});const h=$('card').querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}}
+function snap(){undoSnap=JSON.stringify(S)}
+function toast(msg,canUndo){$('toastMsg').textContent=msg;$('toastUndo').style.display=canUndo?'':'none';$('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>$('toast').classList.remove('show'),canUndo?7000:2500)}
+$('toastUndo').onclick=()=>{if(undoSnap){S=JSON.parse(undoSnap);undoSnap=null;save();render()}$('toast').classList.remove('show')};
+function newCycle(){
+  snap();const ids=['s4','s5','s6','s7','s8','s9','s10','s11'];ids.forEach(id=>delete S.checks[id]);
+  ['solution','figma','ab','review','usability','sprint','sprintLen','uat','launchDate','measureDate','rollback','actual','result'].forEach(k=>delete S.data[k]);
+  S.cur=steps().findIndex(s=>s.id==='s4');save();render();toast(u().cycleStarted,true);
+}
+$('newBtn').onclick=()=>{snap();const lang=S.lang;S=fresh();S.lang=lang;save();render();toast(u().cleared,true)};
+$('viewSwitch').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.view=b.dataset.view;save();render()});
+$('langBtn').onclick=()=>{S.lang=S.lang==='ar'?'en':'ar';save();render()};
+
+function summaryText(){
+  const t=u(),list=steps(),out=[t.exportTitle,'='.repeat(32)];
+  list.forEach((st,i)=>{
+    const s=status(i);const sl={done:t.done,progress:t.inProgress,todo:t.notStarted,locked:t.locked}[s];
+    out.push('',`${i?i+'. ':''}${L(st.title)} — ${sl}`,`   ${t.owner}: ${L(st.owner)}`);
+    st.fields.forEach(f=>{let v=S.data[f.id];if(!v)return;
+      if(f.kind==='type'){const ty=TYPES.find(x=>x.id===v);v=ty?ty[S.lang][0]:v}
+      else if(f.kind==='choice'){const i2=f.values?f.values.indexOf(v):+v;v=f.options[i2]?L(f.options[i2]):v}
+      out.push(`   ${L(f.label)}: ${v}`)});
+    const c=S.checks[st.id]||[];st.checks.forEach((k,j)=>out.push(`   [${c[j]?'x':' '}] ${L(k)}`));
+  });
+  return out.join('\n');
+}
+$('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(summaryText());toast(u().copied)}catch(e){toast(e.message)}};
+$('dlBtn').onclick=()=>{const b=new Blob([summaryText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(S.data.title||'dealapp-request').replace(/[\\/:*?"<>|]/g,'-')+'.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast(u().downloaded)};
+$('printBtn').onclick=()=>window.print();
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;const fwd=S.lang==='ar'?'ArrowLeft':'ArrowRight',back=S.lang==='ar'?'ArrowRight':'ArrowLeft';if(e.key===fwd&&!$('nextBtn')?.disabled)go(S.cur+1);if(e.key===back&&S.cur>0)go(S.cur-1)});
+
+render();
+</script>
+</body>
+</html>
