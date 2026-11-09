@@ -114,6 +114,62 @@ button{cursor:pointer}
 .stack{display:flex;flex-direction:column;gap:8px}
 .saved{font-size:12px;color:var(--muted);margin-top:8px}
 
+.view-switch{display:inline-flex;background:#1d3a42;border-radius:10px;padding:3px;gap:2px}
+.view-switch button{border:0;background:none;color:#cfe0df;border-radius:8px;padding:6px 12px;font-weight:600;font-size:14px;white-space:nowrap}
+.view-switch button[aria-pressed="true"]{background:var(--lime);color:#122a32}
+.v-flow,.v-dd{display:none}
+.view-flow .v-flow,.view-dd .v-dd{display:block}
+.view-flow .v-steps,.view-dd .v-steps{display:none}
+.detail .node{margin:0}
+.detail .head{cursor:default}
+/* flowchart canvas */
+.canvas{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.c-tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid var(--line)}
+.c-tools .btn{padding:5px 10px;font-size:13px}
+.c-zoom{min-width:48px;text-align:center;font-size:13px;font-weight:600;color:var(--muted)}
+.c-vp{height:calc(100vh - 300px);min-height:480px;overflow:auto;cursor:grab;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:18px 18px}
+.c-vp.drag{cursor:grabbing;user-select:none}
+.c-sizer{position:relative;overflow:hidden;margin:0 auto;direction:ltr}
+.c-stage{width:560px;padding:24px 0;transform-origin:0 0;display:flex;flex-direction:column;align-items:center}
+[dir=rtl] .c-stage{direction:rtl}
+.c-arrow{width:2px;height:22px;background:var(--rule);position:relative;flex:none}
+.c-arrow:after{content:"";position:absolute;bottom:-2px;left:-4px;border:5px solid transparent;border-top:6px solid var(--rule);border-bottom:0}
+.c-box{width:320px;border:1.5px solid var(--bd);background:var(--card);border-radius:12px;padding:9px 14px;text-align:center}
+.c-box b{display:block;font-size:15px}.c-box small{display:block;font-size:12px;color:var(--muted)}
+.c-dia{position:relative;width:240px;height:104px;display:grid;place-items:center;text-align:center;padding:0 46px;background:none;border:0}
+.c-dia svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.c-dia polygon{fill:var(--card);stroke:var(--bd);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.c-dia span{position:relative;font-weight:600;font-size:14px;line-height:1.3}
+.c-dia small{display:block;font-weight:400;font-size:12px;color:var(--teal-ink)}
+.is-done.c-box{border-color:var(--teal);background:var(--teal-soft)}
+.is-done.c-dia polygon{stroke:var(--teal);fill:var(--teal-soft)}
+.is-active.c-box,.is-active.c-dia polygon{border-color:var(--teal);stroke:var(--teal);stroke-width:2.5}
+.is-todo{opacity:.5}
+.sel.c-box{box-shadow:0 0 0 3px #7bd7c4}
+.sel.c-dia polygon{stroke:#7bd7c4;stroke-width:3}
+.c-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:480px;margin-top:8px}
+.c-chips .opt{font-size:13px;padding:5px 11px}
+.c-term{border-radius:99px;padding:7px 18px;font-weight:600;font-size:14px;background:var(--navy);color:#fff}
+.c-term.stop{background:var(--stop-bg);color:var(--stop-ink)}.c-term.warn{background:var(--warn-bg);color:var(--warn-ink)}.c-term.end{background:var(--teal);color:#fff}
+/* double diamond */
+.dd{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.dd-svg{width:100%;height:auto;display:block}
+.dd-svg .ph{cursor:pointer;stroke:var(--card);stroke-width:3}
+.dd-svg .cur{stroke:var(--teal)}
+.dd-svg text{fill:var(--ink);font-family:inherit;pointer-events:none}
+.dd-svg text.m{fill:var(--muted)}.dd-svg text.on{fill:#fff}
+.dd-svg .ax{stroke:var(--rule);stroke-width:1.5}
+.dd-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.dd-col{border:1px solid var(--line);border-radius:12px;padding:10px;min-width:0}
+.dd-col.current{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
+.dd-col h3{font-size:15px;margin:0}.dd-col p{font-size:13px;color:var(--muted);margin:2px 0 8px}
+.dd-step{display:flex;gap:8px;align-items:center;width:100%;text-align:start;background:none;border:0;border-radius:8px;padding:6px;font-size:14px}
+.dd-step:hover{background:var(--soft)}
+.dd-step.sel{background:var(--teal-soft);font-weight:600}
+.dd-step .num{width:24px;height:24px;font-size:12px}
+.dd-empty{font-size:13px;color:var(--muted)}
+@media (max-width:980px){.dd-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.dd-cols{grid-template-columns:1fr}.top-actions{width:100%}.view-switch{order:-1;width:100%;display:flex}.view-switch button{flex:1}}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;display:none;align-items:center;gap:12px;z-index:50;font-size:14px;box-shadow:0 8px 30px #0003}
 .toast.show{display:flex}
 .toast button{background:none;border:0;color:var(--lime);font-weight:600;text-decoration:underline}
@@ -133,6 +189,7 @@ button{cursor:pointer}
 <header class="top">
   <div class="brand"><div class="mark" aria-hidden="true">D</div><div><b id="tBrand"></b><small id="tBrandSub"></small></div></div>
   <div class="top-actions">
+    <div class="view-switch" role="group" id="viewSwitch"><button type="button" data-view="steps"></button><button type="button" data-view="flow"></button><button type="button" data-view="dd"></button></div>
     <button class="btn ghost icon" id="undoBtn" type="button">↶</button>
     <button class="btn ghost icon" id="redoBtn" type="button">↷</button>
     <button class="btn ghost icon" id="themeBtn" type="button"></button>
@@ -144,9 +201,10 @@ button{cursor:pointer}
 <main class="wrap">
   <section class="intro"><h1 id="tTitle"></h1><p id="tIntro"></p></section>
   <nav class="phases" id="phases"></nav>
-  <div class="layout">
-    <section aria-live="polite"><ol class="flow" id="flow"></ol></section>
+  <div class="layout" id="layout">
+    <section aria-live="polite"><ol class="flow v-steps" id="flow"></ol><div class="v-flow canvas" id="canvas"></div><div class="v-dd dd" id="dd"></div></section>
     <aside class="side">
+      <section class="detail v-flow v-dd" id="detail"></section>
       <section class="panel"><h2 id="tSummary"></h2><div id="next"></div><dl class="sum" id="summary"></dl></section>
       <section class="panel"><h2 id="tShare"></h2>
         <div class="stack">
@@ -163,7 +221,7 @@ button{cursor:pointer}
 
 <script>
 /* ---------- Auto-update (beats the GitHub Pages cache) ---------- */
-const APP_V='2026.11.09-5';
+const APP_V='2026.11.09-6';
 (function(){
   async function check(){
     try{
@@ -192,7 +250,7 @@ const UI={
   loopT:'الهدف لم يتحقق',loopX:'نرجع لخطوة الحل بنفس المشكلة والهدف، ونجرب تحسينًا جديدًا.',loopBtn:'ابدأ دورة تحسين',
   laterT:'لم نقس بعد',laterX:'ارجع هنا في موعد القياس وسجّل النتيجة.',
   bugLoopT:'المشكلة اتكررت',bugLoopX:'نرجع لخطوة الإصلاح.',bugLoopBtn:'ارجع للإصلاح',
-  exportTitle:'ملخص طلب منتج — ديل',sType:'نوع الطلب',sReq:'مقدم الطلب',sCh:'وصل عن طريق',sKpi:'المؤشر',sBase:'الحالي ← المستهدف',sMeasure:'موعد القياس'},
+  exportTitle:'ملخص طلب منتج — ديل',vSteps:'الخطوات',vFlow:'المخطط',vDD:'الماسة المزدوجة',vGroup:'طريقة العرض',zIn:'تكبير',zOut:'تصغير',fit:'ملاءمة',center:'توسيط',start:'طلب جديد',probSpace:'مساحة المشكلة',solSpace:'مساحة الحل',noSteps:'لا خطوات في هذا المسار',outcome:'النتيجة',sType:'نوع الطلب',sReq:'مقدم الطلب',sCh:'وصل عن طريق',sKpi:'المؤشر',sBase:'الحالي ← المستهدف',sMeasure:'موعد القياس'},
  en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
   intro:'Answer one question per step; the next step appears based on your answer. Every step shows its owner and when it is done.',
   lang:'العربية',newReq:'New request',summary:'Request summary',share:'Share',copy:'Copy summary',dl:'Download text file',print:'Print',
@@ -205,7 +263,7 @@ const UI={
   loopT:'Target not met',loopX:'Go back to the solution step with the same problem and goal, and try a new improvement.',loopBtn:'Start improvement cycle',
   laterT:'Not measured yet',laterX:'Come back on the measurement date and record the result.',
   bugLoopT:'The bug recurred',bugLoopX:'Go back to the fix step.',bugLoopBtn:'Back to the fix',
-  exportTitle:'Dealapp product request summary',sType:'Request type',sReq:'Requester',sCh:'Arrived via',sKpi:'KPI',sBase:'Current → target',sMeasure:'Measurement date'}
+  exportTitle:'Dealapp product request summary',vSteps:'Steps',vFlow:'Flowchart',vDD:'Double Diamond',vGroup:'View',zIn:'Zoom in',zOut:'Zoom out',fit:'Fit',center:'Center',start:'New request',probSpace:'Problem space',solSpace:'Solution space',noSteps:'No steps in this path',outcome:'Outcome',sType:'Request type',sReq:'Requester',sCh:'Arrived via',sKpi:'KPI',sBase:'Current → target',sMeasure:'Measurement date'}
 };
 const ch=(ar,en)=>({ar,en});
 
@@ -300,7 +358,7 @@ const N={
 
 /* ---------- State ---------- */
 const KEY='dealapp-process-2027-v4';
-const fresh=()=>({lang:'ar',theme:null,a:{},done:{},checks:{},open:null,savedAt:null});
+const fresh=()=>({view:'steps',sel:null,zoom:1,lang:'ar',theme:null,a:{},done:{},checks:{},open:null,savedAt:null});
 let S=load(),UNDO=[],REDO=[];
 function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.a)return Object.assign(fresh(),s)}catch(e){}return fresh()}
 function save(){S.savedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -369,7 +427,13 @@ function render(){
   $('themeBtn').textContent=dark?'☀':'☾';$('themeBtn').title=dark?t.light:t.dark;$('themeBtn').setAttribute('aria-label',dark?t.light:t.dark);
   $('undoBtn').title=t.undoL;$('undoBtn').setAttribute('aria-label',t.undoL);$('redoBtn').title=t.redoL;$('redoBtn').setAttribute('aria-label',t.redoL);
   $('undoBtn').disabled=!UNDO.length;$('redoBtn').disabled=!REDO.length;
-  const sh=shown();renderPhases(sh);renderFlow(sh);renderSide(sh);
+  $('viewSwitch').setAttribute('aria-label',t.vGroup);
+  $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent={steps:t.vSteps,flow:t.vFlow,dd:t.vDD}[b.dataset.view];b.setAttribute('aria-pressed',S.view===b.dataset.view)});
+  $('layout').className='layout view-'+S.view;
+  const sh=shown();renderPhases(sh);
+  if(S.view==='steps')renderFlow(sh);
+  else{if(S.view==='flow')renderCanvas(sh);else renderDD(sh);renderDetail(sh)}
+  renderSide(sh);
   $('saved').textContent=S.savedAt?t.savedAt(new Date(S.savedAt).toLocaleTimeString(S.lang==='ar'?'ar-SA':'en-GB',{hour:'2-digit',minute:'2-digit'})):'';
 }
 
@@ -384,7 +448,7 @@ function renderPhases(sh){
     const cls=[p.id===curPh?'current':'',ids.length?'':'empty'].join(' ');
     return `<button type="button" class="phase ${cls}" data-ph="${p.id}" ${ids.length?'':'disabled'}>${diamond(ids.length?d/ids.length:0)}<div><b>${esc(L(p.name))}</b><span>${esc(L(phSub(p)))} · ${ids.length?d+'/'+ids.length:'—'}</span></div></button>`;
   }).join('');
-  $('phases').querySelectorAll('.phase').forEach(b=>b.onclick=()=>{const el=document.querySelector(`[data-phase-start="${b.dataset.ph}"]`);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
+  $('phases').querySelectorAll('.phase').forEach(b=>b.onclick=()=>{if(S.view!=='steps'){const ids=sh.all.filter(id=>N[id].ph===b.dataset.ph);const nx=ids.find(id=>!isDone(id))||ids[0];if(nx){pick(nx);focusActive()}return}const el=document.querySelector(`[data-phase-start="${b.dataset.ph}"]`);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
 }
 
 function bodyHTML(id){
@@ -417,7 +481,7 @@ function renderFlow(sh){
     if(node.ph!==lastPh){const p=PHASES.find(x=>x.id===node.ph);h+=`<li class="ph-label" data-phase-start="${node.ph}">${esc(L(p.name))} — ${esc(L(phSub(p)))}</li>`;lastPh=node.ph}
     const done=isDone(id),active=id===sh.active,open=active||S.open===id;
     const ans=done?answerText(id):'';
-    h+=`<li class="node ${done?'is-done':''} ${active?'is-active':''}" id="n_${id}">
+    h+=`<li class="node ${done?'is-done':''} ${active?'is-active':''}" id="n_${id}" data-node="${id}">
       <button type="button" class="head" data-toggle="${id}" aria-expanded="${open}" ${active?'disabled style="cursor:default"':''}>
         <span class="num" aria-hidden="true">${done?'✓':n}</span>
         <span class="q"><b>${esc(L(node.q))}</b><small>${t.owner}: ${esc(L(node.owner))}</small></span>
@@ -428,21 +492,88 @@ function renderFlow(sh){
   });
   h+=termHTML(sh.term);
   $('flow').innerHTML=h;
-  bindFlow();
+  bindFlow($('flow'));
 }
 
-function bindFlow(){
-  const f=$('flow');
+function bindFlow(f){
   f.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{const id=b.dataset.toggle;S.open=S.open===id?null:id;save();render()});
-  f.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.pick,v=b.dataset.v;S.a[k]=S.a[k]===v?'':v;if(N[k])S.open=null;save();render();focusActive()});
+  f.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.pick,v=b.dataset.v;S.a[k]=S.a[k]===v?'':v;if(N[k]){S.open=null;S.sel=null}save();render();focusActive()});
   f.querySelectorAll('[data-multi]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.multi,v=b.dataset.v;const arr=S.a[k]||[];S.a[k]=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v];S.done[k]=false;save();render()});
-  f.querySelectorAll('[data-f]').forEach(el=>el.oninput=()=>{if(!el._s){snap();el._s=true}S.a[el.dataset.f]=el.value;const id=el.closest('.node').id.slice(2);if(S.done[id]&&!canConfirm(id))S.done[id]=false;save();const btn=f.querySelector(`[data-confirm="${id}"]`);if(btn)btn.disabled=!canConfirm(id);renderSide(shown())});
-  f.querySelectorAll('[data-check]').forEach(el=>el.onchange=()=>{snap();const id=el.dataset.check;const c=S.checks[id]||[];c[+el.dataset.i]=el.checked;S.checks[id]=c;save();render();if(N[id].kind==='task')focusActive()});
-  f.querySelectorAll('[data-confirm]').forEach(b=>b.onclick=()=>{snap();S.done[b.dataset.confirm]=true;S.open=null;save();render();focusActive()});
-  const lb=$('loopBtn');if(lb)lb.onclick=()=>{snap();['solution','test','build','launch','result','close'].forEach(k=>{delete S.done[k];delete S.checks[k]});['test','measureDate','result','actual','learnings'].forEach(k=>delete S.a[k]);save();render();focusActive();toast(u().cycle,true)};
-  const bl=$('bugLoopBtn');if(bl)bl.onclick=()=>{snap();['bfix','brel'].forEach(k=>delete S.checks[k]);delete S.a.brec;save();render();focusActive()};
+  f.querySelectorAll('[data-f]').forEach(el=>el.oninput=()=>{if(!el._s){snap();el._s=true}S.a[el.dataset.f]=el.value;const id=el.closest('[data-node]').dataset.node;if(S.done[id]&&!canConfirm(id))S.done[id]=false;save();const btn=document.querySelector(`[data-confirm="${id}"]`);if(btn)btn.disabled=!canConfirm(id);renderSide(shown())});
+  f.querySelectorAll('[data-check]').forEach(el=>el.onchange=()=>{snap();const id=el.dataset.check;const c=S.checks[id]||[];c[+el.dataset.i]=el.checked;S.checks[id]=c;save();render();if(N[id].kind==='task'){if(isDone(id))S.sel=null;render();focusActive()}});
+  f.querySelectorAll('[data-confirm]').forEach(b=>b.onclick=()=>{snap();S.done[b.dataset.confirm]=true;S.open=null;S.sel=null;save();render();focusActive()});
+  const lb=f.querySelector('#loopBtn')||$('loopBtn');if(lb)lb.onclick=()=>{snap();['solution','test','build','launch','result','close'].forEach(k=>{delete S.done[k];delete S.checks[k]});['test','measureDate','result','actual','learnings'].forEach(k=>delete S.a[k]);save();render();focusActive();toast(u().cycle,true)};
+  const bl=f.querySelector('#bugLoopBtn')||$('bugLoopBtn');if(bl)bl.onclick=()=>{snap();['bfix','brel'].forEach(k=>delete S.checks[k]);delete S.a.brec;save();render();focusActive()};
 }
-function focusActive(){const sh=shown();if(!sh.active)return;const el=$('n_'+sh.active);if(el){const r=el.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)el.scrollIntoView({behavior:'smooth',block:'center'})}}
+function selId(sh){const ids=sh.all;return (S.sel&&ids.includes(S.sel))?S.sel:(sh.active||ids[ids.length-1])}
+function renderDetail(sh){
+  const t=u(),id=selId(sh),node=N[id],done=isDone(id),active=id===sh.active;
+  const idx=sh.all.indexOf(id)+1;
+  let h=`<div class="node ${done?'is-done':''} ${active?'is-active':''}" data-node="${id}"><div class="head"><span class="num" aria-hidden="true">${done?'✓':idx}</span><span class="q"><b>${esc(L(node.q))}</b><small>${t.owner}: ${esc(L(node.owner))}</small></span></div>${bodyHTML(id)}</div>`;
+  if(!sh.active&&sh.term)h+=`<ol class="flow" style="margin-top:12px">${termHTML(sh.term)}</ol>`;
+  $('detail').innerHTML=h;bindFlow($('detail'));
+}
+function pick(id){S.sel=id;save();render()}
+function renderCanvas(sh){
+  const t=u(),A='<div class="c-arrow" aria-hidden="true"></div>',sel=selId(sh);
+  let h=`<div class="c-term">${t.start}</div>`;
+  sh.all.forEach((id,i)=>{
+    const n=N[id],st=isDone(id)?'is-done':(id===sh.active?'is-active':'is-todo'),cls=`${st} ${id===sel?'sel':''}`;
+    h+=A;
+    if(n.kind==='choice'){
+      const ans=answerText(id);
+      h+=`<button type="button" class="c-dia ${cls}" data-sel="${id}"><svg viewBox="0 0 240 104" preserveAspectRatio="none" aria-hidden="true"><polygon points="120,1 239,52 120,103 1,52"/></svg><span>${esc(L(n.q))}${ans?`<small>${esc(ans)}</small>`:''}</span></button>`;
+      if(id===sh.active)h+=`<div class="c-chips" data-node="${id}">${n.opts.map(o=>`<button type="button" class="opt" data-pick="${id}" data-v="${o[0]}" aria-pressed="${S.a[id]===o[0]}">${esc(L(o[1]))}</button>`).join('')}</div>`;
+    }else{
+      const ans=isDone(id)?answerText(id):'';
+      h+=`<button type="button" class="c-box ${cls}" data-sel="${id}"><b>${i+1}. ${esc(L(n.q))}</b><small>${ans?esc(ans):esc(L(n.owner))}</small></button>`;
+    }
+  });
+  if(sh.term&&!sh.active){const m={stop:['stop',t.stopT],end:['end',t.endT],loop:['warn',t.loopT],later:['warn',t.laterT],bugloop:['warn',t.bugLoopT]}[sh.term];h+=A+`<div class="c-term ${m[0]}">${m[1]}</div>`}
+  else if(!S.a.type){}
+  if(!$('cStage')){
+    $('canvas').innerHTML=`<div class="c-tools"><button type="button" class="btn icon" id="zOut">−</button><span class="c-zoom" id="zLbl"></span><button type="button" class="btn icon" id="zIn">+</button><button type="button" class="btn" id="zFit"></button><button type="button" class="btn" id="zCenter"></button></div><div class="c-vp" id="cVp"><div class="c-sizer" id="cSizer"><div class="c-stage" id="cStage"></div></div></div>`;
+    $('zOut').onclick=()=>setZoom((S.zoom||1)-.1);$('zIn').onclick=()=>setZoom((S.zoom||1)+.1);$('zFit').onclick=fitCanvas;$('zCenter').onclick=()=>centerCanvas(true);
+    enablePan($('cVp'));
+    $('cStage').dataset.fresh='1';
+  }
+  $('zOut').setAttribute('aria-label',t.zOut);$('zIn').setAttribute('aria-label',t.zIn);$('zFit').textContent=t.fit;$('zCenter').textContent=t.center;
+  $('cStage').innerHTML=h;
+  if($('cStage').dataset.fresh){delete $('cStage').dataset.fresh;fitWidth()}
+  applyZoom();
+  $('cStage').querySelectorAll('[data-sel]').forEach(b=>b.onclick=()=>pick(b.dataset.sel));
+  bindFlow($('cStage'));
+}
+function fitWidth(){const vp=$('cVp'),st=$('cStage');if(!vp||!st)return;const w=vp.clientWidth;if(w&&w<st.offsetWidth*(S.zoom||1)){S.zoom=Math.max(.35,Math.round((w-16)/st.offsetWidth*100)/100);applyZoom()}}
+addEventListener('resize',()=>{if(S.view==='flow')fitWidth()});
+function applyZoom(){const st=$('cStage'),sz=$('cSizer');if(!st)return;const z=S.zoom||1;st.style.transform=`scale(${z})`;sz.style.width=st.offsetWidth*z+'px';sz.style.height=st.offsetHeight*z+'px';$('zLbl').textContent=Math.round(z*100)+'%'}
+function setZoom(z){S.zoom=Math.min(1.6,Math.max(.35,Math.round(z*100)/100));save();applyZoom()}
+function fitCanvas(){const vp=$('cVp'),st=$('cStage');if(!vp)return;setZoom(Math.min(1,(vp.clientWidth-24)/st.offsetWidth,(vp.clientHeight-24)/st.offsetHeight));vp.scrollTop=0}
+function centerCanvas(smooth){const vp=$('cVp'),n=$('cStage')&&$('cStage').querySelector('.sel');if(!vp||!n)return;const z=S.zoom||1;vp.scrollTo({top:(n.offsetTop+n.offsetHeight/2)*z-vp.clientHeight/2,behavior:smooth?'smooth':'auto'})}
+function enablePan(vp){let d=null;vp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.target.closest('button,input,textarea,a'))return;d={x:e.clientX,y:e.clientY,l:vp.scrollLeft,t:vp.scrollTop};vp.setPointerCapture(e.pointerId);vp.classList.add('drag')});vp.addEventListener('pointermove',e=>{if(!d)return;vp.scrollLeft=d.l-(e.clientX-d.x);vp.scrollTop=d.t-(e.clientY-d.y)});const end=()=>{d=null;vp.classList.remove('drag')};vp.addEventListener('pointerup',end);vp.addEventListener('pointercancel',end);vp.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();setZoom((S.zoom||1)-Math.sign(e.deltaY)*.1)}},{passive:false})}
+function renderDD(sh){
+  const t=u(),rtl=S.lang==='ar',X=x=>rtl?1000-x:x,sel=selId(sh);
+  const groups={};PHASES.forEach(p=>groups[p.id]=sh.all.map((id,i)=>[id,i]).filter(([id])=>N[id].ph===p.id));
+  const curPh=N[sel].ph;
+  const tri={p1:[[60,170],[270,30],[270,310]],p2:[[270,30],[480,170],[270,310]],p3:[[520,170],[730,30],[730,310]],p4:[[730,30],[940,170],[730,310]]};
+  const cx={p1:200,p2:340,p3:660,p4:800};
+  let g=`<svg class="dd-svg" viewBox="0 0 1000 370" role="img" aria-label="${esc(t.vDD)}"><line class="ax" x1="${X(10)}" y1="170" x2="${X(60)}" y2="170"/><line class="ax" x1="${X(480)}" y1="170" x2="${X(520)}" y2="170"/><line class="ax" x1="${X(940)}" y1="170" x2="${X(990)}" y2="170"/>`;
+  PHASES.forEach(p=>{const ids=groups[p.id],n=ids.length,d=ids.filter(([id])=>isDone(id)).length,op=n?(.12+.6*d/n):.05,on=n&&d/n>.5?'on':'';
+    g+=`<polygon class="ph ${p.id===curPh?'cur':''}" data-ph="${p.id}" points="${tri[p.id].map(([x,y])=>X(x)+','+y).join(' ')}" fill="var(--teal)" fill-opacity="${op}" tabindex="0" role="button" aria-label="${esc(L(p.name))} ${d}/${n}"/>`;
+    g+=`<text class="${on}" x="${X(cx[p.id])}" y="164" text-anchor="middle" font-size="21" font-weight="600">${esc(L(p.name))}</text><text class="${on||'m'}" x="${X(cx[p.id])}" y="192" text-anchor="middle" font-size="16">${n?'\u2066'+d+' / '+n+'\u2069':'—'}</text>`});
+  g+=`<text class="m" x="${X(270)}" y="345" text-anchor="middle" font-size="17" font-weight="600">${esc(t.probSpace)}</text><text class="m" x="${X(730)}" y="345" text-anchor="middle" font-size="17" font-weight="600">${esc(t.solSpace)}</text><text class="m" x="${X(970)}" y="150" text-anchor="middle" font-size="13">${esc(t.outcome)}</text></svg>`;
+  let c='<div class="dd-cols">';
+  PHASES.forEach(p=>{c+=`<section class="dd-col ${p.id===curPh?'current':''}"><h3>${esc(L(p.name))}</h3><p>${esc(L(phSub(p)))}</p>`;
+    if(!groups[p.id].length)c+=`<div class="dd-empty">${t.noSteps}</div>`;
+    groups[p.id].forEach(([id,i])=>{const dn=isDone(id);c+=`<button type="button" class="dd-step ${id===sel?'sel':''} ${dn?'is-done':''}" data-sel="${id}"><span class="num" aria-hidden="true">${dn?'✓':i+1}</span><span>${esc(L(N[id].q))}</span></button>`});
+    c+='</section>'});
+  c+='</div>';
+  $('dd').innerHTML=g+c;
+  $('dd').querySelectorAll('[data-sel]').forEach(b=>b.onclick=()=>pick(b.dataset.sel));
+  $('dd').querySelectorAll('.ph').forEach(pg=>{const act=()=>{const ids=groups[pg.dataset.ph];if(!ids.length)return;const nx=ids.find(([id])=>!isDone(id));pick((nx||ids[0])[0])};pg.onclick=act;pg.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}}});
+}
+
+function focusActive(){if(S.view==='flow'){centerCanvas(true);return}if(S.view!=='steps')return;const sh=shown();if(!sh.active)return;const el=$('n_'+sh.active);if(el){const r=el.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)el.scrollIntoView({behavior:'smooth',block:'center'})}}
 
 function renderSide(sh){
   const t=u(),a=S.a;
@@ -465,7 +596,8 @@ document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))re
 /* ---------- Actions ---------- */
 function toast(msg,canUndo){$('toastMsg').textContent=msg;$('toastUndo').style.display=canUndo?'':'none';$('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>$('toast').classList.remove('show'),canUndo?7000:2500)}
 $('toastUndo').onclick=()=>{undo();$('toast').classList.remove('show')};
-$('newBtn').onclick=()=>{snap();S.a={};S.done={};S.checks={};S.open=null;save();render();scrollTo({top:0,behavior:'smooth'});toast(u().cleared,true)};
+$('newBtn').onclick=()=>{snap();S.a={};S.done={};S.checks={};S.open=null;S.sel=null;save();render();scrollTo({top:0,behavior:'smooth'});toast(u().cleared,true)};
+$('viewSwitch').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.view=b.dataset.view;save();render();if(S.view==='flow')requestAnimationFrame(()=>{fitWidth();centerCanvas(false)})});
 $('langBtn').onclick=()=>{S.lang=S.lang==='ar'?'en':'ar';save();render()};
 $('themeBtn').onclick=()=>{const dark=document.documentElement.dataset.theme==='dark';S.theme=dark?'light':'dark';save();render()};
 
