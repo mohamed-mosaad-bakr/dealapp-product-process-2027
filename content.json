@@ -5,10 +5,23 @@
     "source.g.requester.product": "فريق المنتجات",
     "source.g.channel.meet": "اجتماع",
     "source.g.channel.meeting": "Notion",
-    "source.g.channel.suggestions": "سكشن الآراء والمقترحات"
+    "source.g.channel.suggestions": "سكشن الآراء والمقترحات",
+    "ph.p2.sub": "جلسة البزنس / صاحب الطلب / Stakeholder",
+    "source.g.requester.broker": "عميل أو وسيط أو مالك"
   },
   "en": {},
-  "order": {},
+  "order": {
+    "source.g.requester": [
+      "broker",
+      "business",
+      "xmwandqt7",
+      "cs",
+      "product",
+      "tech",
+      "xmwanj9mr",
+      "other"
+    ]
+  },
   "hidden": [
     "source.g.channel.azure",
     "source.g.channel.notion"
