@@ -269,7 +269,7 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
 
 <script>
 /* ---------- Auto-update (beats the GitHub Pages cache) ---------- */
-const APP_V='2026.11.10-7';
+const APP_V='2026.11.10-8';
 (function(){
   async function check(){
     try{
@@ -372,10 +372,10 @@ const N={
  /* Full path */
  evidence:{ph:'p2',kind:'choice',q:ch('ما الدليل على وجود المشكلة؟','What evidence supports the problem?'),owner:ch('مدير المنتج','Product manager'),with:ch('صاحب الطلب','Requester'),
   done:ch('تم تسجيل الدليل ومصدره','Evidence and its source are recorded'),
-  opts:[['feedback',ch('ملاحظات من العملاء أو الوسطاء','Customer / broker feedback')],['data',ch('بيانات وتحليلات','Analytics data')],['business',ch('مبرر تجاري أو من السوق','Business / market case')],['assumption',ch('افتراض لم يُتحقق منه','Assumption only')]]},
+  opts:[['feedback',ch('ملاحظات من العملاء أو الوسطاء','Customer / broker feedback')],['data',ch('بيانات وتحليلات','Analytics data')],['business',ch('مبرر تجاري أو من السوق','Business / market case')],['assumption',ch('افتراض لم يُتحقق منه','Assumption only')],['other',ch('أخرى','Other')]]},
  validate:{ph:'p2',kind:'choice',q:ch('كيف نتحقق من المشكلة قبل البناء؟','How will we validate before building?'),owner:ch('مدير المنتج','Product manager'),with:ch('UX','UX'),
   done:ch('تأكدنا من المشكلة، أو سُجّل قرار التوقف','Problem validated, or the stop decision recorded'),
-  opts:[['interviews',ch('مقابلات مع عملاء أو وسطاء','Customer / broker interviews')],['data',ch('تحليل البيانات','Data analysis')],['survey',ch('استبيان','Survey')],['prototype',ch('نموذج أولي سريع','Quick prototype')],['none',ch('لن نتحقق — نوقف الطلب','No validation — stop')]]},
+  opts:[['interviews',ch('مقابلات مع عملاء أو وسطاء','Customer / broker interviews')],['data',ch('تحليل البيانات','Data analysis')],['survey',ch('استبيان','Survey')],['prototype',ch('نموذج أولي سريع','Quick prototype')],['other',ch('أخرى','Other')],['none',ch('لن نتحقق — نوقف الطلب','No validation — stop')]]},
  kpi:{ph:'p2',kind:'form',q:ch('كيف نقيس النجاح؟','How will we measure success?'),owner:ch('مدير المنتج','Product manager'),with:ch('البزنس','Business'),
   done:ch('اتفقنا على المؤشر والرقم الحالي والمستهدف','KPI, current number and target are agreed'),
   groups:[{id:'hasKpi',label:ch('هل يوجد مؤشر رقمي؟','Is there a numeric KPI?'),req:true,opts:[['yes',ch('نعم','Yes')],['no',ch('لا — نتيجة وصفية','No — qualitative outcome')]]}],
@@ -386,11 +386,11 @@ const N={
           {id:'outcome',label:ch('النتيجة المتوقعة','Expected outcome'),req:true,full:true,area:true,when:{hasKpi:'no'}}]},
  teams:{ph:'p2',kind:'multi',q:ch('من يجب أن يشارك؟','Who needs to be involved?'),owner:ch('مدير المنتج','Product manager'),
   done:ch('تم تحديد الفرق المشاركة، واعتمد صاحب الطلب الـ Brief','Teams are set, and the requester approved the brief'),
-  opts:[['business',ch('البزنس','Business')],['ops',ch('العمليات','Operations')],['cs',ch('خدمة العملاء','Customer service')],['marketing',ch('التسويق','Marketing')],['finance',ch('المالية','Finance')],['ux',ch('UX/UI','UX/UI')],['tech',ch('التطوير','Engineering')],['qa',ch('QA','QA')],['data',ch('البيانات','Data')],['legal',ch('القانوني','Legal')]],
+  opts:[['business',ch('البزنس','Business')],['ops',ch('العمليات','Operations')],['cs',ch('خدمة العملاء','Customer service')],['marketing',ch('التسويق','Marketing')],['finance',ch('المالية','Finance')],['ux',ch('UX/UI','UX/UI')],['tech',ch('التطوير','Engineering')],['qa',ch('QA','QA')],['data',ch('البيانات','Data')],['legal',ch('القانوني','Legal')],['other',ch('أخرى','Other')]],
   checks:[ch('اعتمد صاحب الطلب الـ Brief (المشكلة والدليل والمؤشر)','The requester approved the brief: problem, evidence, KPI')]},
  research:{ph:'p3',kind:'choice',q:ch('هل نحتاج بحثًا قبل التصميم؟','Do we need research before design?'),owner:ch('UX','UX'),with:ch('مدير المنتج','Product manager'),
   done:ch('تم تحديد طريقة البحث، أو سبب الاستغناء عنه','Research method, or why none is needed, is recorded'),
-  opts:[['interviews',ch('مقابلات مع المستخدمين','Interviews')],['data',ch('تحليل البيانات','Data analysis')],['usability',ch('اختبار استخدام للتصميم الحالي','Usability test of current')],['ab',ch('اختبار A/B','A/B test')],['none',ch('لا — الدليل كافٍ','No — evidence is enough')]]},
+  opts:[['interviews',ch('مقابلات مع المستخدمين','Interviews')],['data',ch('تحليل البيانات','Data analysis')],['usability',ch('اختبار استخدام للتصميم الحالي','Usability test of current')],['ab',ch('اختبار A/B','A/B test')],['other',ch('أخرى','Other')],['none',ch('لا — الدليل كافٍ','No — evidence is enough')]]},
  solution:{ph:'p3',kind:'form',q:ch('الـ Stories والتصميم','Stories and design'),owner:ch('مدير المنتج','Product manager'),with:ch('UX/UI + فريق التطوير','UX/UI + Engineering'),
   done:ch('اتفقنا على النطاق ومعايير القبول، والتصميم يغطي حالات: لا توجد بيانات، والتحميل، والخطأ','Scope and acceptance criteria agreed; design covers empty, loading and error states'),
   fields:[{id:'stories',label:ch('رابط الـ Stories','Stories link'),req:true,full:true,ph:'https://notion.so/…'},{id:'figma',label:ch('رابط التصميم','Design link'),req:true,full:true,ph:'https://figma.com/…'}]},
@@ -493,16 +493,18 @@ function route(){
 function visibleFields(n){return (n.fields||[]).filter(f=>!f.when||Object.entries(f.when).every(([k,v])=>S.a[k]===v))}
 function isDone(id){
   const n=N[id];
-  if(n.kind==='choice')return filled(S.a[id]);
+  if(n.kind==='choice')return filled(S.a[id])&&(S.a[id]!=='other'||(filled(S.a[id+'Other'])&&!!S.done[id]));
   const c=S.checks[id]||[];const checksOk=(n.checks||[]).every((_,i)=>c[i]||hid(id+'.c.'+i));
   if(n.kind==='task')return checksOk;
   const groupsOk=(n.groups||[]).every(g=>!g.req||(filled(S.a[g.id])&&(S.a[g.id]!=='other'||filled(S.a[g.id+'Other']))));
   const fieldsOk=visibleFields(n).every(f=>!f.req||filled(S.a[f.id]));
-  if(n.kind==='multi')return !!S.done[id]&&checksOk;
+  if(n.kind==='multi')return !!S.done[id]&&checksOk&&(!(S.a[id]||[]).includes('other')||filled(S.a[id+'Other']));
   return !!S.done[id]&&groupsOk&&fieldsOk&&checksOk;
 }
 function canConfirm(id){
   const n=N[id];const c=S.checks[id]||[];
+  if(n.kind==='choice')return filled(S.a[id+'Other']);
+  if(n.kind==='multi'&&(S.a[id]||[]).includes('other')&&!filled(S.a[id+'Other']))return false;
   return (n.checks||[]).every((_,i)=>c[i]||hid(id+'.c.'+i))&&(n.groups||[]).every(g=>!g.req||(filled(S.a[g.id])&&(S.a[g.id]!=='other'||filled(S.a[g.id+'Other']))))&&visibleFields(n).every(f=>!f.req||filled(S.a[f.id]))&&(n.kind!=='multi'||(S.a[id]||[]).length>0);
 }
 function shown(){
@@ -514,8 +516,8 @@ function shown(){
 /* ---------- Render ---------- */
 function answerText(id){
   const n=N[id],a=S.a;
-  if(n.kind==='choice'){const o=(n._opts||n.opts).find(x=>x[0]===a[id]);return o?L(o[1]):''}
-  if(n.kind==='multi')return (a[id]||[]).map(v=>{const o=(n._opts||n.opts).find(x=>x[0]===v);return o?L(o[1]):v}).join('، ');
+  if(n.kind==='choice'){if(a[id]==='other'&&filled(a[id+'Other']))return a[id+'Other'];const o=(n._opts||n.opts).find(x=>x[0]===a[id]);return o?L(o[1]):''}
+  if(n.kind==='multi')return (a[id]||[]).map(v=>{if(v==='other'&&filled(a[id+'Other']))return a[id+'Other'];const o=(n._opts||n.opts).find(x=>x[0]===v);return o?L(o[1]):v}).join('، ');
   if(id==='source')return [a.title,optLabel(n.groups[0],a.requester)].filter(Boolean).join(' · ');
   if(id==='kpi')return a.hasKpi==='yes'?[a.kpiName,[a.baseline,a.target].filter(Boolean).join(' ← ')].filter(Boolean).join(' · '):(a.outcome||'');
   if(id==='launch')return a.measureDate?`${u().sMeasure}: ${a.measureDate}`:'';
@@ -568,7 +570,9 @@ function bodyHTML(id){
   const fs=visibleFields(n);
   if(fs.length)h+=`<div class="fields" style="margin-top:14px">${fs.map(f=>`<div class="field ${f.full?'full':''}"><label for="f_${f.id}">${esc(L(f.label))}${f.req?'':` <span>${t.optional}</span>`}</label>${f.area?`<textarea id="f_${f.id}" data-f="${f.id}" placeholder="${esc(f.ph?L(f.ph):'')}">${esc(a[f.id])}</textarea>`:`<input id="f_${f.id}" data-f="${f.id}" type="${f.kind==='date'?'date':'text'}" value="${esc(a[f.id])}" placeholder="${esc(f.ph?L(f.ph):'')}">`}</div>`).join('')}</div>`;
   if(n.checks&&n.checks.some((_,i)=>!hid(id+'.c.'+i))){const c=S.checks[id]||[];h+=`<ul class="checks" style="margin-top:14px">${n.checks.map((k,i)=>hid(id+'.c.'+i)?'':`<li><label><input type="checkbox" data-check="${id}" data-i="${i}" ${c[i]?'checked':''}><span>${esc(L(k))}</span></label></li>`).join('')}</ul>`}
-  if(n.kind==='form'||n.kind==='multi')h+=`<div class="actions-row"><button type="button" class="btn primary" data-confirm="${id}" ${canConfirm(id)?'':'disabled'}>${t.confirm}</button></div>`;
+  const otherOn=n.kind==='choice'?a[id]==='other':(n.kind==='multi'&&(a[id]||[]).includes('other'));
+  if(otherOn)h+=`<div class="field" style="margin-top:10px"><label class="sr" for="f_${id}Other">${t.otherL}</label><input id="f_${id}Other" data-f="${id}Other" value="${esc(a[id+'Other'])}" placeholder="${t.otherPh}"></div>`;
+  if(n.kind==='form'||n.kind==='multi'||(n.kind==='choice'&&otherOn))h+=`<div class="actions-row"><button type="button" class="btn primary" data-confirm="${id}" ${canConfirm(id)?'':'disabled'}>${t.confirm}</button></div>`;
   h+=`<div class="done-rule"><b>${t.doneRule}</b> ${esc(L(n.done))}</div></div>`;
   return h;
 }
@@ -606,7 +610,7 @@ function renderFlow(sh){
 
 function bindFlow(f){
   f.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{const id=b.dataset.toggle;S.open=S.open===id?null:id;save();render()});
-  f.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.pick,v=b.dataset.v;S.a[k]=S.a[k]===v?'':v;if(N[k]){S.open=null;S.sel=null}save();render();focusActive()});
+  f.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.pick,v=b.dataset.v;S.a[k]=S.a[k]===v?'':v;if(N[k]){S.open=null;S.sel=null;S.done[k]=false}save();render();focusActive()});
   f.querySelectorAll('[data-multi]').forEach(b=>b.onclick=()=>{snap();const k=b.dataset.multi,v=b.dataset.v;const arr=S.a[k]||[];S.a[k]=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v];S.done[k]=false;save();render()});
   f.querySelectorAll('[data-f]').forEach(el=>el.oninput=()=>{if(!el._s){snap();el._s=true}S.a[el.dataset.f]=el.value;const id=el.closest('[data-node]').dataset.node;if(S.done[id]&&!canConfirm(id))S.done[id]=false;save();const btn=document.querySelector(`[data-confirm="${id}"]`);if(btn)btn.disabled=!canConfirm(id);renderSide(shown())});
   f.querySelectorAll('[data-check]').forEach(el=>el.onchange=()=>{snap();const id=el.dataset.check;const c=S.checks[id]||[];c[+el.dataset.i]=el.checked;S.checks[id]=c;save();render();if(N[id].kind==='task'){if(isDone(id))S.sel=null;render();focusActive()}});
