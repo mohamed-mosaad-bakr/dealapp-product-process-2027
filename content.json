@@ -5,10 +5,12 @@
     "source.g.requester.product": "فريق المنتجات",
     "source.g.channel.meet": "اجتماع",
     "source.g.channel.meeting": "Notion",
-    "source.g.channel.notion": "",
-    "source.g.channel.azure": "",
     "source.g.channel.suggestions": "سكشن الآراء والمقترحات"
   },
   "en": {},
-  "order": {}
+  "order": {},
+  "hidden": [
+    "source.g.channel.azure",
+    "source.g.channel.notion"
+  ]
 }
