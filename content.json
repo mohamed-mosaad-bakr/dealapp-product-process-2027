@@ -1,23 +1,16 @@
 {
   "v": 1,
   "ar": {
-    "source.g.requester.cs": "فريق خدمة العملاء",
-    "source.g.requester.product": "فريق المنتجات",
     "source.g.channel.meet": "اجتماع",
     "source.g.channel.meeting": "Notion",
     "source.g.channel.suggestions": "سكشن الآراء والمقترحات",
-    "ph.p2.sub": "جلسة البزنس / صاحب الطلب / Stakeholder",
-    "source.g.requester.broker": "عميل أو وسيط أو مالك"
+    "ph.p2.sub": "جلسة البزنس / صاحب الطلب / Stakeholder"
   },
   "en": {},
   "order": {
     "source.g.requester": [
-      "broker",
-      "business",
-      "xmwandqt7",
-      "cs",
-      "product",
-      "tech",
+      "user",
+      "team",
       "xmwanj9mr",
       "other"
     ]
@@ -28,11 +21,6 @@
   ],
   "added": {
     "source.g.requester": [
-      {
-        "v": "xmwandqt7",
-        "ar": "فريق العمليات",
-        "en": "فريق العمليات"
-      },
       {
         "v": "xmwanj9mr",
         "ar": "الهيئة العامة للعقار",
