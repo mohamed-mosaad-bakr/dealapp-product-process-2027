@@ -1,7 +1,11 @@
 {
   "v": 1,
   "ar": {
-    "source.g.requester.cs": "فريق خدمة العملاء"
+    "source.g.requester.cs": "فريق خدمة العملاء",
+    "source.g.requester.product": "فريق المنتجات",
+    "source.g.channel.meet": "اجتماع",
+    "source.g.channel.meeting": "Notion",
+    "source.g.channel.notion": ""
   },
   "en": {},
   "order": {}
