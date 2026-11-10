@@ -99,6 +99,32 @@ button{cursor:pointer}
 .term.warn{background:var(--warn-bg);color:var(--warn-ink)}
 .term .btn{margin-top:8px}
 
+/* Text editor */
+.editor{display:none}
+body.editing .wrap>*:not(.editor){display:none}
+body.editing .editor{display:block}
+.ed-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.ed-head h1{font-size:24px;margin:0}
+.ed-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.ed-bar{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);margin-bottom:12px}
+.ed-bar .count{font-size:13px;color:var(--muted)}
+.ed-group{font-size:14px;font-weight:600;color:var(--muted);margin:18px 2px 8px}
+.ed-node{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+.ed-node summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none;display:flex;gap:8px;align-items:center}
+.ed-node summary::-webkit-details-marker{display:none}
+.ed-node summary::before{content:"▸";color:var(--muted)}
+[dir=rtl] .ed-node summary::before{content:"◂"}
+.ed-node[open] summary::before{content:"▾"}
+.ed-node .chg{font-size:12px;font-weight:600;color:var(--warn-ink);background:var(--warn-bg);border-radius:99px;padding:1px 8px}
+.ed-rows{padding:0 14px 14px;display:grid;gap:10px}
+.ed-row label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.ed-row input{width:100%;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;background:var(--field);font-size:15px}
+.ed-row input.changed{border-color:var(--warn-ink);box-shadow:0 0 0 2px var(--warn-bg)}
+.ed-row .orig{font-size:12px;color:var(--muted);margin-top:3px}
+.ed-token{background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:14px}
+.ed-token ol{margin:6px 0;padding-inline-start:20px}
+.ed-token input{width:100%;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;background:var(--field);color:var(--ink);margin:6px 0;font-family:monospace;direction:ltr}
+.ed-token a{color:inherit;font-weight:600}
 /* Layout per view */
 body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margin-inline:auto}
 .layout.view-steps{grid-template-columns:minmax(0,820px);justify-content:center}
@@ -204,10 +230,12 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
     <button class="btn ghost icon" id="themeBtn" type="button"></button>
     <button class="btn ghost" id="langBtn" type="button"></button>
     <button class="btn ghost" id="newBtn" type="button"></button>
+    <button class="btn ghost icon" id="editBtn" type="button">✎</button>
   </div>
 </header>
 
 <main class="wrap">
+  <section class="editor" id="editor"></section>
   <section class="intro"><h1 id="tTitle"></h1><p id="tIntro"></p></section>
   <nav class="phases" id="phases"></nav>
   <div class="layout" id="layout">
@@ -230,7 +258,7 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
 
 <script>
 /* ---------- Auto-update (beats the GitHub Pages cache) ---------- */
-const APP_V='2026.11.10-1';
+const APP_V='2026.11.10-2';
 (function(){
   async function check(){
     try{
@@ -248,18 +276,22 @@ const APP_V='2026.11.10-1';
 /* ---------- UI strings ---------- */
 const UI={
  ar:{brand:'ديل · عملية المنتج 2027',brandSub:'دليل عمل الفريق',title:'من الطلب إلى نتيجة قابلة للقياس',
-  intro:'جاوب سؤالًا واحدًا في كل خطوة، والخطوة التالية تظهر حسب إجابتك. كل خطوة توضح مين المسؤول ومتى نعتبرها خلصت.',
+  intro:'أجب عن سؤال واحد في كل خطوة، وتظهر الخطوة التالية حسب إجابتك. كل خطوة تحدد المسؤول عنها ومتى تُعد مكتملة.',
   lang:'English',newReq:'طلب جديد',summary:'ملخص الطلب',share:'مشاركة',copy:'نسخ الملخص',dl:'تنزيل ملف نصي',print:'طباعة',
-  owner:'المسؤول',doneRule:'تنتهي عندما:',confirm:'تم',edit:'تعديل',optional:'(اختياري)',
+  owner:'المسؤول',doneRule:'تنتهي عندما:',confirm:'متابعة',edit:'تعديل',optional:'(اختياري)',
   undo:'تراجع',undoL:'تراجع (Ctrl+Z)',redoL:'إعادة (Ctrl+Y)',dark:'الوضع الداكن',light:'الوضع الفاتح',
-  copied:'تم نسخ الملخص',downloaded:'تم تنزيل الملف',cleared:'بدأ طلب جديد',cycle:'بدأت دورة تحسين من خطوة الحل',
+  copied:'تم نسخ الملخص',downloaded:'تم تنزيل الملف',cleared:'تم بدء طلب جديد',cycle:'بدأت دورة تحسين جديدة من خطوة الحل',
   savedAt:t=>`حُفظ تلقائيًا على هذا الجهاز · ${t}`,empty:'لم يُحدد بعد',nextStep:'الخطوة الحالية',allDone:'الطلب مكتمل',
-  stopT:'الطلب متوقف',stopX:'لا نبني قبل التحقق من المشكلة. غيّر طريقة التحقق لو قررتم تكملوا.',
-  endT:'الطلب مغلق',endX:'تم توثيق النتيجة. ابدأ طلبًا جديدًا متى احتجت.',
-  loopT:'الهدف لم يتحقق',loopX:'نرجع لخطوة الحل بنفس المشكلة والهدف، ونجرب تحسينًا جديدًا.',loopBtn:'ابدأ دورة تحسين',
-  laterT:'لم نقس بعد',laterX:'ارجع هنا في موعد القياس وسجّل النتيجة.',
-  bugLoopT:'المشكلة اتكررت',bugLoopX:'نرجع لخطوة الإصلاح.',bugLoopBtn:'ارجع للإصلاح',
-  exportTitle:'ملخص طلب منتج — ديل',vSteps:'الخطوات',vFlow:'المخطط',vDD:'الماسة المزدوجة',vGroup:'طريقة العرض',zIn:'تكبير',zOut:'تصغير',fit:'ملاءمة',center:'توسيط',start:'طلب جديد',probSpace:'مساحة المشكلة',solSpace:'مساحة الحل',noSteps:'لا خطوات في هذا المسار',outcome:'النتيجة',sType:'نوع الطلب',sReq:'مقدم الطلب',sCh:'وصل عن طريق',sKpi:'المؤشر',sBase:'الحالي ← المستهدف',sMeasure:'موعد القياس'},
+  stopT:'الطلب متوقف',stopX:'لا نبني قبل التحقق من المشكلة. لاستكمال الطلب، اختر طريقة تحقق.',
+  endT:'الطلب مغلق',endX:'وُثّقت النتيجة. يمكنك بدء طلب جديد في أي وقت.',
+  loopT:'الهدف لم يتحقق',loopX:'نعود إلى خطوة الحل بنفس المشكلة والهدف، ونجرّب تحسينًا جديدًا.',loopBtn:'ابدأ دورة تحسين',
+  laterT:'لم نقِس بعد',laterX:'عُد إلى هذه الصفحة في موعد القياس وسجّل النتيجة.',
+  bugLoopT:'تكرر الخلل',bugLoopX:'نعود إلى خطوة الإصلاح.',bugLoopBtn:'العودة للإصلاح',
+  exportTitle:'ملخص طلب منتج — ديل',vSteps:'الخطوات',edBtn:'تعديل النصوص',edTitle:'تعديل النصوص',edIntro:'عدّل أي نص، ثم اضغط «حفظ للجميع». التغيير يظهر لكل من يفتح الرابط خلال دقيقة تقريبًا.',edLangNote:'تعدّل الآن النسخة العربية. لتعديل الإنجليزية بدّل اللغة من الأعلى.',edSave:'حفظ للجميع',edDiscard:'تجاهل التعديلات غير المحفوظة',edExit:'العودة للعملية',edReset:'استرجاع النص الأصلي لكل الحقول',edChanged:n=>`تعديلات غير محفوظة: ${n}`,edNone:'لا تعديلات غير محفوظة',edSaving:'جاري الحفظ…',edSaved:'تم الحفظ، وسيظهر للجميع خلال دقيقة تقريبًا',edFail:m=>`الحفظ لم يتم: ${m}`,edOrig:'الأصلي:',edMod:'معدّل',
+ edTokT:'للحفظ للجميع تحتاج مفتاح GitHub مرة واحدة على هذا الجهاز',edTok1:'افتح صفحة إنشاء المفتاح',edTok2:'Repository access: اختر Only select repositories ثم dealapp-product-process-2027',edTok3:'Permissions ← Contents: Read and write، ثم Generate token',edTok4:'الصق المفتاح هنا. يُحفظ على هذا الجهاز فقط ولا يُرسل لأي مكان غير GitHub.',edTokSave:'حفظ المفتاح وإكمال الحفظ',edTokForget:'حذف المفتاح من هذا الجهاز',
+ edGroups:{general:'عام',phases:'المراحل',full:'المسار الكامل: تحسين أو ميزة أو منتج جديد',cr:'مسار التعديل الصغير',bug:'مسار الـ Bug'},
+ edK:{q:'السؤال',owner:'المسؤول',done:'تنتهي عندما',opt:'اختيار',optsub:'وصف الاختيار',g:'عنوان المجموعة',go:'اختيار في المجموعة',f:'اسم الحقل',fph:'مثال داخل الحقل',c:'بند',name:'اسم المرحلة',sub:'وصف المرحلة',title:'عنوان الصفحة',intro:'تعريف الصفحة'},
+ vFlow:'المخطط',vDD:'الماسة المزدوجة',vGroup:'طريقة العرض',zIn:'تكبير',zOut:'تصغير',fit:'ملاءمة الشاشة',center:'توسيط',start:'طلب جديد',probSpace:'مساحة المشكلة',solSpace:'مساحة الحل',noSteps:'لا خطوات في هذا المسار',outcome:'النتيجة',sType:'نوع الطلب',sReq:'صاحب الطلب',sCh:'وصل عن طريق',sKpi:'المؤشر',sBase:'الحالي ← المستهدف',sMeasure:'موعد القياس'},
  en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
   intro:'Answer one question per step; the next step appears based on your answer. Every step shows its owner and when it is done.',
   lang:'العربية',newReq:'New request',summary:'Request summary',share:'Share',copy:'Copy summary',dl:'Download text file',print:'Print',
@@ -272,21 +304,25 @@ const UI={
   loopT:'Target not met',loopX:'Go back to the solution step with the same problem and goal, and try a new improvement.',loopBtn:'Start improvement cycle',
   laterT:'Not measured yet',laterX:'Come back on the measurement date and record the result.',
   bugLoopT:'The bug recurred',bugLoopX:'Go back to the fix step.',bugLoopBtn:'Back to the fix',
-  exportTitle:'Dealapp product request summary',vSteps:'Steps',vFlow:'Flowchart',vDD:'Double Diamond',vGroup:'View',zIn:'Zoom in',zOut:'Zoom out',fit:'Fit',center:'Center',start:'New request',probSpace:'Problem space',solSpace:'Solution space',noSteps:'No steps in this path',outcome:'Outcome',sType:'Request type',sReq:'Requester',sCh:'Arrived via',sKpi:'KPI',sBase:'Current → target',sMeasure:'Measurement date'}
+  exportTitle:'Dealapp product request summary',vSteps:'Steps',edBtn:'Edit texts',edTitle:'Edit texts',edIntro:'Edit any text, then press “Save for everyone”. The change shows for everyone who opens the link within about a minute.',edLangNote:'You are editing the English version. Switch language at the top to edit Arabic.',edSave:'Save for everyone',edDiscard:'Discard unsaved edits',edExit:'Back to the process',edReset:'Restore original text for all fields',edChanged:n=>`${n} unsaved edit(s)`,edNone:'No unsaved edits',edSaving:'Saving…',edSaved:'Saved — everyone will see it within about a minute',edFail:m=>`Not saved: ${m}`,edOrig:'Original:',edMod:'edited',
+ edTokT:'To save for everyone you need a GitHub token once on this device',edTok1:'Open the token page',edTok2:'Repository access: Only select repositories → dealapp-product-process-2027',edTok3:'Permissions → Contents: Read and write, then Generate token',edTok4:'Paste the token here. It stays on this device and is sent only to GitHub.',edTokSave:'Save token and continue',edTokForget:'Remove the token from this device',
+ edGroups:{general:'General',phases:'Phases',full:'Full path: improvement, feature or new product',cr:'Small change path',bug:'Bug path'},
+ edK:{q:'Question',owner:'Owner',done:'Done when',opt:'Option',optsub:'Option description',g:'Group title',go:'Group option',f:'Field name',fph:'Field example',c:'Checklist item',name:'Phase name',sub:'Phase description',title:'Page title',intro:'Page intro'},
+ vFlow:'Flowchart',vDD:'Double Diamond',vGroup:'View',zIn:'Zoom in',zOut:'Zoom out',fit:'Fit',center:'Center',start:'New request',probSpace:'Problem space',solSpace:'Solution space',noSteps:'No steps in this path',outcome:'Outcome',sType:'Request type',sReq:'Requester',sCh:'Arrived via',sKpi:'KPI',sBase:'Current → target',sMeasure:'Measurement date'}
 };
 const ch=(ar,en)=>({ar,en});
 
 /* ---------- Phases ---------- */
 const PHASES=[
- {id:'p1',name:ch('الطلب','Request'),sub:ch('نوعه ومصدره','Type and source')},
+ {id:'p1',name:ch('الطلب','Request'),sub:ch('نوعه ومن طلبه','Type and source')},
  {id:'p2',name:ch('المشكلة','Problem'),sub:ch('جلسة البزنس','Business session')},
  {id:'p3',name:ch('الحل','Solution'),sub:ch('Stories والتصميم','Stories and design')},
- {id:'p4',name:ch('التنفيذ والقياس','Delivery'),sub:ch('Sprint وإطلاق وقياس','Sprint, launch, measure')}
+ {id:'p4',name:ch('التنفيذ والقياس','Delivery'),sub:ch('Sprint والإطلاق والقياس','Sprint, launch, measure')}
 ];
 
 const PH_SUB={
  bug:{p2:ch('تقييم الخطورة','Severity'),p3:ch('الإصلاح','Fix'),p4:ch('الإطلاق والمتابعة','Release and follow-up')},
- cr:{p2:ch('—','—'),p3:ch('الـ CR والتصميم','CR and design'),p4:ch('Sprint وإطلاق','Sprint and release')}
+ cr:{p2:ch('—','—'),p3:ch('الـ CR والتصميم','CR and design'),p4:ch('Sprint والإطلاق','Sprint and release')}
 };
 const phSub=p=>{const t=S.a.type;return (PH_SUB[t]&&PH_SUB[t][p.id])||p.sub};
 
@@ -294,76 +330,102 @@ const phSub=p=>{const t=S.a.type;return (PH_SUB[t]&&PH_SUB[t][p.id])||p.sub};
  kind: choice (single, advances on pick) · multi (chips + Done) · form (fields + Done) · task (checks)  */
 const N={
  type:{ph:'p1',kind:'choice',q:ch('ما نوع الطلب؟','What type of request is it?'),owner:ch('مدير المنتج','Product manager'),
-  done:ch('الطلب مصنّف','The request is classified'),
-  opts:[['bug',ch('Bug','Bug'),ch('شيء لا يعمل كما يجب','Something is broken')],['cr',ch('تعديل صغير','Small change'),ch('نص أو حقل أو قاعدة بسيطة','Copy, a field or a simple rule')],
-        ['enh',ch('تحسين منتج قائم','Product improvement'),ch('أكثر من شاشة أو هدف يُقاس','Several screens or a measurable goal')],['feature',ch('ميزة جديدة','New feature'),ch('قدرة جديدة في المنتج','A new capability')],
-        ['product',ch('منتج جديد','New product'),ch('خدمة أو منتج جديد','A new service or product')]]},
- source:{ph:'p1',kind:'form',q:ch('مين طلبه، ووصل منين؟','Who asked, and how did it arrive?'),owner:ch('مقدم الطلب + مدير المنتج','Requester + PM'),
-  done:ch('مقدم الطلب والقناة مسجلين، ومعهم رابط المصدر لو موجود','Requester and channel recorded, with a source link if any'),
-  groups:[{id:'requester',label:ch('مقدم الطلب','Requester'),req:true,opts:[['broker',ch('عميل / وسيط','Customer / broker')],['business',ch('فريق البزنس','Business team')],['cs',ch('خدمة العملاء','Customer service')],['product',ch('فريق المنتج','Product team')],['tech',ch('التطوير / QA','Engineering / QA')],['other',ch('أخرى','Other')]]},
+  done:ch('تم تحديد نوع الطلب','The request is classified'),
+  opts:[['bug',ch('Bug','Bug'),ch('خلل في ميزة موجودة','Something is broken')],['cr',ch('تعديل صغير','Small change'),ch('تغيير بسيط في نص أو حقل أو قاعدة','Copy, a field or a simple rule')],
+        ['enh',ch('تحسين منتج قائم','Product improvement'),ch('تطوير ميزة موجودة بهدف قابل للقياس','Several screens or a measurable goal')],['feature',ch('ميزة جديدة','New feature'),ch('إضافة وظيفة غير موجودة حاليًا','A new capability')],
+        ['product',ch('منتج جديد','New product'),ch('خدمة جديدة بالكامل','A new service or product')]]},
+ source:{ph:'p1',kind:'form',q:ch('من صاحب الطلب، ومن أين وصل؟','Who asked, and how did it arrive?'),owner:ch('صاحب الطلب + مدير المنتج','Requester + PM'),
+  done:ch('تم تسجيل صاحب الطلب وطريقة وصوله، مع رابط المصدر إن وُجد','Requester and channel recorded, with a source link if any'),
+  groups:[{id:'requester',label:ch('صاحب الطلب','Requester'),req:true,opts:[['broker',ch('عميل أو وسيط','Customer / broker')],['business',ch('فريق البزنس','Business team')],['cs',ch('خدمة العملاء','Customer service')],['product',ch('فريق المنتج','Product team')],['tech',ch('فريق التطوير أو QA','Engineering / QA')],['other',ch('أخرى','Other')]]},
           {id:'channel',label:ch('وصل عن طريق','Arrived via'),req:true,opts:[['whatsapp',ch('واتساب','WhatsApp')],['meeting',ch('اجتماع','Meeting')],['notion',ch('Notion','Notion')],['data',ch('بيانات وتحليلات','Analytics')],['other',ch('أخرى','Other')]]}],
-  fields:[{id:'title',label:ch('عنوان مختصر للطلب','Short request title'),full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
-          {id:'ref',label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو المحضر أو البطاقة','Link to the message, notes or card')}]},
+  fields:[{id:'title',label:ch('عنوان مختصر','Short request title'),full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
+          {id:'ref',label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو محضر الاجتماع أو صفحة Notion','Link to the message, notes or card')}]},
  /* Bug path */
  risk:{ph:'p2',kind:'choice',q:ch('ما خطورة الـ Bug؟','How severe is the bug?'),owner:ch('QA','QA'),
-  done:ch('الـ Bug مسجل في Bugs Board، وQA أعاد إنتاجه','Logged in the Bugs Board and reproduced by QA'),
-  opts:[['critical',ch('حرج','Critical'),ch('يُصلح فورًا خارج الـ Sprint','Fix now, outside the sprint')],['high',ch('عالي','High'),ch('أقرب Sprint','Next sprint')],['normal',ch('عادي','Normal'),ch('حسب الأولوية','By priority')]]},
+  done:ch('سُجّل الـ Bug في Bugs Board، وأعاد QA إنتاج المشكلة','Logged in the Bugs Board and reproduced by QA'),
+  opts:[['critical',ch('حرج','Critical'),ch('يُصلح فورًا خارج الـ Sprint','Fix now, outside the sprint')],['high',ch('مرتفع','High'),ch('أقرب Sprint','Next sprint')],['normal',ch('عادي','Normal'),ch('حسب الأولويات','By priority')]]},
  bfix:{ph:'p3',kind:'task',q:ch('الإصلاح وQA','Fix and QA'),owner:ch('التطوير + QA','Engineering + QA'),
-  done:ch('الإصلاح يعمل ولا يكسر شيئًا آخر','The fix works and breaks nothing else'),
-  checks:[ch('الإصلاح على بيئة الاختبار','Fix is on staging'),ch('QA اختبر الإصلاح والانحدار','QA tested the fix and regression')]},
+  done:ch('الإصلاح يعمل دون أن يؤثر على أجزاء أخرى','The fix works and breaks nothing else'),
+  checks:[ch('الإصلاح على بيئة الاختبار','Fix is on staging'),ch('اختبر QA الإصلاح وتأكد من عدم تأثر الأجزاء الأخرى','QA tested the fix and regression')]},
  brel:{ph:'p4',kind:'task',q:ch('الإطلاق','Release'),owner:ch('التطوير','Engineering'),done:ch('الإصلاح منشور','The fix is live'),checks:[ch('تم النشر','Released')]},
- brec:{ph:'p4',kind:'choice',q:ch('هل تكررت المشكلة بعد الإطلاق؟','Did the bug recur after release?'),owner:ch('QA + مدير المنتج','QA + PM'),
+ brec:{ph:'p4',kind:'choice',q:ch('هل تكرر الخلل بعد الإطلاق؟','Did the bug recur after release?'),owner:ch('QA + مدير المنتج','QA + PM'),
   done:ch('تمت المتابعة بعد الإطلاق','Followed up after release'),
-  opts:[['no',ch('لا — نغلق','No — close')],['yes',ch('نعم — نرجع للإصلاح','Yes — back to the fix')]]},
+  opts:[['no',ch('لا — نغلق الطلب','No — close')],['yes',ch('نعم — نعود للإصلاح','Yes — back to the fix')]]},
  /* Small change path */
- cscope:{ph:'p3',kind:'form',q:ch('اكتب الـ CR','Write the CR'),owner:ch('مدير المنتج','Product manager'),
-  done:ch('الوضع الحالي والمطلوب ومعايير القبول مكتوبة، والتصميم معدّل لو لزم','Current state, change and acceptance criteria written; design updated if needed'),
+ cscope:{ph:'p3',kind:'form',q:ch('كتابة الـ CR','Write the CR'),owner:ch('مدير المنتج','Product manager'),
+  done:ch('كُتب الوضع الحالي والتغيير المطلوب ومعايير القبول، وعُدّل التصميم إن لزم','Current state, change and acceptance criteria written; design updated if needed'),
   fields:[{id:'crLink',label:ch('رابط الـ CR على Notion','CR link in Notion'),req:true,full:true,ph:'https://notion.so/…'},{id:'crFigma',label:ch('رابط التصميم','Design link'),full:true,ph:'https://figma.com/…'}]},
  cbuild:{ph:'p4',kind:'task',q:ch('Sprint: التطوير وQA','Sprint: build and QA'),owner:ch('التطوير + QA','Engineering + QA'),
-  done:ch('QA اعتمد التعديل','QA approved the change'),checks:[ch('التعديل داخل Sprint','The change is in a sprint'),ch('QA اختبر الجزء المتغير','QA tested the changed area')]},
+  done:ch('اعتمد QA التعديل','QA approved the change'),checks:[ch('أُضيف التعديل إلى Sprint','The change is in a sprint'),ch('اختبر QA الجزء المعدّل','QA tested the changed area')]},
  crel:{ph:'p4',kind:'task',q:ch('الإطلاق','Release'),owner:ch('التطوير','Engineering'),done:ch('التعديل منشور','The change is live'),checks:[ch('تم النشر','Released')]},
  /* Full path */
- evidence:{ph:'p2',kind:'choice',q:ch('إيه الدليل على المشكلة؟','What evidence supports the problem?'),owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),
-  done:ch('الدليل ومصدره مسجلين','Evidence and its source are recorded'),
-  opts:[['feedback',ch('ملاحظات عملاء / وسطاء','Customer / broker feedback')],['data',ch('بيانات وتحليلات','Analytics data')],['business',ch('مبرر بزنس / سوق','Business / market case')],['assumption',ch('افتراض فقط','Assumption only')]]},
- validate:{ph:'p2',kind:'choice',q:ch('هنتحقق إزاي قبل ما نبني؟','How will we validate before building?'),owner:ch('مدير المنتج + UX','PM + UX'),
-  done:ch('المشكلة اتأكدت، أو قرار التوقف مسجل','Problem validated, or the stop decision recorded'),
-  opts:[['interviews',ch('مقابلات عملاء / وسطاء','Customer / broker interviews')],['data',ch('تحليل بيانات','Data analysis')],['survey',ch('استبيان','Survey')],['prototype',ch('نموذج سريع','Quick prototype')],['none',ch('مش هنتحقق — نوقف','No validation — stop')]]},
- kpi:{ph:'p2',kind:'form',q:ch('إزاي هنقيس النجاح؟','How will we measure success?'),owner:ch('مدير المنتج + البزنس','PM + business'),
-  done:ch('المؤشر والرقم الحالي والمستهدف متفق عليهم','KPI, current number and target are agreed'),
-  groups:[{id:'hasKpi',label:ch('فيه مؤشر رقمي؟','Is there a numeric KPI?'),req:true,opts:[['yes',ch('نعم','Yes')],['no',ch('لا — نتيجة نوعية','No — qualitative outcome')]]}],
-  fields:[{id:'kpiName',label:ch('المؤشر','KPI'),req:true,ph:ch('مثال: معدل التحويل للاشتراك','e.g. Subscription conversion'),when:{hasKpi:'yes'}},
-          {id:'baseline',label:ch('الرقم الحالي','Current number'),req:true,ph:ch('من GA4 أو الباك إند، أو «غير مقاس»','From GA4 or backend, or "not measured"'),when:{hasKpi:'yes'}},
+ evidence:{ph:'p2',kind:'choice',q:ch('ما الدليل على وجود المشكلة؟','What evidence supports the problem?'),owner:ch('مدير المنتج + صاحب الطلب','PM + requester'),
+  done:ch('تم تسجيل الدليل ومصدره','Evidence and its source are recorded'),
+  opts:[['feedback',ch('ملاحظات من العملاء أو الوسطاء','Customer / broker feedback')],['data',ch('بيانات وتحليلات','Analytics data')],['business',ch('مبرر تجاري أو من السوق','Business / market case')],['assumption',ch('افتراض لم يُتحقق منه','Assumption only')]]},
+ validate:{ph:'p2',kind:'choice',q:ch('كيف نتحقق من المشكلة قبل البناء؟','How will we validate before building?'),owner:ch('مدير المنتج + UX','PM + UX'),
+  done:ch('تأكدنا من المشكلة، أو سُجّل قرار التوقف','Problem validated, or the stop decision recorded'),
+  opts:[['interviews',ch('مقابلات مع عملاء أو وسطاء','Customer / broker interviews')],['data',ch('تحليل البيانات','Data analysis')],['survey',ch('استبيان','Survey')],['prototype',ch('نموذج أولي سريع','Quick prototype')],['none',ch('لن نتحقق — نوقف الطلب','No validation — stop')]]},
+ kpi:{ph:'p2',kind:'form',q:ch('كيف نقيس النجاح؟','How will we measure success?'),owner:ch('مدير المنتج + البزنس','PM + business'),
+  done:ch('اتفقنا على المؤشر والرقم الحالي والمستهدف','KPI, current number and target are agreed'),
+  groups:[{id:'hasKpi',label:ch('هل يوجد مؤشر رقمي؟','Is there a numeric KPI?'),req:true,opts:[['yes',ch('نعم','Yes')],['no',ch('لا — نتيجة وصفية','No — qualitative outcome')]]}],
+  fields:[{id:'kpiName',label:ch('المؤشر','KPI'),req:true,ph:ch('مثال: نسبة التحويل إلى اشتراك','e.g. Subscription conversion'),when:{hasKpi:'yes'}},
+          {id:'baseline',label:ch('الرقم الحالي','Current number'),req:true,ph:ch('من GA4 أو قاعدة البيانات، أو «غير مقاس»','From GA4 or backend, or "not measured"'),when:{hasKpi:'yes'}},
           {id:'target',label:ch('الرقم المستهدف','Target'),req:true,ph:ch('مثال: من 10% إلى 15%','e.g. from 10% to 15%'),when:{hasKpi:'yes'}},
-          {id:'window',label:ch('فترة القياس','Measurement window'),ph:ch('مثال: 30 يومًا بعد الإطلاق','e.g. 30 days after launch'),when:{hasKpi:'yes'}},
+          {id:'window',label:ch('مدة القياس','Measurement window'),ph:ch('مثال: 30 يومًا بعد الإطلاق','e.g. 30 days after launch'),when:{hasKpi:'yes'}},
           {id:'outcome',label:ch('النتيجة المتوقعة','Expected outcome'),req:true,full:true,area:true,when:{hasKpi:'no'}}]},
- teams:{ph:'p2',kind:'multi',q:ch('مين لازم يشارك؟','Who needs to be involved?'),owner:ch('مدير المنتج','Product manager'),
-  done:ch('الفرق المطلوبة محددة، وصاحب الطلب اعتمد الـ Brief','Teams are set, and the requester approved the brief'),
+ teams:{ph:'p2',kind:'multi',q:ch('من يجب أن يشارك؟','Who needs to be involved?'),owner:ch('مدير المنتج','Product manager'),
+  done:ch('تم تحديد الفرق المشاركة، واعتمد صاحب الطلب الـ Brief','Teams are set, and the requester approved the brief'),
   opts:[['business',ch('البزنس','Business')],['ops',ch('العمليات','Operations')],['cs',ch('خدمة العملاء','Customer service')],['marketing',ch('التسويق','Marketing')],['finance',ch('المالية','Finance')],['ux',ch('UX/UI','UX/UI')],['tech',ch('التطوير','Engineering')],['qa',ch('QA','QA')],['data',ch('البيانات','Data')],['legal',ch('القانوني','Legal')]],
-  checks:[ch('صاحب الطلب اعتمد الـ Brief: المشكلة والدليل والمؤشر','The requester approved the brief: problem, evidence, KPI')]},
- research:{ph:'p3',kind:'choice',q:ch('نحتاج بحث قبل التصميم؟','Do we need research before design?'),owner:ch('مدير المنتج + UX','PM + UX'),
-  done:ch('طريقة البحث أو سبب عدم الحاجة مسجل','Research method, or why none is needed, is recorded'),
-  opts:[['interviews',ch('مقابلات','Interviews')],['data',ch('تحليل بيانات','Data analysis')],['usability',ch('اختبار استخدام للحالي','Usability test of current')],['ab',ch('اختبار A/B','A/B test')],['none',ch('لا — الدليل كافي','No — evidence is enough')]]},
+  checks:[ch('اعتمد صاحب الطلب الـ Brief (المشكلة والدليل والمؤشر)','The requester approved the brief: problem, evidence, KPI')]},
+ research:{ph:'p3',kind:'choice',q:ch('هل نحتاج بحثًا قبل التصميم؟','Do we need research before design?'),owner:ch('مدير المنتج + UX','PM + UX'),
+  done:ch('تم تحديد طريقة البحث، أو سبب الاستغناء عنه','Research method, or why none is needed, is recorded'),
+  opts:[['interviews',ch('مقابلات مع المستخدمين','Interviews')],['data',ch('تحليل البيانات','Data analysis')],['usability',ch('اختبار استخدام للتصميم الحالي','Usability test of current')],['ab',ch('اختبار A/B','A/B test')],['none',ch('لا — الدليل كافٍ','No — evidence is enough')]]},
  solution:{ph:'p3',kind:'form',q:ch('الـ Stories والتصميم','Stories and design'),owner:ch('مدير المنتج + UX/UI + التطوير','PM + UX/UI + engineering'),
-  done:ch('النطاق ومعايير القبول متفق عليها، والتصميم يغطي حالات الفراغ والتحميل والخطأ','Scope and acceptance criteria agreed; design covers empty, loading and error states'),
+  done:ch('اتفقنا على النطاق ومعايير القبول، والتصميم يغطي حالات: لا توجد بيانات، والتحميل، والخطأ','Scope and acceptance criteria agreed; design covers empty, loading and error states'),
   fields:[{id:'stories',label:ch('رابط الـ Stories','Stories link'),req:true,full:true,ph:'https://notion.so/…'},{id:'figma',label:ch('رابط التصميم','Design link'),req:true,full:true,ph:'https://figma.com/…'}]},
- test:{ph:'p3',kind:'choice',q:ch('نختبر التصميم مع مستخدمين؟','Test the design with users?'),owner:ch('UX','UX'),
-  done:ch('قرار الاختبار ونتايجه موثقة، والبزنس والتطوير اعتمدوا التصميم','Test decision and results documented; business and engineering approved the design'),
-  opts:[['yes',ch('نعم — قبل التطوير','Yes — before development')],['no',ch('لا — الخطر منخفض','No — low risk')]]},
+ test:{ph:'p3',kind:'choice',q:ch('هل نختبر التصميم مع مستخدمين؟','Test the design with users?'),owner:ch('UX','UX'),
+  done:ch('وُثّق قرار الاختبار ونتائجه، واعتمد البزنس وفريق التطوير التصميم','Test decision and results documented; business and engineering approved the design'),
+  opts:[['yes',ch('نعم — قبل التطوير','Yes — before development')],['no',ch('لا — المخاطرة منخفضة','No — low risk')]]},
  build:{ph:'p4',kind:'task',q:ch('Sprint: التطوير والتتبع وQA','Sprint: build, tracking and QA'),owner:ch('التطوير + QA + مدير المنتج','Engineering + QA + PM'),
-  done:ch('معايير القبول ناجحة، والأحداث ظاهرة، وصاحب الطلب وافق','Acceptance criteria pass, events show, requester approved'),
-  checks:[ch('أحداث GA4 موثقة على Figma قبل الـ Sprint','GA4 events annotated in Figma before the sprint'),ch('QA اختبر معايير القبول والانحدار','QA tested acceptance criteria and regression'),ch('الأحداث ظاهرة في GA4 DebugView','Events show in GA4 DebugView'),ch('صاحب الطلب جرّب ووافق (UAT)','The requester tried it and approved (UAT)')]},
+  done:ch('نجحت معايير القبول، وظهرت الأحداث، ووافق صاحب الطلب','Acceptance criteria pass, events show, requester approved'),
+  checks:[ch('توثيق أحداث GA4 على Figma قبل بدء الـ Sprint','GA4 events annotated in Figma before the sprint'),ch('اختبر QA معايير القبول وتأكد من عدم تأثر الأجزاء الأخرى','QA tested acceptance criteria and regression'),ch('ظهرت الأحداث في GA4 DebugView','Events show in GA4 DebugView'),ch('جرّب صاحب الطلب النسخة ووافق عليها (UAT)','The requester tried it and approved (UAT)')]},
  launch:{ph:'p4',kind:'form',q:ch('الإطلاق والمتابعة','Launch and monitor'),owner:ch('مدير المنتج + التطوير','PM + engineering'),
-  done:ch('منشور، وخطة التراجع جاهزة، وموعد القياس محدد','Live, rollback plan ready, measurement date set'),
+  done:ch('تم النشر، وخطة التراجع جاهزة، وموعد القياس محدد','Live, rollback plan ready, measurement date set'),
   fields:[{id:'measureDate',kind:'date',label:ch('موعد القياس','Measurement date'),req:true}],
   checks:[ch('تم النشر','Released'),ch('خطة التراجع جاهزة','Rollback plan ready')]},
- result:{ph:'p4',kind:'choice',q:ch('حققنا الهدف؟','Did we hit the target?'),owner:ch('مدير المنتج + البيانات','PM + data'),
-  done:ch('النتيجة اتقارنت بالرقم الحالي والمستهدف','Result compared with the baseline and target'),
-  opts:[['yes',ch('نعم','Yes')],['no',ch('لا','No')],['later',ch('لسه ما قسناش','Not measured yet')]]},
+ result:{ph:'p4',kind:'choice',q:ch('هل حققنا الهدف؟','Did we hit the target?'),owner:ch('مدير المنتج + فريق البيانات','PM + data'),
+  done:ch('قارنّا النتيجة بالرقم الحالي والمستهدف','Result compared with the baseline and target'),
+  opts:[['yes',ch('نعم','Yes')],['no',ch('لا','No')],['later',ch('لم نقِس بعد','Not measured yet')]]},
  close:{ph:'p4',kind:'form',q:ch('التوثيق والإغلاق','Document and close'),owner:ch('مدير المنتج','Product manager'),
-  done:ch('النتيجة والدروس موثقة','Result and lessons documented'),
-  fields:[{id:'actual',label:ch('الرقم بعد الإطلاق','Number after launch'),req:true},{id:'learnings',label:ch('ما تعلمناه','What we learned'),full:true,area:true}]}
+  done:ch('وُثّقت النتيجة والدروس المستفادة','Result and lessons documented'),
+  fields:[{id:'actual',label:ch('الرقم بعد الإطلاق','Number after launch'),req:true},{id:'learnings',label:ch('الدروس المستفادة','What we learned'),full:true,area:true}]}
 };
+
+/* ---------- Editable texts (content.json on GitHub) ---------- */
+const REPO='mohamed-mosaad-bakr/dealapp-product-process-2027',CFILE='content.json',TOKKEY='dealapp-gh-token';
+const ORDER={full:['type','source','evidence','validate','kpi','teams','research','solution','test','build','launch','result','close'],cr:['cscope','cbuild','crel'],bug:['risk','bfix','brel','brec']};
+function eachText(cb){ // cb(group, nodeId|null, key, kind, obj, prop)
+  cb('general',null,'ui.title','title',UI,'title');cb('general',null,'ui.intro','intro',UI,'intro');
+  PHASES.forEach(p=>{cb('phases','ph:'+p.id,'ph.'+p.id+'.name','name',p,'name');cb('phases','ph:'+p.id,'ph.'+p.id+'.sub','sub',p,'sub')});
+  Object.entries(PH_SUB).forEach(([t,m])=>Object.entries(m).forEach(([pid,o])=>{if(o.ar!=='—')cb(t,'ph:'+pid,'phsub.'+t+'.'+pid,'sub',m,pid)}));
+  ['full','cr','bug'].forEach(grp=>ORDER[grp].forEach(id=>{const n=N[id];
+    cb(grp,id,id+'.q','q',n,'q');cb(grp,id,id+'.owner','owner',n,'owner');cb(grp,id,id+'.done','done',n,'done');
+    (n.opts||[]).forEach(o=>{cb(grp,id,id+'.opt.'+o[0],'opt',o,1);if(o[2])cb(grp,id,id+'.optsub.'+o[0],'optsub',o,2)});
+    (n.groups||[]).forEach(g=>{cb(grp,id,id+'.g.'+g.id,'g',g,'label');g.opts.forEach(o=>cb(grp,id,id+'.g.'+g.id+'.'+o[0],'go',o,1))});
+    (n.fields||[]).forEach(f=>{cb(grp,id,id+'.f.'+f.id,'f',f,'label');if(f.ph&&typeof f.ph==='object')cb(grp,id,id+'.fph.'+f.id,'fph',f,'ph')});
+    (n.checks||[]).forEach((c,i)=>cb(grp,id,id+'.c.'+i,'c',n.checks,i));
+  }));
+}
+// read/write a text for a language; UI strings live per language, content in ch objects
+function getT(obj,prop,lang){return obj===UI?UI[lang][prop]:obj[prop][lang]}
+function setT(obj,prop,lang,v){if(obj===UI)UI[lang][prop]=v;else obj[prop][lang]=v}
+const DEFAULTS={};eachText((g,id,key,kind,obj,prop)=>{DEFAULTS[key]={ar:getT(obj,prop,'ar'),en:getT(obj,prop,'en')}});
+let SAVED={ar:{},en:{}},DRAFT={ar:{},en:{}},CSHA=null,EDITING=false;
+function applyTexts(){eachText((g,id,key,kind,obj,prop)=>['ar','en'].forEach(l=>{const v=DRAFT[l][key]??SAVED[l][key]??DEFAULTS[key][l];setT(obj,prop,l,v)}))}
+async function loadTexts(){
+  try{const r=await fetch(CFILE+'?t='+Date.now(),{cache:'no-store'});if(r.ok){const j=await r.json();SAVED={ar:j.ar||{},en:j.en||{}}}}catch(e){}
+  applyTexts();
+}
 
 /* ---------- State ---------- */
 const KEY='dealapp-process-2027-v4';
@@ -439,6 +501,8 @@ function render(){
   $('viewSwitch').setAttribute('aria-label',t.vGroup);
   $('viewSwitch').querySelectorAll('button').forEach(b=>{b.textContent={steps:t.vSteps,flow:t.vFlow,dd:t.vDD}[b.dataset.view];b.setAttribute('aria-pressed',S.view===b.dataset.view)});
   $('layout').className='layout view-'+S.view;document.body.dataset.view=S.view;
+  document.body.classList.toggle('editing',EDITING);$('editBtn').title=t.edBtn;$('editBtn').setAttribute('aria-label',t.edBtn);$('editBtn').setAttribute('aria-pressed',EDITING);
+  if(EDITING){renderEditor();return}
   const sh=shown();renderPhases(sh);
   if(S.view==='steps')renderFlow(sh);
   else{if(S.view==='flow')renderCanvas(sh);else renderDD(sh);renderDetail(sh)}
@@ -602,6 +666,57 @@ function redo(){if(!REDO.length)return;UNDO.push(snapState());restore(REDO.pop()
 $('undoBtn').onclick=undo;$('redoBtn').onclick=redo;
 document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;const k=e.key.toLowerCase();if((e.ctrlKey||e.metaKey)&&k==='z'&&!e.shiftKey){e.preventDefault();undo()}else if((e.ctrlKey||e.metaKey)&&(k==='y'||(k==='z'&&e.shiftKey))){e.preventDefault();redo()}});
 
+/* ---------- Text editor ---------- */
+function curText(key,l){return DRAFT[l][key]??SAVED[l][key]??DEFAULTS[key][l]}
+function draftCount(){return Object.keys(DRAFT.ar).length+Object.keys(DRAFT.en).length}
+function renderEditor(){
+  const t=u(),l=S.lang;let h=`<div class="ed-head"><div><h1>${t.edTitle}</h1><p>${t.edIntro}<br>${t.edLangNote}</p></div><button type="button" class="btn" id="edExit">${t.edExit}</button></div>`;
+  h+=`<div class="ed-bar"><button type="button" class="btn primary" id="edSave" ${draftCount()?'':'disabled'}>${t.edSave}</button><button type="button" class="btn" id="edDiscard" ${draftCount()?'':'disabled'}>${t.edDiscard}</button><span class="count" id="edCount">${draftCount()?t.edChanged(draftCount()):t.edNone}</span></div><div id="edTok"></div>`;
+  const groups={};eachText((g,id,key,kind)=>{(groups[g]=groups[g]||{});const k=id||'_';(groups[g][k]=groups[g][k]||[]).push([key,kind])});
+  ['general','phases','full','cr','bug'].forEach(g=>{if(!groups[g])return;h+=`<div class="ed-group">${t.edGroups[g]}</div>`;
+    Object.entries(groups[g]).forEach(([nid,rows])=>{
+      const title=nid==='_'?t.edGroups.general:(nid.startsWith('ph:')?L(PHASES.find(p=>p.id===nid.slice(3)).name):L(N[nid].q));
+      const mod=rows.some(([k])=>SAVED[l][k]!==undefined||DRAFT[l][k]!==undefined);
+      h+=`<details class="ed-node" ${g==='general'?'open':''}><summary>${esc(title)}${mod?` <span class="chg">${t.edMod}</span>`:''}</summary><div class="ed-rows">`;
+      rows.forEach(([key,kind])=>{const v=curText(key,l),orig=DEFAULTS[key][l],ch2=DRAFT[l][key]!==undefined;
+        h+=`<div class="ed-row"><label for="e_${key}">${t.edK[kind]}</label><input id="e_${key}" data-key="${esc(key)}" value="${esc(v)}" class="${ch2?'changed':''}">${v!==orig?`<div class="orig">${t.edOrig} ${esc(orig)}</div>`:''}</div>`});
+      h+='</div></details>'});
+  });
+  h+=`<div class="actions-row"><button type="button" class="btn" id="edReset">${t.edReset}</button></div>`;
+  $('editor').innerHTML=h;
+  $('editor').querySelectorAll('input[data-key]').forEach(el=>el.oninput=()=>{const k=el.dataset.key,v=el.value,base=SAVED[l][k]??DEFAULTS[k][l];if(v===base)delete DRAFT[l][k];else DRAFT[l][k]=v;el.classList.toggle('changed',DRAFT[l][k]!==undefined);applyTexts();updEdBar()});
+  $('edExit').onclick=()=>{EDITING=false;render()};
+  $('edDiscard').onclick=()=>{DRAFT={ar:{},en:{}};applyTexts();renderEditor()};
+  $('edReset').onclick=()=>{Object.keys(DEFAULTS).forEach(k=>['ar','en'].forEach(x=>{if(SAVED[x][k]!==undefined)DRAFT[x][k]=DEFAULTS[k][x];else delete DRAFT[x][k]}));applyTexts();renderEditor()};
+  $('edSave').onclick=saveTexts;
+}
+function updEdBar(){const t=u(),n=draftCount();$('edCount').textContent=n?t.edChanged(n):t.edNone;$('edSave').disabled=!n;$('edDiscard').disabled=!n}
+function getTok(){try{return localStorage.getItem(TOKKEY)||''}catch(e){return ''}}
+function tokenBox(){
+  const t=u();$('edTok').innerHTML=`<div class="ed-token"><b>${t.edTokT}</b><ol><li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">${t.edTok1}</a></li><li>${t.edTok2}</li><li>${t.edTok3}</li></ol>${t.edTok4}<input id="tokIn" type="password" autocomplete="off" placeholder="github_pat_…"><button type="button" class="btn primary" id="tokSave">${t.edTokSave}</button></div>`;
+  $('tokSave').onclick=()=>{const v=$('tokIn').value.trim();if(!v)return;try{localStorage.setItem(TOKKEY,v)}catch(e){}$('edTok').innerHTML='';saveTexts()};
+}
+const b64=str=>btoa(unescape(encodeURIComponent(str)));
+async function saveTexts(){
+  const t=u(),tok=getTok();if(!tok){tokenBox();return}
+  const btn=$('edSave');btn.disabled=true;btn.textContent=t.edSaving;
+  const api=`https://api.github.com/repos/${REPO}/contents/${CFILE}`,hd={Authorization:'Bearer '+tok,Accept:'application/vnd.github+json'};
+  try{
+    let sha=null,remote={ar:{},en:{}};
+    const g=await fetch(api+'?ref=main&t='+Date.now(),{headers:hd,cache:'no-store'});
+    if(g.status===401||g.status===403){try{localStorage.removeItem(TOKKEY)}catch(e){}throw new Error(g.status+' — token')}
+    if(g.ok){const j=await g.json();sha=j.sha;try{const d=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))));remote={ar:d.ar||{},en:d.en||{}}}catch(e){}}
+    const next={ar:{...remote.ar},en:{...remote.en}};
+    ['ar','en'].forEach(x=>Object.entries(DRAFT[x]).forEach(([k,v])=>{if(v===DEFAULTS[k][x])delete next[x][k];else next[x][k]=v}));
+    const body={message:'Update page texts from the in-page editor',content:b64(JSON.stringify({v:1,ar:next.ar,en:next.en},null,2)+'\n'),branch:'main'};if(sha)body.sha=sha;
+    const r=await fetch(api,{method:'PUT',headers:{...hd,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(r.status===401||r.status===403){try{localStorage.removeItem(TOKKEY)}catch(e){}throw new Error(r.status+' — token')}
+    if(!r.ok)throw new Error(r.status+' '+((await r.json().catch(()=>({}))).message||''));
+    SAVED=next;DRAFT={ar:{},en:{}};applyTexts();renderEditor();toast(t.edSaved);
+  }catch(e){btn.disabled=false;btn.textContent=t.edSave;toast(t.edFail(e.message));if(!getTok())tokenBox()}
+}
+$('editBtn').onclick=()=>{EDITING=!EDITING;render();scrollTo({top:0})};
+
 /* ---------- Actions ---------- */
 function toast(msg,canUndo){$('toastMsg').textContent=msg;$('toastUndo').style.display=canUndo?'':'none';$('toast').classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>$('toast').classList.remove('show'),canUndo?7000:2500)}
 $('toastUndo').onclick=()=>{undo();$('toast').classList.remove('show')};
@@ -623,7 +738,7 @@ $('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(summaryTe
 $('dlBtn').onclick=()=>{const b=new Blob([summaryText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(S.a.title||'dealapp-request').replace(/[\\/:*?"<>|]/g,'-')+'.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast(u().downloaded)};
 $('printBtn').onclick=()=>window.print();
 
-render();
+loadTexts().finally(render);
 </script>
 </body>
 </html>
