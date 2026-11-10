@@ -252,7 +252,7 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
   <nav class="phases" id="phases"></nav>
   <div class="layout" id="layout">
     <section aria-live="polite"><ol class="flow v-steps" id="flow"></ol><div class="v-flow canvas" id="canvas"></div><div class="v-dd dd" id="dd"></div>
-      <section class="panel final" id="final" hidden><h2 id="tSummary"></h2><dl class="sum" id="summary"></dl>
+      <section class="panel final" id="final" hidden><h2 id="tSummary"></h2><dl class="sum" id="summary"></dl><div id="extra" data-node="source"></div>
         <div class="stack">
           <button class="btn primary" id="copyBtn" type="button"></button>
           <button class="btn" id="dlBtn" type="button"></button>
@@ -270,7 +270,7 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
 
 <script>
 /* ---------- Auto-update (beats the GitHub Pages cache) ---------- */
-const APP_V='2026.11.10-11';
+const APP_V='2026.11.10-12';
 (function(){
   async function check(){
     try{
@@ -290,7 +290,7 @@ const UI={
  ar:{brand:'ديل · عملية المنتج 2027',brandSub:'دليل عمل الفريق',title:'من الطلب إلى نتيجة قابلة للقياس',
   intro:'أجب عن سؤال واحد في كل خطوة، وتظهر الخطوة التالية حسب إجابتك. كل خطوة توضح من يقودها ومن يشارك فيها، ومتى تُعد مكتملة.',
   lang:'English',newReq:'طلب جديد',summary:'ملخص الطلب',share:'مشاركة',copy:'نسخ الملخص',dl:'تنزيل ملف نصي',print:'طباعة',
-  owner:'يقودها',withL:'بمشاركة',doneRule:'تنتهي عندما:',confirm:'متابعة',edit:'تعديل',optional:'(اختياري)',otherL:'حدد',otherPh:'اكتب هنا',
+  owner:'يقودها',withL:'بمشاركة',doneRule:'تنتهي عندما:',confirm:'متابعة',edit:'تعديل',optional:'(اختياري)',extraT:'معلومات إضافية',otherL:'حدد',otherPh:'اكتب هنا',
   undo:'تراجع',undoL:'تراجع (Ctrl+Z)',redoL:'إعادة (Ctrl+Y)',dark:'الوضع الداكن',light:'الوضع الفاتح',
   copied:'تم نسخ الملخص',downloaded:'تم تنزيل الملف',cleared:'تم بدء طلب جديد',cycle:'بدأت دورة تحسين جديدة من خطوة الحل',
   savedAt:t=>`حُفظ تلقائيًا على هذا الجهاز · ${t}`,empty:'لم يُحدد بعد',nextStep:'الخطوة الحالية',allDone:'الطلب مكتمل',
@@ -307,7 +307,7 @@ const UI={
  en:{brand:'Dealapp · Product Process 2027',brandSub:'Team working guide',title:'From request to a measurable outcome',
   intro:'Answer one question per step; the next step appears based on your answer. Every step shows who leads it, who takes part, and when it is done.',
   lang:'العربية',newReq:'New request',summary:'Request summary',share:'Share',copy:'Copy summary',dl:'Download text file',print:'Print',
-  owner:'Lead',withL:'With',doneRule:'Done when:',confirm:'Done',edit:'Edit',optional:'(optional)',otherL:'Specify',otherPh:'Type here',
+  owner:'Lead',withL:'With',doneRule:'Done when:',confirm:'Done',edit:'Edit',optional:'(optional)',extraT:'Additional info',otherL:'Specify',otherPh:'Type here',
   undo:'Undo',undoL:'Undo (Ctrl+Z)',redoL:'Redo (Ctrl+Y)',dark:'Dark mode',light:'Light mode',
   copied:'Summary copied',downloaded:'File downloaded',cleared:'Started a new request',cycle:'Improvement cycle started from the solution step',
   savedAt:t=>`Saved on this device · ${t}`,empty:'Not set yet',nextStep:'Current step',allDone:'Request complete',
@@ -352,8 +352,8 @@ const N={
           {id:'requesterUser',label:ch('نوع المستخدم','User type'),req:true,when:{requester:'user'},opts:[['customer',ch('عميل','Customer')],['broker',ch('عقاري','Real estate broker')],['owner',ch('مالك','Owner')]]},
           {id:'requesterTeam',label:ch('أي فريق؟','Which team?'),req:true,when:{requester:'team'},opts:[['business',ch('فريق البزنس','Business team')],['cs',ch('فريق خدمة العملاء','Customer service team')],['product',ch('فريق المنتجات','Product team')],['tech',ch('فريق التطوير أو QA','Engineering / QA')],['ops',ch('فريق العمليات','Operations team')],['other',ch('أخرى','Other')]]},
           {id:'channel',label:ch('وصل عن طريق','Arrived via'),req:true,opts:[['whatsapp',ch('واتساب','WhatsApp')],['slack',ch('Slack','Slack')],['meet',ch('Google Meet','Google Meet')],['meeting',ch('اجتماع حضوري','In-person meeting')],['notion',ch('Notion','Notion')],['azure',ch('Azure DevOps','Azure DevOps')],['suggestions',ch('الآراء والمقترحات','Feedback & suggestions')],['other',ch('أخرى','Other')]]}],
-  fields:[{id:'title',label:ch('عنوان مختصر','Short request title'),full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
-          {id:'ref',label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو محضر الاجتماع أو صفحة Notion','Link to the message, notes or card')}]},
+  fields:[{id:'title',extra:true,label:ch('عنوان مختصر','Short request title'),full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
+          {id:'ref',extra:true,label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو محضر الاجتماع أو صفحة Notion','Link to the message, notes or card')}]},
  /* Bug path */
  risk:{ph:'p2',kind:'choice',q:ch('ما خطورة الـ Bug؟','How severe is the bug?'),owner:ch('QA','QA'),
   done:ch('سُجّل الـ Bug في Bugs Board، وأعاد QA إنتاج المشكلة','Logged in the Bugs Board and reproduced by QA'),
@@ -509,7 +509,7 @@ function route(){
   return {ids,term:path==='bug'?(a.brec==='no'?'end':null):'end'};
 }
 function visibleGroups(n){return (n.groups||[]).filter(g=>!g.when||Object.entries(g.when).every(([k,v])=>S.a[k]===v))}
-function visibleFields(n){return (n.fields||[]).filter(f=>!f.when||Object.entries(f.when).every(([k,v])=>S.a[k]===v))}
+function visibleFields(n){return (n.fields||[]).filter(f=>!f.extra&&(!f.when||Object.entries(f.when).every(([k,v])=>S.a[k]===v)))}
 function isDone(id){
   const n=N[id];
   if(n.kind==='choice')return filled(S.a[id])&&(S.a[id]!=='other'||(filled(S.a[id+'Other'])&&!!S.done[id]));
@@ -714,9 +714,13 @@ function focusActive(){if(S.view==='flow'){centerCanvas(true);return}if(S.view!=
 function renderSide(sh){
   const t=u(),a=S.a;
   const ty=N.type.opts.find(o=>o[0]===a.type);
-  const rows=[[t.sType,ty?L(ty[1]):''],[L(N.source._fields.find(f=>f.id==='title').label),a.title],[t.sReq,reqText()],[t.sCh,optLabel(N.source.groups.find(g=>g.id==='channel'),a.channel)]];
+  const rows=[[t.sType,ty?L(ty[1]):''],[t.sReq,reqText()],[t.sCh,optLabel(N.source.groups.find(g=>g.id==='channel'),a.channel)]];
   if(['enh','feature','product'].includes(a.type)){rows.push([t.sKpi,a.hasKpi==='yes'?a.kpiName:(a.outcome||'')]);if(a.hasKpi==='yes')rows.push([t.sBase,[a.baseline,a.target].filter(Boolean).join(' ← ')]);rows.push([t.sMeasure,a.measureDate])}
   $('final').hidden=!(!sh.active&&sh.term);
+  if(!$('final').hidden&&!$('extra').querySelector('input')){const ex=N.source.fields.filter(f=>f.extra);
+    $('extra').innerHTML=`<h3 class="sub" style="margin-top:4px">${t.extraT} <span style="font-weight:400;color:var(--muted)">${t.optional}</span></h3><div class="fields" style="margin-bottom:12px">${ex.map(f=>`<div class="field full"><label for="f_${f.id}">${esc(L(f.label))}</label><input id="f_${f.id}" data-f="${f.id}" value="${esc(a[f.id])}" placeholder="${esc(f.ph?L(f.ph):'')}"></div>`).join('')}</div>`;
+    $('extra').querySelectorAll('[data-f]').forEach(el=>el.oninput=()=>{S.a[el.dataset.f]=el.value;save()})}
+  if($('final').hidden)$('extra').innerHTML='';
   $('summary').innerHTML=rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd class="${v?'':'empty'}">${esc(v||t.empty)}</dd></div>`).join('');
 }
 
@@ -827,6 +831,7 @@ $('themeBtn').onclick=()=>{const dark=document.documentElement.dataset.theme==='
 
 function summaryText(){
   const t=u(),{ids,term}=route(),out=[t.exportTitle,'='.repeat(32)];let i=0;
+  N.source._fields.filter(f=>f.extra&&S.a[f.id]).forEach(f=>out.push(`${L(f.label)}: ${S.a[f.id]}`));
   ids.forEach(id=>{const n=N[id];i++;const ans=isDone(id)?answerText(id):'—';out.push('',`${i}. ${L(n.q)}`,`   ${ans}`,`   ${t.owner}: ${L(n.owner)}${n.with?' · '+t.withL+': '+L(n.with):''}`);
     visibleFields(n).forEach(f=>{if(S.a[f.id]&&!['title','kpiName','baseline','target'].includes(f.id))out.push(`   ${L(f.label)}: ${S.a[f.id]}`)});
     visibleGroups(n).forEach(g=>{if(S.a[g.id])out.push(`   ${L(g.label)}: ${optLabel(g,S.a[g.id])}`)});
