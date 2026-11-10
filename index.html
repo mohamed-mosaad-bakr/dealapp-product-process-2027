@@ -266,7 +266,7 @@ body[data-view=steps] .intro,body[data-view=steps] .phases{max-width:820px;margi
 
 <script>
 /* ---------- Auto-update (beats the GitHub Pages cache) ---------- */
-const APP_V='2026.11.10-5';
+const APP_V='2026.11.10-6';
 (function(){
   async function check(){
     try{
@@ -345,7 +345,7 @@ const N={
  source:{ph:'p1',kind:'form',q:ch('من صاحب الطلب، ومن أين وصل؟','Who asked, and how did it arrive?'),owner:ch('مدير المنتج','Product manager'),with:ch('صاحب الطلب','Requester'),
   done:ch('تم تسجيل صاحب الطلب وطريقة وصوله، مع رابط المصدر إن وُجد','Requester and channel recorded, with a source link if any'),
   groups:[{id:'requester',label:ch('صاحب الطلب','Requester'),req:true,opts:[['broker',ch('عميل أو وسيط','Customer / broker')],['business',ch('فريق البزنس','Business team')],['cs',ch('خدمة العملاء','Customer service')],['product',ch('فريق المنتج','Product team')],['tech',ch('فريق التطوير أو QA','Engineering / QA')],['other',ch('أخرى','Other')]]},
-          {id:'channel',label:ch('وصل عن طريق','Arrived via'),req:true,opts:[['whatsapp',ch('واتساب','WhatsApp')],['meeting',ch('اجتماع','Meeting')],['notion',ch('Notion','Notion')],['data',ch('بيانات وتحليلات','Analytics')],['other',ch('أخرى','Other')]]}],
+          {id:'channel',label:ch('وصل عن طريق','Arrived via'),req:true,opts:[['whatsapp',ch('واتساب','WhatsApp')],['slack',ch('Slack','Slack')],['meet',ch('Google Meet','Google Meet')],['meeting',ch('اجتماع حضوري','In-person meeting')],['notion',ch('Notion','Notion')],['azure',ch('Azure DevOps','Azure DevOps')],['suggestions',ch('الآراء والمقترحات','Feedback & suggestions')],['other',ch('أخرى','Other')]]}],
   fields:[{id:'title',label:ch('عنوان مختصر','Short request title'),full:true,ph:ch('مثال: إعادة تصميم صفحة الباقات','e.g. Redesign the plans page')},
           {id:'ref',label:ch('رابط المصدر','Source link'),full:true,ph:ch('رابط الرسالة أو محضر الاجتماع أو صفحة Notion','Link to the message, notes or card')}]},
  /* Bug path */
