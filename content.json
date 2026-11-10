@@ -13,6 +13,21 @@
       "team",
       "xmwanj9mr",
       "other"
+    ],
+    "path.full": [
+      "type",
+      "source",
+      "validate",
+      "evidence",
+      "kpi",
+      "teams",
+      "research",
+      "solution",
+      "test",
+      "build",
+      "launch",
+      "result",
+      "close"
     ]
   },
   "hidden": [
